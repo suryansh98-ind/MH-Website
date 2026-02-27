@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Figtree', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #1f2937;
+    background: #ffffff;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .font-junge {
+    font-family: 'Junge', serif;
+    font-style: normal;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
