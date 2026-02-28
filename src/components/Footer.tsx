@@ -33,17 +33,17 @@ function LinkedInIcon() {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#fafafa] border-t border-[#e5e7eb] pt-16 pb-8">
-      <div className="max-w-[1280px] mx-auto px-8">
+    <footer className="bg-[#fafafa] border-t border-[#e5e7eb] pt-12 md:pt-16 pb-8">
+      <div className="max-w-[1280px] mx-auto px-4 md:px-8">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          className="grid grid-cols-4 gap-12 pb-12"
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 pb-8 md:pb-12"
         >
           {/* Brand */}
-          <motion.div variants={fadeInUp} className="flex flex-col gap-4">
+          <motion.div variants={fadeInUp} className="col-span-2 md:col-span-1 flex flex-col gap-4">
             <div className="flex items-center gap-1.5">
               <img src={LOGO_ICON} alt="MyHormonz" className="h-[30px] w-auto" />
               <span className="font-junge text-[21px] text-[#1f2937]">MyHormonz</span>
@@ -82,7 +82,7 @@ export default function Footer() {
           </motion.div>
 
           {/* Legal */}
-          <motion.div variants={fadeInUp} className="flex flex-col gap-4">
+          <motion.div variants={fadeInUp} className="col-span-2 md:col-span-1 flex flex-col gap-4">
             <h5 className="font-figtree font-bold text-[16px] text-[#1f2937] leading-[24px]">
               Legal
             </h5>
@@ -102,11 +102,11 @@ export default function Footer() {
         </motion.div>
 
         {/* Bottom bar */}
-        <div className="border-t border-[#e5e7eb] pt-8 flex items-center justify-between">
+        <div className="border-t border-[#e5e7eb] pt-6 md:pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 md:gap-0">
           <span className="font-figtree text-[12px] text-[#6b7280] leading-[16px]">
-            © 2026 MyHormonz. All rights reserved.
+            &copy; 2026 MyHormonz. All rights reserved.
           </span>
-          <span className="font-figtree text-[12px] text-[#6b7280] leading-[16px] text-right max-w-md">
+          <span className="font-figtree text-[12px] text-[#6b7280] leading-[16px] md:text-right max-w-md">
             Disclaimer: Content is for educational purposes only and does not
             constitute medical advice.
           </span>

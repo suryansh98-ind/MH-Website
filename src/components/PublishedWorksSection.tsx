@@ -19,7 +19,7 @@ function BookCard({ src, title, badge, featured = false, delay = 0 }: BookProps)
       variants={fadeInUp}
       custom={delay}
       whileHover={{ y: -8, transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] } }}
-      className={`flex flex-col items-center gap-4 ${featured ? 'w-[322px]' : 'w-64'}`}
+      className={`flex flex-col items-center gap-3 md:gap-4 ${featured ? 'w-full md:w-[322px]' : 'w-full md:w-64'}`}
     >
       <motion.div
         className={`
@@ -34,10 +34,10 @@ function BookCard({ src, title, badge, featured = false, delay = 0 }: BookProps)
       </motion.div>
 
       <div className="flex flex-col items-center gap-1 w-full">
-        <h4 className="font-figtree font-bold text-[18px] text-[#1f2937] text-center leading-[28px]">
+        <h4 className="font-figtree font-bold text-[16px] md:text-[18px] text-[#1f2937] text-center leading-[24px] md:leading-[28px]">
           {title}
         </h4>
-        <span className="font-figtree text-[14px] text-[#6b7280] text-center">
+        <span className="font-figtree text-[13px] md:text-[14px] text-[#6b7280] text-center">
           {badge}
         </span>
       </div>
@@ -47,20 +47,20 @@ function BookCard({ src, title, badge, featured = false, delay = 0 }: BookProps)
 
 export default function PublishedWorksSection() {
   return (
-    <section className="bg-[#fafafa] py-20">
-      <div className="max-w-[1280px] mx-auto px-8">
+    <section className="bg-[#fafafa] py-12 md:py-20">
+      <div className="max-w-[1280px] mx-auto px-4 md:px-8">
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={VIEWPORT}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col items-center gap-3 mb-12"
+          className="flex flex-col items-center gap-3 mb-8 md:mb-12"
         >
-          <h2 className="font-junge text-[36px] text-primary text-center leading-[40px]">
+          <h2 className="font-junge text-[28px] md:text-[36px] text-primary text-center leading-[34px] md:leading-[40px]">
             Published Works
           </h2>
-          <p className="font-figtree text-[16px] text-[#6b7280] text-center">
+          <p className="font-figtree text-[15px] md:text-[16px] text-[#6b7280] text-center">
             Translating complex science into actionable guides for everyday living.
           </p>
         </motion.div>
@@ -71,11 +71,11 @@ export default function PublishedWorksSection() {
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          className="flex items-center justify-center gap-18"
-          style={{ gap: '72px' }}
+          className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-0"
+          style={{ columnGap: '72px' }}
         >
           {/* Side books aligned to center vertically */}
-          <div className="flex items-center self-stretch">
+          <div className="flex items-center justify-center md:self-stretch w-[200px] md:w-auto">
             <BookCard
               src={BOOK_1}
               title="The Hormone Survival Guide For Perimenopause"
@@ -85,15 +85,17 @@ export default function PublishedWorksSection() {
           </div>
 
           {/* Featured center book */}
-          <BookCard
-            src={BOOK_2}
-            title="Brilliant Burnout"
-            badge="New Release"
-            featured
-            delay={0.1}
-          />
+          <div className="flex justify-center w-[240px] md:w-auto">
+            <BookCard
+              src={BOOK_2}
+              title="Brilliant Burnout"
+              badge="New Release"
+              featured
+              delay={0.1}
+            />
+          </div>
 
-          <div className="flex items-center self-stretch">
+          <div className="flex items-center justify-center md:self-stretch w-[200px] md:w-auto">
             <BookCard
               src={BOOK_3}
               title="Surviving The Teenage Hormone Takeover"

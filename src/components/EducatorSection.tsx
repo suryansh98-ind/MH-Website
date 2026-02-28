@@ -30,36 +30,36 @@ const items = [
 
 export default function EducatorSection() {
   return (
-    <section className="bg-white py-20 px-20">
-      <div className="max-w-[1280px] mx-auto flex gap-16 items-center">
+    <section className="bg-white py-12 md:py-20 px-4 md:px-20">
+      <div className="max-w-[1280px] mx-auto flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
         {/* Left: list */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          className="flex-1 flex flex-col gap-8"
+          className="flex-1 flex flex-col gap-6 md:gap-8"
         >
           <motion.h3
             variants={fadeInLeft}
-            className="font-junge text-[30px] text-primary leading-[36px]"
+            className="font-junge text-[26px] md:text-[30px] text-primary leading-[32px] md:leading-[36px]"
           >
             Educator and National Voice
           </motion.h3>
 
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-6 md:gap-8">
             {items.map((item, i) => (
               <motion.div key={i} variants={fadeInUp}>
                 <div className="flex gap-4 items-start">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-muted flex items-center justify-center">
+                  <div className="flex-shrink-0 w-10 md:w-12 h-10 md:h-12 rounded-full bg-primary-muted flex items-center justify-center">
                     <img
                       src={item.icon}
                       alt=""
                       style={{ width: item.iconSize.width, height: item.iconSize.height }}
                     />
                   </div>
-                  <div className="flex flex-col gap-2">
-                    <h4 className="font-figtree font-bold text-[18px] text-[#1f2937] leading-[28px]">
+                  <div className="flex flex-col gap-1.5 md:gap-2">
+                    <h4 className="font-figtree font-bold text-[16px] md:text-[18px] text-[#1f2937] leading-[24px] md:leading-[28px]">
                       {item.title}
                     </h4>
                     <p className="font-figtree text-[14px] text-[#6b7280] leading-[20px]">
@@ -68,7 +68,7 @@ export default function EducatorSection() {
                   </div>
                 </div>
                 {i < items.length - 1 && (
-                  <div className="h-px bg-[#f3f4f6] mt-8" />
+                  <div className="h-px bg-[#f3f4f6] mt-6 md:mt-8" />
                 )}
               </motion.div>
             ))}
@@ -81,15 +81,13 @@ export default function EducatorSection() {
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          className="flex-shrink-0 relative"
-          style={{ width: 576 }}
+          className="flex-shrink-0 relative w-full lg:w-[576px]"
         >
           {/* Background image */}
           <motion.div
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="relative rounded-[40px] overflow-hidden border-2 border-white shadow-hero"
-            style={{ height: 390 }}
+            className="relative rounded-[24px] md:rounded-[40px] overflow-hidden border-2 border-white shadow-hero aspect-[576/390]"
           >
             <img
               src={EDUCATOR_BG}
@@ -101,9 +99,9 @@ export default function EducatorSection() {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 flex items-center justify-center shadow-lg"
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 md:w-16 h-12 md:h-16 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 flex items-center justify-center shadow-lg"
             >
-              <img src={ICON_PLAY} alt="Play" className="w-5 h-5 ml-1" />
+              <img src={ICON_PLAY} alt="Play" className="w-4 md:w-5 h-4 md:h-5 ml-0.5" />
             </motion.button>
           </motion.div>
 
@@ -113,10 +111,10 @@ export default function EducatorSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={VIEWPORT}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
-            className="absolute bottom-[-20px] left-5 right-[-16px] bg-white/95 backdrop-blur-sm border border-[#f3f4f6] rounded-2xl p-4 shadow-card flex items-center gap-3"
+            className="absolute bottom-[-16px] md:bottom-[-20px] left-3 md:left-5 right-3 md:right-[-16px] bg-white/95 backdrop-blur-sm border border-[#f3f4f6] rounded-xl md:rounded-2xl p-3 md:p-4 shadow-card flex items-center gap-3"
           >
-            <img src={ICON_PLAY} alt="" className="w-5 h-5 flex-shrink-0" />
-            <span className="font-figtree font-medium text-[14px] text-[#1f2937]">
+            <img src={ICON_PLAY} alt="" className="w-4 md:w-5 h-4 md:h-5 flex-shrink-0" />
+            <span className="font-figtree font-medium text-[13px] md:text-[14px] text-[#1f2937]">
               Watch her presenting her concept.
             </span>
           </motion.div>

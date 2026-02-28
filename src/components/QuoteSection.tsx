@@ -6,7 +6,7 @@ const QUOTE_CLOSE = 'https://www.figma.com/api/mcp/asset/fa3fef5a-ec4b-418a-a9da
 
 export default function QuoteSection() {
   return (
-    <section className="bg-white py-24 px-12 overflow-hidden">
+    <section className="bg-white py-16 md:py-24 px-4 md:px-12 overflow-hidden">
       <div className="max-w-[896px] mx-auto flex flex-col items-center gap-6">
         {/* Quote block */}
         <div className="relative w-full flex justify-center">
@@ -18,7 +18,7 @@ export default function QuoteSection() {
             whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
             viewport={VIEWPORT}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute -left-2 -top-2 w-10 h-[25px] -rotate-180 scale-y-[-1]"
+            className="absolute -left-1 md:-left-2 -top-2 w-6 md:w-10 h-auto -rotate-180 scale-y-[-1]"
           />
 
           {/* Quote text */}
@@ -27,7 +27,7 @@ export default function QuoteSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={VIEWPORT}
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-            className="font-junge text-[60px] text-primary text-center leading-[60px] px-8"
+            className="font-junge text-[28px] md:text-[60px] text-primary text-center leading-[36px] md:leading-[60px] px-6 md:px-8"
           >
             Balanced hormones don't just improve lifestyle. Balanced hormones
             save lives.
@@ -41,7 +41,7 @@ export default function QuoteSection() {
             whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
             viewport={VIEWPORT}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute -right-2 bottom-0 w-10 h-[25px]"
+            className="absolute -right-1 md:-right-2 bottom-0 w-6 md:w-10 h-auto"
           />
         </div>
 
@@ -53,11 +53,11 @@ export default function QuoteSection() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
           className="flex items-center gap-4 pt-4"
         >
-          <div className="h-px w-16 bg-[#d1d5db]" />
-          <span className="font-junge text-[18px] text-[#1f2937] text-center whitespace-nowrap">
+          <div className="h-px w-10 md:w-16 bg-[#d1d5db]" />
+          <span className="font-junge text-[16px] md:text-[18px] text-[#1f2937] text-center whitespace-nowrap">
             Dr. Nisha Woods, PhD
           </span>
-          <div className="h-px w-16 bg-[#d1d5db]" />
+          <div className="h-px w-10 md:w-16 bg-[#d1d5db]" />
         </motion.div>
       </div>
     </section>
