@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, VIEWPORT } from '../lib/animations'
 
-const LAB_RESEARCH = 'https://www.figma.com/api/mcp/asset/e8cb658b-40f9-4832-a836-9a5994c18cfd'
+const LAB_RESEARCH = 'http://localhost:3845/assets/0231abb1655d0cb95b3d9e5db13cf8d4bc8b35c5.png'
 
 export default function PioneerSection() {
   return (
@@ -20,8 +20,8 @@ export default function PioneerSection() {
               <h2 className="font-junge text-[28px] md:text-[36px] text-[#1f2937] leading-[32px] md:leading-[40px]">
                 A Pioneer in
               </h2>
-              <h2 className="font-junge text-[28px] md:text-[36px] text-primary leading-[32px] md:leading-[40px]">
-                Functional Medicine
+              <h2 className="font-junge text-[28px] md:text-[36px] text-primary italic leading-[32px] md:leading-[40px]">
+                Functional Wellness
               </h2>
             </motion.div>
 
@@ -54,15 +54,15 @@ export default function PioneerSection() {
               className="flex flex-col gap-6 flex-1"
             >
               <motion.p variants={fadeInUp} className="font-figtree text-[15px] md:text-[16px] text-[#6b7280] leading-[24px] md:leading-[26px]">
-                Dr. Nisha Woods began her career frustrated by the limitations of
-                traditional medicine. She noticed that many patients, especially
-                women, were being dismissed with "normal" lab results despite
+                Nisha Woods began her career frustrated by the limitations of
+                conventional healthcare approaches. She noticed that many individuals,
+                especially women, were being dismissed with "normal" lab results despite
                 suffering from debilitating fatigue, brain fog, and weight gain.
               </motion.p>
               <motion.p variants={fadeInUp} className="font-figtree text-[15px] md:text-[16px] text-[#6b7280] leading-[24px] md:leading-[26px]">
                 Driven to find answers, she pursued advanced degrees in
-                functional medicine and endocrinology. Her research revealed a
-                critical gap in how hormonal health is traditionally evaluated—
+                functional wellness and hormone health. Her research revealed a
+                critical gap in how hormonal health is traditionally evaluated
                 focusing on disease markers rather than optimization markers.
               </motion.p>
             </motion.div>
@@ -76,9 +76,9 @@ export default function PioneerSection() {
               className="flex flex-col gap-6 flex-1"
             >
               <motion.p variants={fadeInRight} className="font-figtree text-[15px] md:text-[16px] text-[#6b7280] leading-[24px] md:leading-[26px]">
-                Today, Dr. Woods is recognized globally for her proprietary
-                protocols that combine cutting-edge diagnostics with holistic
-                lifestyle interventions. She doesn't just treat patients; she
+                Today, Dr. Woods is recognized globally for her personalized
+                approaches that combine cutting edge assessments with holistic
+                lifestyle guidance. She doesn't just support individuals; she
                 empowers them to understand their own biology.
               </motion.p>
 
@@ -87,9 +87,9 @@ export default function PioneerSection() {
                 className="border-l-4 border-primary pl-5"
               >
                 <p className="font-junge text-[16px] md:text-[18px] text-[#1f2937] leading-[26px] md:leading-[28px]">
-                  "The human body has an incredible capacity to heal when given
-                  the right tools. My job is to identify what's missing and
-                  provide those tools."
+                  "The human body has an incredible capacity to thrive when given
+                  the right tools. My job is to help you understand what's needed
+                  and provide those tools."
                 </p>
               </motion.div>
             </motion.div>

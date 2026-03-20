@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion'
 import { fadeInLeft, fadeInRight, staggerContainer, fadeInUp, VIEWPORT } from '../lib/animations'
 
-const YOGA_IMG = 'https://www.figma.com/api/mcp/asset/c6f9513e-b19d-477b-a684-700ba2cba6f1'
-const HIKING_IMG = 'https://www.figma.com/api/mcp/asset/dd2c8c63-c2e0-456f-b61a-24d7f2a5b334'
-const ICON_NATURE = 'https://www.figma.com/api/mcp/asset/73a22544-9e9e-4434-a783-bc6562402e90'
-const ICON_HEART = 'https://www.figma.com/api/mcp/asset/c6323c77-fd3b-4814-a1df-76cb8d56e9fb'
+const YOGA_IMG = 'http://localhost:3845/assets/601c180701fa321bb15bc8cbd64fa235549121db.png'
+const HIKING_IMG = 'http://localhost:3845/assets/47ac53c8e7c72d1c2f6dfe9e621e6a5491d2aaac.png'
+const ICON_NATURE = 'http://localhost:3845/assets/45eccfb0bd0244662af09ca0f1887dc9a4b744b1.svg'
+const ICON_HEART = 'http://localhost:3845/assets/fc587928df05f7fa3613dcb149c9da3fd925a3f2.svg'
+const ICON_LOOM = 'http://localhost:3845/assets/477f7c1ddc8bdac35fb322557a6262679af8e178.svg'
 
 export default function BeyondClinicSection() {
   return (
@@ -69,7 +70,7 @@ export default function BeyondClinicSection() {
               variants={fadeInRight}
               className="font-figtree font-bold text-primary text-[13px] md:text-[14px] tracking-[1.4px] uppercase"
             >
-              Beyond the Clinic
+              Beyond the Practice
             </motion.p>
 
             <motion.h3
@@ -83,7 +84,7 @@ export default function BeyondClinicSection() {
               variants={fadeInUp}
               className="font-figtree text-[15px] md:text-[16px] text-[#6b7280] leading-[24px] md:leading-[26px] pt-3 md:pt-4"
             >
-              When she's not researching or seeing patients, Nisha is an avid
+              When she's not researching or supporting individuals, Nisha is an avid
               hiker in the Pacific Northwest. She believes that connection with
               nature is a fundamental pillar of hormonal health.
             </motion.p>
@@ -92,16 +93,16 @@ export default function BeyondClinicSection() {
               variants={fadeInUp}
               className="font-figtree text-[15px] md:text-[16px] text-[#6b7280] leading-[24px] md:leading-[26px]"
             >
-              "I don't just prescribe these protocols; I live them. From cold
-              plunging in mountain lakes to prioritizing sleep hygiene, my
-              personal journey fuels my professional passion."
+              "I don't just recommend these practices, I live them. From cold
+              plunging in mountain lakes to prioritizing optimal sleep to knowing
+              when to rest your mind next to a mountain lake."
             </motion.p>
 
             {/* Badges */}
             <motion.div variants={fadeInUp} className="flex flex-wrap gap-3 md:gap-4 pt-4">
               <motion.div
                 whileHover={{ scale: 1.05, y: -2 }}
-                className="flex items-center gap-1 bg-white rounded-full px-3 md:px-4 py-1.5 md:py-2 shadow-sm"
+                className="flex items-center gap-2 bg-white rounded-full px-3 md:px-4 py-1.5 md:py-2 shadow-sm"
               >
                 <img src={ICON_NATURE} alt="" className="w-3 h-3.5" />
                 <span className="font-figtree font-medium text-[13px] md:text-[14px] text-[#1f2937]">
@@ -111,11 +112,21 @@ export default function BeyondClinicSection() {
 
               <motion.div
                 whileHover={{ scale: 1.05, y: -2 }}
-                className="flex items-center gap-1 bg-white rounded-full px-3 md:px-4 py-1.5 md:py-2 shadow-sm"
+                className="flex items-center gap-2 bg-white rounded-full px-3 md:px-4 py-1.5 md:py-2 shadow-sm"
               >
                 <img src={ICON_HEART} alt="" className="w-3.5 h-3" />
                 <span className="font-figtree font-medium text-[13px] md:text-[14px] text-[#1f2937]">
                   Mother of 2
+                </span>
+              </motion.div>
+
+              <motion.div
+                whileHover={{ scale: 1.05, y: -2 }}
+                className="flex items-center gap-2 bg-white rounded-full px-3 md:px-4 py-1.5 md:py-2 shadow-sm"
+              >
+                <img src={ICON_LOOM} alt="" className="w-3.5 h-3.5" />
+                <span className="font-figtree font-medium text-[13px] md:text-[14px] text-[#1f2937]">
+                  Loom Weaver
                 </span>
               </motion.div>
             </motion.div>

@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion'
 import { fadeInUp, staggerContainer, VIEWPORT } from '../lib/animations'
 
-const LOGO_ICON = 'https://www.figma.com/api/mcp/asset/ba6bd9c0-9d61-4648-9797-28bf67720c57'
-const INSTAGRAM_ICON = 'https://www.figma.com/api/mcp/asset/ba8e8934-af33-4fa6-907a-e9707b420412'
-const LINKEDIN_ICON = 'https://www.figma.com/api/mcp/asset/34fbfd43-d0a3-44e4-bb9d-b2917d8bc631'
+const LOGO_ICON = 'http://localhost:3845/assets/101e180997fad529f22ae6cfbfe4d833d9bfe014.png'
+const INSTAGRAM_ICON = 'http://localhost:3845/assets/a32b61aaa8b8d665a9f9aebca022f4aa34be786d.svg'
+const LINKEDIN_ICON = 'http://localhost:3845/assets/76089209e96b4b9f0d379b4558e257d1786d1357.svg'
 
 function InstagramIcon() {
   return (
@@ -87,7 +87,7 @@ export default function Footer() {
               Legal
             </h5>
             <ul className="flex flex-col gap-2">
-              {['Privacy Policy', 'Terms of Service', 'Medical Disclaimer'].map((item) => (
+              {['Privacy Policy', 'Terms of Service', 'Health Information Disclaimer'].map((item) => (
                 <li key={item}>
                   <a
                     href="#"

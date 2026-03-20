@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion'
 import { fadeInUp, VIEWPORT } from '../lib/animations'
 
-const ONEPEAK_LOGO = 'https://www.figma.com/api/mcp/asset/b4f1fede-cb13-4b29-a106-e130d58ff819'
+const ONEPEAK_LOGO = 'http://localhost:3845/assets/21c80c6a78ee7c21a716048f95eb6faf9cc5f505.png'
 
 export default function FounderSection() {
   return (
-    <section className="bg-[#fde9f3] border-t border-b border-[#e5e7eb] py-16">
+    <section className="bg-[#fffdf9] py-16">
       <div className="max-w-[1280px] mx-auto px-8 flex flex-col items-center gap-9">
         {/* Label */}
         <motion.p
@@ -15,7 +15,7 @@ export default function FounderSection() {
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="font-figtree font-semibold text-primary text-[16px] uppercase tracking-[1.4px] text-center"
         >
-          Founder &amp; Clinical Director Of
+          Founder &amp; Wellness Director Of
         </motion.p>
 
         {/* Logo + clinic name */}

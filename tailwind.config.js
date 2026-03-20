@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        junge: ['Junge', 'serif'],
+        junge: ['Playfair Display', 'serif'],
         figtree: ['Figtree', 'sans-serif'],
       },
       colors: {

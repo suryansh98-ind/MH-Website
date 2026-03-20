@@ -1,25 +1,30 @@
 import { motion } from 'framer-motion'
 import { staggerContainer, fadeInUp, VIEWPORT } from '../lib/animations'
 
-const BOOK_1 = 'https://www.figma.com/api/mcp/asset/3fd8911c-0f72-4df7-a619-a7bfb5614966'
-const BOOK_2 = 'https://www.figma.com/api/mcp/asset/f01002f1-db01-4043-98e5-24e42e37a33c'
-const BOOK_3 = 'https://www.figma.com/api/mcp/asset/8e8c22b7-c76e-430e-a238-89c53e87a556'
+const BOOK_1 = 'http://localhost:3845/assets/6965378d0c5ec720b7ac7d574629c2e53564c962.png'
+const BOOK_2 = 'http://localhost:3845/assets/35eb8f2ae87e789bca07d2b2e88adc80038450c5.png'
+const BOOK_3 = 'http://localhost:3845/assets/8c1f66f99dd218f0d633f2363b26cb9409eecb2e.png'
 
 interface BookProps {
   src: string
   title: string
   badge: string
+  href: string
   featured?: boolean
   delay?: number
 }
 
-function BookCard({ src, title, badge, featured = false, delay = 0 }: BookProps) {
+function BookCard({ src, title, badge, href, featured = false, delay = 0 }: BookProps) {
   return (
-    <motion.div
+    <motion.a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
       variants={fadeInUp}
       custom={delay}
       whileHover={{ y: -8, transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] } }}
-      className={`flex flex-col items-center gap-3 md:gap-4 ${featured ? 'w-full md:w-[322px]' : 'w-full md:w-64'}`}
+      whileTap={{ scale: 0.97 }}
+      className={`flex flex-col items-center gap-3 md:gap-4 cursor-pointer no-underline ${featured ? 'w-full md:w-[322px]' : 'w-full md:w-64'}`}
     >
       <motion.div
         className={`
@@ -41,13 +46,13 @@ function BookCard({ src, title, badge, featured = false, delay = 0 }: BookProps)
           {badge}
         </span>
       </div>
-    </motion.div>
+    </motion.a>
   )
 }
 
 export default function PublishedWorksSection() {
   return (
-    <section className="bg-[#fafafa] py-12 md:py-20">
+    <section id="publications" className="bg-[#fafafa] py-12 md:py-20">
       <div className="max-w-[1280px] mx-auto px-4 md:px-8">
         {/* Heading */}
         <motion.div
@@ -57,7 +62,7 @@ export default function PublishedWorksSection() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-col items-center gap-3 mb-8 md:mb-12"
         >
-          <h2 className="font-junge text-[28px] md:text-[36px] text-primary text-center leading-[34px] md:leading-[40px]">
+          <h2 className="font-junge text-[28px] md:text-[36px] text-[#1a1a2e] text-center leading-[34px] md:leading-[40px]">
             Published Works
           </h2>
           <p className="font-figtree text-[15px] md:text-[16px] text-[#6b7280] text-center">
@@ -80,6 +85,7 @@ export default function PublishedWorksSection() {
               src={BOOK_1}
               title="The Hormone Survival Guide For Perimenopause"
               badge="National Bestseller"
+              href="https://www.amazon.com/Hormone-Survival-Guide-Perimenopause-Naturally/dp/0974206709?ref_=ast_author_dp&th=1&psc=1"
               delay={0}
             />
           </div>
@@ -90,6 +96,7 @@ export default function PublishedWorksSection() {
               src={BOOK_2}
               title="Brilliant Burnout"
               badge="New Release"
+              href="https://www.amazon.com/Brilliant-Burnout-Successful-Rewiring-Hormones-ebook/dp/B07NSFLLC5?ref_=ast_author_dp&th=1&psc=1"
               featured
               delay={0.1}
             />
@@ -100,6 +107,7 @@ export default function PublishedWorksSection() {
               src={BOOK_3}
               title="Surviving The Teenage Hormone Takeover"
               badge="National Bestseller"
+              href="https://www.amazon.com/Surviving-Teenage-Hormone-Takeover-Guide/dp/0849913128?ref_=ast_author_dp&th=1&psc=1"
               delay={0.2}
             />
           </div>

@@ -1,25 +1,29 @@
 import { motion } from 'framer-motion'
 import { VIEWPORT } from '../lib/animations'
 
-const QUOTE_OPEN = 'https://www.figma.com/api/mcp/asset/596efbe8-0efc-4b5e-984e-a78edb6ff83c'
-const QUOTE_CLOSE = 'https://www.figma.com/api/mcp/asset/fa3fef5a-ec4b-418a-a9da-06eb95a8c50a'
+const QUOTE_OPEN = 'http://localhost:3845/assets/44e0f22d091fa5884c2ae6a9c637a7633d2a2106.svg'
+const QUOTE_CLOSE = 'http://localhost:3845/assets/4780dcc507f32714f3b62b4a6921465393b9fc0c.svg'
 
 export default function QuoteSection() {
   return (
     <section className="bg-white py-16 md:py-24 px-4 md:px-12 overflow-hidden">
       <div className="max-w-[896px] mx-auto flex flex-col items-center gap-6">
         {/* Quote block */}
-        <div className="relative w-full flex justify-center">
+        <div className="relative w-full flex justify-center px-4 md:px-4">
           {/* Opening quote mark */}
-          <motion.img
-            src={QUOTE_OPEN}
-            alt=""
-            initial={{ opacity: 0, scale: 0.5, rotate: -20 }}
-            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+          <motion.div
+            initial={{ opacity: 0, scaleX: -0.5, scaleY: 0.5 }}
+            whileInView={{ opacity: 1, scaleX: -1, scaleY: 1 }}
             viewport={VIEWPORT}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute -left-1 md:-left-2 -top-2 w-6 md:w-10 h-auto -rotate-180 scale-y-[-1]"
-          />
+            className="absolute left-0 md:left-0 -top-2 w-[24px] h-[15px] md:w-[40px] md:h-[25px]"
+          >
+            <img
+              src={QUOTE_OPEN}
+              alt=""
+              className="w-full h-full"
+            />
+          </motion.div>
 
           {/* Quote text */}
           <motion.h2
@@ -27,22 +31,26 @@ export default function QuoteSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={VIEWPORT}
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-            className="font-junge text-[28px] md:text-[60px] text-primary text-center leading-[36px] md:leading-[60px] px-6 md:px-8"
+            className="font-junge text-[28px] md:text-[60px] text-primary text-center leading-[36px] md:leading-[64px] px-8 md:px-12"
           >
-            Balanced hormones don't just improve lifestyle. Balanced hormones
-            save lives.
+            Balanced hormones don't just improve your lifestyle.
+            They change your life
           </motion.h2>
 
           {/* Closing quote mark */}
-          <motion.img
-            src={QUOTE_CLOSE}
-            alt=""
-            initial={{ opacity: 0, scale: 0.5, rotate: 20 }}
-            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={VIEWPORT}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute -right-1 md:-right-2 bottom-0 w-6 md:w-10 h-auto"
-          />
+            className="absolute right-0 md:right-0 bottom-0 w-[24px] h-[15px] md:w-[40px] md:h-[25px]"
+          >
+            <img
+              src={QUOTE_CLOSE}
+              alt=""
+              className="w-full h-full"
+            />
+          </motion.div>
         </div>
 
         {/* Attribution */}

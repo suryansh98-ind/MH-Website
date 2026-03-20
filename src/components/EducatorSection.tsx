@@ -1,30 +1,30 @@
 import { motion } from 'framer-motion'
 import { fadeInLeft, fadeInRight, staggerContainer, fadeInUp, VIEWPORT } from '../lib/animations'
 
-const EDUCATOR_BG = 'https://www.figma.com/api/mcp/asset/883a8137-80e5-46b3-b170-82105577ba19'
-const ICON_RADIO = 'https://www.figma.com/api/mcp/asset/73a22544-9e9e-4434-a783-bc6562402e90'
-const ICON_TRAINING = 'https://www.figma.com/api/mcp/asset/4a1e02de-99c2-4c13-87e7-787cd8dd29c7'
-const ICON_AUTHOR = 'https://www.figma.com/api/mcp/asset/73d54eea-6c3c-4bb9-91c9-433a8abfbe71'
-const ICON_PLAY = 'https://www.figma.com/api/mcp/asset/de6a13b9-1450-41c8-9160-9f75b56bf537'
+const EDUCATOR_BG = 'http://localhost:3845/assets/753e2faa2d96d24f409861139db0aaea56f0db5d.png'
+const ICON_RADIO = 'http://localhost:3845/assets/8b914f75a5085179fca5319f3a45e14afb1cc5e5.svg'
+const ICON_TRAINING = 'http://localhost:3845/assets/4c28a6102456bec01053efe6d4f226a4226c3017.svg'
+const ICON_AUTHOR = 'http://localhost:3845/assets/e1173f448d0c177db0883576e4a013edef0fd238.svg'
+const ICON_PLAY = 'http://localhost:3845/assets/3d77e51b699c5085a975da260e35a3a7c7b338b6.svg'
 
 const items = [
-  {
-    icon: ICON_RADIO,
-    iconSize: { width: 14, height: 19 },
-    title: 'Host of Radio Show',
-    body: 'She hosted a wellness radio show for 18 years and served as a television expert, helping the public with hormone balance and sustainable aging.',
-  },
-  {
-    icon: ICON_TRAINING,
-    iconSize: { width: 21, height: 17 },
-    title: 'Physician Training Programs',
-    body: 'Created the "Medical Provider Training Program" and certified hundreds of health professionals, raising hormone care standards.',
-  },
   {
     icon: ICON_AUTHOR,
     iconSize: { width: 24, height: 12 },
     title: 'Author & Speaker',
     body: 'Nisha has authored three books on hormone balance and is writing her fourth about sympathetic overdrive and chronic stress.',
+  },
+  {
+    icon: ICON_TRAINING,
+    iconSize: { width: 21, height: 17 },
+    title: 'Wellness Professional Training',
+    body: 'Created the "Healthcare Provider Education Program" and certified hundreds of health professionals, raising hormone care standards.',
+  },
+  {
+    icon: ICON_RADIO,
+    iconSize: { width: 14, height: 19 },
+    title: 'Host of Radio Show',
+    body: 'She hosted a wellness radio show for 18 years and served as a television expert, helping the public with hormone balance and sustainable aging.',
   },
 ]
 
@@ -42,7 +42,7 @@ export default function EducatorSection() {
         >
           <motion.h3
             variants={fadeInLeft}
-            className="font-junge text-[26px] md:text-[30px] text-primary leading-[32px] md:leading-[36px]"
+            className="font-junge text-[26px] md:text-[30px] text-[#1a1a2e] leading-[32px] md:leading-[36px]"
           >
             Educator and National Voice
           </motion.h3>

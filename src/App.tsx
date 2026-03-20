@@ -1,27 +1,30 @@
+import { Routes, Route, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import Navbar from './components/Navbar'
-import HeroSection from './components/HeroSection'
-import PioneerSection from './components/PioneerSection'
-import QuoteSection from './components/QuoteSection'
-import FounderSection from './components/FounderSection'
-import EducatorSection from './components/EducatorSection'
-import PublishedWorksSection from './components/PublishedWorksSection'
-import BeyondClinicSection from './components/BeyondClinicSection'
-import MissionSection from './components/MissionSection'
 import Footer from './components/Footer'
+import HomePage from './pages/HomePage'
+import AboutPage from './pages/AboutPage'
+import HowItWorksPage from './pages/HowItWorksPage'
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+  return null
+}
 
 export default function App() {
   return (
     <div className="min-h-screen bg-white">
+      <ScrollToTop />
       <Navbar />
       <main>
-        <HeroSection />
-        <PioneerSection />
-        <QuoteSection />
-        <FounderSection />
-        <EducatorSection />
-        <PublishedWorksSection />
-        <BeyondClinicSection />
-        <MissionSection />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/how-it-works" element={<HowItWorksPage />} />
+        </Routes>
       </main>
       <Footer />
     </div>

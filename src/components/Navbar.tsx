@@ -1,13 +1,16 @@
 import { useState } from 'react'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
+import { Link, useLocation } from 'react-router-dom'
 
-const LOGO_ICON = 'https://www.figma.com/api/mcp/asset/ba6bd9c0-9d61-4648-9797-28bf67720c57'
+const LOGO_ICON = 'http://localhost:3845/assets/101e180997fad529f22ae6cfbfe4d833d9bfe014.png'
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const { scrollY } = useScroll()
   const shadow = useTransform(scrollY, [0, 40], ['0 0 0 0 rgba(0,0,0,0)', '0 1px 24px 0 rgba(0,0,0,0.08)'])
   const bg = useTransform(scrollY, [0, 40], ['rgba(255,255,255,0.8)', 'rgba(255,255,255,0.96)'])
+  const location = useLocation()
+  const pathname = location.pathname
 
   return (
     <motion.nav
@@ -16,46 +19,50 @@ export default function Navbar() {
     >
       <div className="max-w-[1280px] mx-auto px-4 md:px-8 h-16 md:h-20 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-10">
-          <motion.div
-            className="flex items-center gap-2"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          >
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <Link to="/" className="flex items-center gap-2 no-underline">
             <img src={LOGO_ICON} alt="MyHormonz" className="h-8 md:h-10 w-auto" />
             <span className="font-junge text-[22px] md:text-[28px] text-[#1f2937] leading-none whitespace-nowrap">
               MyHormonz
             </span>
-          </motion.div>
+          </Link>
+        </motion.div>
 
-          {/* Nav links – desktop */}
-          <motion.div
-            className="hidden md:flex items-center gap-10 font-figtree text-[20px]"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-          >
-            <a href="#" className="text-[#1f2937] hover:text-primary transition-colors duration-200">
-              Home
-            </a>
-            <a href="#" className="text-primary font-medium">
-              About Nisha
-            </a>
-          </motion.div>
-        </div>
-
-        {/* CTA – desktop */}
-        <motion.button
+        {/* Nav links + CTA – desktop */}
+        <motion.div
+          className="hidden md:flex items-center gap-10"
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          whileHover={{ scale: 1.04, boxShadow: '0 8px 20px -4px rgba(202,22,112,0.4)' }}
-          whileTap={{ scale: 0.97 }}
-          className="hidden md:block bg-primary text-white font-figtree font-semibold text-[14px] px-6 py-2 rounded-full shadow-card transition-shadow duration-200"
+          transition={{ duration: 0.5, delay: 0.15 }}
         >
-          Get Started
-        </motion.button>
+          <Link
+            to="/how-it-works"
+            className={`font-figtree text-[16px] transition-colors duration-200 no-underline ${
+              pathname === '/how-it-works' ? 'text-primary font-medium' : 'text-[#1f2937] hover:text-primary'
+            }`}
+          >
+            How it works
+          </Link>
+          <Link
+            to="/about"
+            className={`font-figtree text-[16px] transition-colors duration-200 no-underline ${
+              pathname === '/about' ? 'text-primary font-medium' : 'text-[#1f2937] hover:text-primary'
+            }`}
+          >
+            About Nisha
+          </Link>
+          <motion.button
+            whileHover={{ scale: 1.04, boxShadow: '0 8px 20px -4px rgba(202,22,112,0.4)' }}
+            whileTap={{ scale: 0.97 }}
+            className="bg-primary text-white font-figtree font-semibold text-[14px] px-6 py-2.5 rounded-full shadow-card transition-shadow duration-200"
+          >
+            Join Waitlist
+          </motion.button>
+        </motion.div>
 
         {/* Hamburger – mobile */}
         <button
@@ -89,14 +96,26 @@ export default function Navbar() {
             className="md:hidden overflow-hidden bg-white/95 backdrop-blur-md border-t border-[#f3f4f6]"
           >
             <div className="flex flex-col gap-4 px-4 py-6">
-              <a href="#" className="font-figtree text-[18px] text-[#1f2937] hover:text-primary transition-colors">
-                Home
-              </a>
-              <a href="#" className="font-figtree text-[18px] text-primary font-medium">
+              <Link
+                to="/how-it-works"
+                onClick={() => setMenuOpen(false)}
+                className={`font-figtree text-[18px] transition-colors no-underline ${
+                  pathname === '/how-it-works' ? 'text-primary font-medium' : 'text-[#1f2937] hover:text-primary'
+                }`}
+              >
+                How it works
+              </Link>
+              <Link
+                to="/about"
+                onClick={() => setMenuOpen(false)}
+                className={`font-figtree text-[18px] transition-colors no-underline ${
+                  pathname === '/about' ? 'text-primary font-medium' : 'text-[#1f2937] hover:text-primary'
+                }`}
+              >
                 About Nisha
-              </a>
+              </Link>
               <button className="self-start bg-primary text-white font-figtree font-semibold text-[14px] px-6 py-2 rounded-full shadow-card mt-2">
-                Get Started
+                Join Waitlist
               </button>
             </div>
           </motion.div>

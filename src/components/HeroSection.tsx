@@ -1,10 +1,9 @@
 import { motion } from 'framer-motion'
 import { EASE, staggerContainer, fadeInUp } from '../lib/animations'
 
-const DR_NISHA = 'https://www.figma.com/api/mcp/asset/81b38d66-c836-461a-abc0-d52d9873417b'
-const ICON_BADGE = 'https://www.figma.com/api/mcp/asset/870a1f7e-fbf1-4ac0-92d7-1484a5c074a5'
-const ICON_ARROW = 'https://www.figma.com/api/mcp/asset/385fb849-a5ca-4a89-bf6f-e9ed81121718'
-const ICON_BOOK = 'https://www.figma.com/api/mcp/asset/ca8b2fd6-d7a3-4c7c-8d00-17a21b7fa166'
+const DR_NISHA = 'http://localhost:3845/assets/e6a6e288b2c0d097d9b6eb29c326703c832c5b18.png'
+const ICON_BADGE = 'http://localhost:3845/assets/4d1dfd077d8839c92c1e6b24b0bdd5054845b40a.svg'
+const ICON_ARROW = 'http://localhost:3845/assets/dba80be7f17919c19eebc59b2820ddcea0294192.svg'
 
 export default function HeroSection() {
   return (
@@ -51,7 +50,7 @@ export default function HeroSection() {
             >
               <img src={ICON_BADGE} alt="" className="w-3 h-3" />
               <span className="font-figtree font-bold text-primary text-[12px] md:text-[14px] tracking-[0.35px] uppercase">
-                35+ Years of Clinical Excellence
+                35+ Years of Wellness Excellence
               </span>
             </motion.div>
 
@@ -61,7 +60,7 @@ export default function HeroSection() {
               className="font-junge text-[36px] md:text-[61px] text-[#1f2937] leading-[1.2]"
             >
               Meet{' '}
-              <span className="text-primary">Nisha Woods</span>,
+              <span className="text-primary italic">Nisha Woods</span>,
               <br />
               PhD.
             </motion.h1>
@@ -71,10 +70,10 @@ export default function HeroSection() {
               variants={fadeInUp}
               className="font-figtree text-[16px] md:text-[20px] text-[#6b7280] leading-[1.5] max-w-[560px]"
             >
-              Pioneer in functional medicine, hormone optimization specialist,
+              Pioneer in functional medicine, hormone health educator,
               and founder of OnePeak Medical. Dr. Nisha Woods is dedicated to
-              transforming healthcare by treating the root cause, not just the
-              symptoms.
+              transforming healthcare by addressing underlying lifestyle factors,
+              not just the symptoms.
             </motion.p>
 
             {/* CTAs */}
@@ -91,9 +90,9 @@ export default function HeroSection() {
               <motion.button
                 whileHover={{ scale: 1.04, borderColor: '#ca1670', color: '#ca1670' }}
                 whileTap={{ scale: 0.97 }}
+                onClick={() => document.getElementById('publications')?.scrollIntoView({ behavior: 'smooth' })}
                 className="flex items-center justify-center gap-2 bg-white border border-[#e5e7eb] text-[#1f2937] font-figtree font-semibold text-[14px] md:text-[16px] px-6 md:px-8 py-3 md:py-[15px] rounded-full transition-all duration-200"
               >
-                <img src={ICON_BOOK} alt="" className="w-4 h-3" />
                 View Publications
               </motion.button>
             </motion.div>

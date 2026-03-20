@@ -9,4 +9,6 @@ export default defineConfig({
   preview: {
     host: '127.0.0.1',
   },
+  // SPA fallback for client-side routing
+  appType: 'spa',
 })
