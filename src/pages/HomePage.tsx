@@ -1,10 +1,9 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, scaleIn, VIEWPORT, EASE } from '../lib/animations'
+import WaitlistForm from '../components/WaitlistForm'
 
 // ── Asset URLs ──────────────────────────────────────────────────────────────
-const USER_1 = '/assets/user-1.png'
-const USER_2 = '/assets/user-2.png'
-const USER_3 = '/assets/user-3.png'
 const ICON_TRACK = '/assets/icon-track.svg'
 const ICON_LAB = '/assets/icon-lab.svg'
 const ICON_AI = '/assets/icon-ai.svg'
@@ -58,20 +57,22 @@ interface ProcessStepProps {
   number: number
   title: string
   description: string
-  filled?: boolean
+  active?: boolean
+  onHover: () => void
+  onLeave: () => void
 }
 
-function ProcessStep({ number, title, description, filled = false }: ProcessStepProps) {
+function ProcessStep({ number, title, description, active = false, onHover, onLeave }: ProcessStepProps) {
   return (
-    <div className="flex gap-8 items-start">
+    <div className="flex gap-8 items-start cursor-pointer" onMouseEnter={onHover} onMouseLeave={onLeave}>
       <div
-        className={`relative z-10 w-[37px] h-12 rounded-full flex items-center justify-center shrink-0 ${
-          filled
-            ? 'bg-[#e91e63] shadow-[0px_10px_15px_-3px_rgba(233,30,99,0.2),0px_4px_6px_-4px_rgba(233,30,99,0.2)]'
+        className={`relative z-10 w-[37px] h-12 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
+          active
+            ? 'bg-[#e91e83] shadow-[0px_10px_15px_-3px_rgba(233,30,99,0.2),0px_4px_6px_-4px_rgba(233,30,99,0.2)]'
             : 'bg-white border-2 border-[rgba(233,30,99,0.2)]'
         }`}
       >
-        <span className={`font-figtree font-bold text-[16px] ${filled ? 'text-white' : 'text-[#e91e63]'}`}>
+        <span className={`font-figtree font-bold text-[16px] transition-colors duration-300 ${active ? 'text-white' : 'text-[#e91e83]'}`}>
           {number}
         </span>
       </div>
@@ -79,6 +80,33 @@ function ProcessStep({ number, title, description, filled = false }: ProcessStep
         <h3 className="font-junge font-semibold text-[24px] text-[#1a1a2e] leading-[32px]">{title}</h3>
         <p className="font-figtree text-[16px] text-[#4b5563] leading-[1.5] tracking-[0.5px]">{description}</p>
       </div>
+    </div>
+  )
+}
+
+const processStepsData = [
+  { number: 1, title: 'Notice', description: 'Track symptoms, lifestyle factors, and gather your lab data. Start seeing the patterns.' },
+  { number: 2, title: 'Learn', description: 'Understand how your hormones influence your energy, mood, weight, and sleep.' },
+  { number: 3, title: 'Adapt', description: 'Receive insights tailored to your unique hormonal profile to make informed changes.' },
+  { number: 4, title: 'Act', description: 'Take informed steps backed by science to work directly with your own health care provider.' },
+]
+
+function ProcessSteps() {
+  const [hoveredStep, setHoveredStep] = useState<number | null>(null)
+  return (
+    <div className="relative flex flex-col gap-10">
+      {/* Vertical line */}
+      <div className="absolute left-[18px] top-2 bottom-2 w-[2px] bg-[#f3f4f6]" />
+      {processStepsData.map((step) => (
+        <motion.div key={step.number} variants={fadeInUp}>
+          <ProcessStep
+            {...step}
+            active={hoveredStep === null ? step.number === 1 : hoveredStep === step.number}
+            onHover={() => setHoveredStep(step.number)}
+            onLeave={() => setHoveredStep(null)}
+          />
+        </motion.div>
+      ))}
     </div>
   )
 }
@@ -133,34 +161,9 @@ export default function HomePage() {
             {/* Waitlist Card */}
             <motion.div
               variants={fadeInUp}
-              className="bg-white border border-[#f3f4f6] rounded-3xl p-8 flex flex-col gap-2 w-[575px] max-w-full shadow-[0px_25px_50px_-12px_rgba(229,231,235,0.5)]"
+              className="bg-white border border-[#f3f4f6] rounded-3xl p-8 w-[575px] max-w-full shadow-[0px_25px_50px_-12px_rgba(229,231,235,0.5)]"
             >
-              <h3 className="font-figtree font-semibold text-[20px] text-[#1a1a2e]">Join the Waitlist</h3>
-              <p className="font-figtree text-[16px] text-[#6b7280] tracking-[0.5px]">
-                First 1000 people get <span className="font-semibold text-[#e91e63]">1st month free!!</span>
-              </p>
-              <div className="flex gap-3 pt-4">
-                <input
-                  type="email"
-                  placeholder="Enter email address"
-                  className="flex-1 bg-[#f9fafb] border border-[#e5e7eb] rounded-full h-[54px] px-5 font-figtree text-[16px] text-[#6b7280] outline-none focus:border-primary"
-                />
-                <motion.button
-                  whileHover={{ scale: 1.04, boxShadow: '0 8px 20px -4px rgba(233,30,99,0.4)' }}
-                  whileTap={{ scale: 0.97 }}
-                  className="bg-[#ca1670] text-white font-figtree font-semibold text-[16px] h-[54px] px-6 rounded-full shadow-[0px_10px_15px_-3px_rgba(233,30,99,0.3),0px_4px_6px_-4px_rgba(233,30,99,0.3)] whitespace-nowrap"
-                >
-                  Get Early Access
-                </motion.button>
-              </div>
-              <div className="flex items-center gap-4 pt-4">
-                <div className="flex -space-x-2">
-                  <img src={USER_1} alt="" className="w-8 h-8 rounded-full border-2 border-white" />
-                  <img src={USER_2} alt="" className="w-8 h-8 rounded-full border-2 border-white" />
-                  <img src={USER_3} alt="" className="w-8 h-8 rounded-full border-2 border-white" />
-                </div>
-                <span className="font-figtree font-medium text-[14px] text-[#4b5563]">Join 2,000+ others</span>
-              </div>
+              <WaitlistForm variant="light" source="homepage-hero" />
             </motion.div>
           </motion.div>
 
@@ -249,7 +252,7 @@ export default function HomePage() {
             {/* Phone mockups */}
             <div className="flex flex-col md:flex-row items-end justify-center gap-8 md:gap-12">
               {/* Phone 1 — Track Mood */}
-              <motion.div variants={fadeInLeft} className="flex flex-col items-center gap-0">
+              <motion.div variants={fadeInLeft} whileHover={{ y: -8, transition: { duration: 0.3, ease: EASE } }} className="flex flex-col items-center gap-0 cursor-pointer">
                 <div className="relative w-[280px]">
                   <span className="absolute -top-2 -right-2 bg-[#e91e63] text-white font-figtree font-semibold text-[10px] px-3 py-1 rounded-md z-10">Preview</span>
                   <img src="/assets/phone-track-mood.png" alt="Track Mood screen" className="w-full h-auto" />
@@ -258,7 +261,7 @@ export default function HomePage() {
               </motion.div>
 
               {/* Phone 2 — Upload Lab Reports (taller, center) */}
-              <motion.div variants={fadeInUp} className="flex flex-col items-center gap-0 md:-mb-8">
+              <motion.div variants={fadeInUp} whileHover={{ y: -8, transition: { duration: 0.3, ease: EASE } }} className="flex flex-col items-center gap-0 md:-mb-8 cursor-pointer">
                 <div className="relative w-[320px]">
                   <span className="absolute -top-2 -right-2 bg-[#e91e63] text-white font-figtree font-semibold text-[10px] px-3 py-1 rounded-md z-10">Preview</span>
                   <img src="/assets/phone-upload-lab.png" alt="Upload Lab Reports screen" className="w-full h-auto" />
@@ -267,7 +270,7 @@ export default function HomePage() {
               </motion.div>
 
               {/* Phone 3 — Get Insights */}
-              <motion.div variants={fadeInRight} className="flex flex-col items-center gap-0">
+              <motion.div variants={fadeInRight} whileHover={{ y: -8, transition: { duration: 0.3, ease: EASE } }} className="flex flex-col items-center gap-0 cursor-pointer">
                 <div className="relative w-[280px]">
                   <span className="absolute -top-2 -right-2 bg-[#e91e63] text-white font-figtree font-semibold text-[10px] px-3 py-1 rounded-md z-10">Preview</span>
                   <img src="/assets/phone-get-insights.png" alt="Get Insights screen" className="w-full h-auto" />
@@ -366,13 +369,14 @@ export default function HomePage() {
             >
               <img src={IMG_VIDEO} alt="Dr. Nisha Woods video" className="w-full aspect-[831/563] object-cover" />
               {/* Play button */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className="absolute inset-0 m-auto w-12 h-12 bg-white/10 border border-[#f8b9d9] rounded-xl flex items-center justify-center backdrop-blur-sm"
+                className="absolute inset-0 m-auto w-14 h-14 md:w-16 md:h-16 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 flex items-center justify-center shadow-lg"
               >
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M4 2L14 8L4 14V2Z" fill="white" />
+                <svg width="18" height="18" viewBox="0 0 16 16" fill="none" className="ml-0.5">
+                  <path d="M4 2L14 8L4 14V2Z" fill="#e91e83" />
                 </svg>
               </motion.button>
             </motion.div>
@@ -403,22 +407,7 @@ export default function HomePage() {
                   Your Path to{'\n'}Hormonal Harmony
                 </motion.h2>
               </div>
-              <div className="relative flex flex-col gap-10">
-                {/* Vertical line */}
-                <div className="absolute left-[18px] top-2 bottom-2 w-[2px] bg-[#f3f4f6]" />
-                <motion.div variants={fadeInUp}>
-                  <ProcessStep number={1} title="Notice" description="Track symptoms, lifestyle factors, and gather your lab data. Start seeing the patterns." filled />
-                </motion.div>
-                <motion.div variants={fadeInUp}>
-                  <ProcessStep number={2} title="Learn" description="Understand how your hormones influence your energy, mood, weight, and sleep." />
-                </motion.div>
-                <motion.div variants={fadeInUp}>
-                  <ProcessStep number={3} title="Adapt" description="Receive insights tailored to your unique hormonal profile to make informed changes." />
-                </motion.div>
-                <motion.div variants={fadeInUp}>
-                  <ProcessStep number={4} title="Act" description="Take informed steps backed by science to work directly with your own health care provider." />
-                </motion.div>
-              </div>
+              <ProcessSteps />
             </motion.div>
 
             {/* Right — Images */}
@@ -463,19 +452,8 @@ export default function HomePage() {
               <p className="font-figtree text-[18px] text-white/70 leading-[1.5] tracking-[0.5px] max-w-[512px]">
                 Join the MyHormonz waitlist now. First 1000 people get first month free!! access when we go live late 2026.
               </p>
-              <div className="flex gap-4 max-w-[480px]">
-                <input
-                  type="email"
-                  placeholder="Enter email address"
-                  className="flex-1 bg-white/10 border border-white/20 rounded-full h-[58px] px-6 font-figtree text-[16px] text-white/40 placeholder:text-white/40 outline-none focus:border-white/40"
-                />
-                <motion.button
-                  whileHover={{ scale: 1.04 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="bg-[#e91e63] text-white font-figtree font-semibold text-[16px] h-[58px] px-8 rounded-full shadow-[0px_20px_25px_-5px_rgba(233,30,99,0.4),0px_8px_10px_-6px_rgba(233,30,99,0.4)]"
-                >
-                  Join Waitlist
-                </motion.button>
+              <div className="max-w-[480px]">
+                <WaitlistForm variant="dark" compact source="homepage-cta" />
               </div>
             </div>
 

@@ -99,9 +99,11 @@ export default function EducatorSection() {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 md:w-16 h-12 md:h-16 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 flex items-center justify-center shadow-lg"
+              className="absolute inset-0 m-auto w-14 h-14 md:w-16 md:h-16 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 flex items-center justify-center shadow-lg"
             >
-              <img src={ICON_PLAY} alt="Play" className="w-4 md:w-5 h-4 md:h-5 ml-0.5" />
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="none" className="ml-0.5">
+                <path d="M4 2L14 8L4 14V2Z" fill="#e91e83" />
+              </svg>
             </motion.button>
           </motion.div>
 

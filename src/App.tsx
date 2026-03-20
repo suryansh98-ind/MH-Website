@@ -2,6 +2,8 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import WaitlistModal from './components/WaitlistModal'
+import { WaitlistProvider } from './contexts/WaitlistContext'
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import HowItWorksPage from './pages/HowItWorksPage'
@@ -16,17 +18,20 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white">
-      <ScrollToTop />
-      <Navbar />
-      <main>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/how-it-works" element={<HowItWorksPage />} />
-        </Routes>
-      </main>
-      <Footer />
-    </div>
+    <WaitlistProvider>
+      <div className="min-h-screen bg-white">
+        <ScrollToTop />
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/how-it-works" element={<HowItWorksPage />} />
+          </Routes>
+        </main>
+        <Footer />
+        <WaitlistModal />
+      </div>
+    </WaitlistProvider>
   )
 }

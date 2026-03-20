@@ -59,3 +59,25 @@ export const staggerFast = {
 }
 
 export const VIEWPORT = { once: true, amount: 0.18 } as const
+
+export const backdropFade = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.2 } },
+  exit: { opacity: 0, transition: { duration: 0.15 } },
+}
+
+export const modalScale = {
+  hidden: { opacity: 0, scale: 0.92, y: 24 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: { duration: 0.35, ease: EASE },
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.95,
+    y: 16,
+    transition: { duration: 0.2, ease: EASE },
+  },
+}

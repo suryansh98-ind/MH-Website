@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { Link, useLocation } from 'react-router-dom'
+import { useWaitlist } from '../contexts/WaitlistContext'
 
 const LOGO_ICON = '/assets/logo-icon.png'
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const { openWaitlist } = useWaitlist()
   const { scrollY } = useScroll()
   const shadow = useTransform(scrollY, [0, 40], ['0 0 0 0 rgba(0,0,0,0)', '0 1px 24px 0 rgba(0,0,0,0.08)'])
   const bg = useTransform(scrollY, [0, 40], ['rgba(255,255,255,0.8)', 'rgba(255,255,255,0.96)'])
@@ -58,6 +60,7 @@ export default function Navbar() {
           <motion.button
             whileHover={{ scale: 1.04, boxShadow: '0 8px 20px -4px rgba(202,22,112,0.4)' }}
             whileTap={{ scale: 0.97 }}
+            onClick={openWaitlist}
             className="bg-primary text-white font-figtree font-semibold text-[14px] px-6 py-2.5 rounded-full shadow-card transition-shadow duration-200"
           >
             Join Waitlist
@@ -114,7 +117,10 @@ export default function Navbar() {
               >
                 About Nisha
               </Link>
-              <button className="self-start bg-primary text-white font-figtree font-semibold text-[14px] px-6 py-2 rounded-full shadow-card mt-2">
+              <button
+                onClick={() => { setMenuOpen(false); openWaitlist() }}
+                className="self-start bg-primary text-white font-figtree font-semibold text-[14px] px-6 py-2 rounded-full shadow-card mt-2"
+              >
                 Join Waitlist
               </button>
             </div>

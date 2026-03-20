@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion'
 import { staggerContainer, fadeInUp, VIEWPORT } from '../lib/animations'
+import { useWaitlist } from '../contexts/WaitlistContext'
 
 export default function MissionSection() {
+  const { openWaitlist } = useWaitlist()
   return (
     <section className="relative bg-primary overflow-hidden py-16 md:py-24 px-6 md:px-48">
       {/* Decorative blobs */}
@@ -43,6 +45,7 @@ export default function MissionSection() {
                 boxShadow: '0 24px 48px -8px rgba(0,0,0,0.25)',
               }}
               whileTap={{ scale: 0.97 }}
+              onClick={openWaitlist}
               className="bg-white text-primary font-figtree font-bold text-[16px] md:text-[18px] px-8 md:px-10 py-4 md:py-[18px] rounded-full shadow-[0px_20px_25px_-5px_rgba(0,0,0,0.1),0px_8px_10px_-6px_rgba(0,0,0,0.1)] transition-all duration-200"
             >
               Join the Movement

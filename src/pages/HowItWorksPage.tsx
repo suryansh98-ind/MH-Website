@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { fadeInUp, staggerContainer, scaleIn, VIEWPORT, EASE } from '../lib/animations'
+import { useWaitlist } from '../contexts/WaitlistContext'
 
 // ── Asset URLs ──────────────────────────────────────────────────────────────
 const ICON_HORMONE = '/assets/icon-hormone.svg'
@@ -95,31 +97,33 @@ interface StepProps {
   number: number
   title: string
   description: string
-  filled?: boolean
+  active?: boolean
+  onHover: () => void
+  onLeave: () => void
 }
 
-function Step({ number, title, description, filled = false }: StepProps) {
+function Step({ number, title, description, active = false, onHover, onLeave }: StepProps) {
   return (
-    <motion.div variants={fadeInUp} className="flex flex-col items-center w-[176px]">
+    <motion.div variants={fadeInUp} className="flex flex-col items-center w-[176px] cursor-pointer" onMouseEnter={onHover} onMouseLeave={onLeave}>
       {/* Number circle */}
       <div
-        className={`relative z-10 w-12 h-12 rounded-full flex items-center justify-center mb-6 ${
-          filled
+        className={`relative z-10 w-12 h-12 rounded-full flex items-center justify-center mb-6 transition-all duration-300 ${
+          active
             ? 'bg-[#e91e83] shadow-[0px_10px_15px_-3px_rgba(233,30,99,0.2),0px_4px_6px_-4px_rgba(233,30,99,0.2)]'
             : 'bg-white border-2 border-[rgba(233,30,99,0.2)]'
         }`}
       >
         <span
-          className={`font-figtree font-bold text-[16px] ${
-            filled ? 'text-white' : 'text-[#e91e83]'
+          className={`font-figtree font-bold text-[16px] transition-colors duration-300 ${
+            active ? 'text-white' : 'text-[#e91e83]'
           }`}
         >
           {number}
         </span>
       </div>
       {/* Title & description */}
-      <h3 className={`font-junge font-bold text-[18px] text-center leading-[28px] mb-3 ${
-        filled ? 'text-[#e91e83]' : 'text-[#1a1a2e]'
+      <h3 className={`font-junge font-bold text-[18px] text-center leading-[28px] mb-3 transition-colors duration-300 ${
+        active ? 'text-[#e91e83]' : 'text-[#1a1a2e]'
       }`}>
         {title}
       </h3>
@@ -127,6 +131,31 @@ function Step({ number, title, description, filled = false }: StepProps) {
         {description}
       </p>
     </motion.div>
+  )
+}
+
+const journeyStepsData = [
+  { number: 1, title: 'Notice', description: 'Log how you feel easily and spot the initial signs.' },
+  { number: 2, title: 'Learn', description: 'Upload labs for personalized education.' },
+  { number: 3, title: 'Adapt', description: 'Get insights based on your data.' },
+  { number: 4, title: 'Act', description: 'Follow guidance and watch your score rise.' },
+  { number: 5, title: 'Optimize', description: 'Sustain energy, clarity, and well-being.' },
+]
+
+function JourneySteps() {
+  const [hoveredStep, setHoveredStep] = useState<number | null>(null)
+  return (
+    <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-10 md:gap-6">
+      {journeyStepsData.map((step) => (
+        <Step
+          key={step.number}
+          {...step}
+          active={hoveredStep === null ? step.number === 1 : hoveredStep === step.number}
+          onHover={() => setHoveredStep(step.number)}
+          onLeave={() => setHoveredStep(null)}
+        />
+      ))}
+    </div>
   )
 }
 
@@ -139,6 +168,7 @@ const CONCERNS = [
 // ── Main page component ────────────────────────────────────────────────────
 
 export default function HowItWorksPage() {
+  const { openWaitlist } = useWaitlist()
   return (
     <>
       {/* ─── Section 1: Hero Header ─────────────────────────────────────── */}
@@ -175,6 +205,7 @@ export default function HowItWorksPage() {
               <motion.button
                 whileHover={{ scale: 1.04, boxShadow: '0 8px 20px -4px rgba(233,30,99,0.4)' }}
                 whileTap={{ scale: 0.97 }}
+                onClick={openWaitlist}
                 className="bg-[#ca1670] text-white font-figtree font-semibold text-[16px] h-[54px] px-8 rounded-full shadow-[0px_10px_15px_-3px_rgba(233,30,99,0.3),0px_4px_6px_-4px_rgba(233,30,99,0.3)]"
               >
                 Explore the App
@@ -385,13 +416,7 @@ export default function HowItWorksPage() {
             {/* Connecting line */}
             <div className="hidden md:block absolute top-6 left-0 right-0 h-[2px] bg-[#f3f4f6]" />
 
-            <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-10 md:gap-6">
-              <Step number={1} title="Notice" description="Log how you feel easily and spot the initial signs." filled />
-              <Step number={2} title="Learn" description="Upload labs for personalized education." />
-              <Step number={3} title="Adapt" description="Get insights based on your data." />
-              <Step number={4} title="Act" description="Follow guidance and watch your score rise." />
-              <Step number={5} title="Optimize" description="Sustain energy, clarity, and well-being." />
-            </div>
+            <JourneySteps />
           </motion.div>
         </div>
       </section>
