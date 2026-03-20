@@ -2,16 +2,16 @@ import { motion } from 'framer-motion'
 import { fadeInUp, staggerContainer, scaleIn, VIEWPORT, EASE } from '../lib/animations'
 
 // ── Asset URLs ──────────────────────────────────────────────────────────────
-const ICON_HORMONE = 'http://localhost:3845/assets/e444a4a4f815d6ed4746d0f7dff86333900dd0b9.svg'
-const ICON_CHECK   = 'http://localhost:3845/assets/717c713de61003761bcb68ea6eba0c8a7c767f44.svg'
-const ICON_METAB   = 'http://localhost:3845/assets/7ce6b808d83ba814bcbf3ee5591e2b048c41d6c9.svg'
-const ICON_SLEEP   = 'http://localhost:3845/assets/9c2d7b4a329f3ebe52e9f8a116c2f2223bda18cc.svg'
-const ICON_BRAIN   = 'http://localhost:3845/assets/a9dd1ee1abf682ad58057fc7381477c5f53a1933.svg'
-const ICON_CLARITY = 'http://localhost:3845/assets/0e72b5fdf389fd600588ae8cfc80fa679ec124f2.svg'
-const ICON_BODY    = 'http://localhost:3845/assets/ad400aba19b6c7d223acaf1e571ce3c79d6da263.svg'
-const ICON_ACTION  = 'http://localhost:3845/assets/752624608223b32d555262384352a16b68619550.svg'
-const DR_NISHA_HIW = 'http://localhost:3845/assets/35f5912542e54ab19d78636aba8ef47ea6a9a257.png'
-const ICON_RESEARCH = 'http://localhost:3845/assets/df711f1c0bcc6f359396e5da54dfde29bd10158c.svg'
+const ICON_HORMONE = '/assets/icon-hormone.svg'
+const ICON_CHECK   = '/assets/icon-check.svg'
+const ICON_METAB   = '/assets/icon-metabolism.svg'
+const ICON_SLEEP   = '/assets/icon-sleep.svg'
+const ICON_BRAIN   = '/assets/icon-ai.svg'
+const ICON_CLARITY = '/assets/icon-clarity.svg'
+const ICON_BODY    = '/assets/icon-body.svg'
+const ICON_ACTION  = '/assets/icon-action.svg'
+const DR_NISHA_HIW = '/assets/dr-nisha-hiw.png'
+const ICON_RESEARCH = '/assets/icon-research.svg'
 
 // ── Reusable sub-components ─────────────────────────────────────────────────
 

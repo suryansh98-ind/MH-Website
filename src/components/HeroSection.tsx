@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion'
 import { EASE, staggerContainer, fadeInUp } from '../lib/animations'
 
-const DR_NISHA = 'http://localhost:3845/assets/e6a6e288b2c0d097d9b6eb29c326703c832c5b18.png'
-const ICON_BADGE = 'http://localhost:3845/assets/4d1dfd077d8839c92c1e6b24b0bdd5054845b40a.svg'
-const ICON_ARROW = 'http://localhost:3845/assets/dba80be7f17919c19eebc59b2820ddcea0294192.svg'
+const DR_NISHA = '/assets/dr-nisha-hero.png'
+const ICON_BADGE = '/assets/icon-badge.svg'
+const ICON_ARROW = '/assets/icon-arrow.svg'
 
 export default function HeroSection() {
   return (

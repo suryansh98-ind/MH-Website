@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion'
 import { fadeInUp, staggerContainer, VIEWPORT } from '../lib/animations'
 
-const LOGO_ICON = 'http://localhost:3845/assets/101e180997fad529f22ae6cfbfe4d833d9bfe014.png'
-const INSTAGRAM_ICON = 'http://localhost:3845/assets/a32b61aaa8b8d665a9f9aebca022f4aa34be786d.svg'
-const LINKEDIN_ICON = 'http://localhost:3845/assets/76089209e96b4b9f0d379b4558e257d1786d1357.svg'
+const LOGO_ICON = '/assets/logo-icon.png'
+const INSTAGRAM_ICON = '/assets/icon-instagram.svg'
+const LINKEDIN_ICON = '/assets/icon-linkedin.svg'
 
 function InstagramIcon() {
   return (

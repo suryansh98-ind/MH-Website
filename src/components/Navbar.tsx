@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { Link, useLocation } from 'react-router-dom'
 
-const LOGO_ICON = 'http://localhost:3845/assets/101e180997fad529f22ae6cfbfe4d833d9bfe014.png'
+const LOGO_ICON = '/assets/logo-icon.png'
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)

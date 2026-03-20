@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion'
 import { fadeInLeft, fadeInRight, staggerContainer, fadeInUp, VIEWPORT } from '../lib/animations'
 
-const YOGA_IMG = 'http://localhost:3845/assets/601c180701fa321bb15bc8cbd64fa235549121db.png'
-const HIKING_IMG = 'http://localhost:3845/assets/47ac53c8e7c72d1c2f6dfe9e621e6a5491d2aaac.png'
-const ICON_NATURE = 'http://localhost:3845/assets/45eccfb0bd0244662af09ca0f1887dc9a4b744b1.svg'
-const ICON_HEART = 'http://localhost:3845/assets/fc587928df05f7fa3613dcb149c9da3fd925a3f2.svg'
-const ICON_LOOM = 'http://localhost:3845/assets/477f7c1ddc8bdac35fb322557a6262679af8e178.svg'
+const YOGA_IMG = '/assets/yoga.png'
+const HIKING_IMG = '/assets/hiking.png'
+const ICON_NATURE = '/assets/icon-nature.svg'
+const ICON_HEART = '/assets/icon-heart.svg'
+const ICON_LOOM = '/assets/icon-loom.svg'
 
 export default function BeyondClinicSection() {
   return (

@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion'
 import { fadeInLeft, fadeInRight, staggerContainer, fadeInUp, VIEWPORT } from '../lib/animations'
 
-const EDUCATOR_BG = 'http://localhost:3845/assets/753e2faa2d96d24f409861139db0aaea56f0db5d.png'
-const ICON_RADIO = 'http://localhost:3845/assets/8b914f75a5085179fca5319f3a45e14afb1cc5e5.svg'
-const ICON_TRAINING = 'http://localhost:3845/assets/4c28a6102456bec01053efe6d4f226a4226c3017.svg'
-const ICON_AUTHOR = 'http://localhost:3845/assets/e1173f448d0c177db0883576e4a013edef0fd238.svg'
-const ICON_PLAY = 'http://localhost:3845/assets/3d77e51b699c5085a975da260e35a3a7c7b338b6.svg'
+const EDUCATOR_BG = '/assets/video-bg.png'
+const ICON_RADIO = '/assets/icon-radio.svg'
+const ICON_TRAINING = '/assets/icon-training.svg'
+const ICON_AUTHOR = '/assets/icon-author.svg'
+const ICON_PLAY = '/assets/icon-play.svg'
 
 const items = [
   {

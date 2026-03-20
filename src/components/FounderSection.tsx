@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { fadeInUp, VIEWPORT } from '../lib/animations'
 
-const ONEPEAK_LOGO = 'http://localhost:3845/assets/21c80c6a78ee7c21a716048f95eb6faf9cc5f505.png'
+const ONEPEAK_LOGO = '/assets/onepeak-logo.png'
 
 export default function FounderSection() {
   return (

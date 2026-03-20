@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion'
 import { VIEWPORT } from '../lib/animations'
 
-const QUOTE_OPEN = 'http://localhost:3845/assets/44e0f22d091fa5884c2ae6a9c637a7633d2a2106.svg'
-const QUOTE_CLOSE = 'http://localhost:3845/assets/4780dcc507f32714f3b62b4a6921465393b9fc0c.svg'
+const QUOTE_OPEN = '/assets/quote-open.svg'
+const QUOTE_CLOSE = '/assets/quote-close.svg'
 
 export default function QuoteSection() {
   return (

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, VIEWPORT } from '../lib/animations'
 
-const LAB_RESEARCH = 'http://localhost:3845/assets/0231abb1655d0cb95b3d9e5db13cf8d4bc8b35c5.png'
+const LAB_RESEARCH = '/assets/lab-research.png'
 
 export default function PioneerSection() {
   return (

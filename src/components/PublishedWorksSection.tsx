@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion'
 import { staggerContainer, fadeInUp, VIEWPORT } from '../lib/animations'
 
-const BOOK_1 = 'http://localhost:3845/assets/6965378d0c5ec720b7ac7d574629c2e53564c962.png'
-const BOOK_2 = 'http://localhost:3845/assets/35eb8f2ae87e789bca07d2b2e88adc80038450c5.png'
-const BOOK_3 = 'http://localhost:3845/assets/8c1f66f99dd218f0d633f2363b26cb9409eecb2e.png'
+const BOOK_1 = '/assets/book-1.png'
+const BOOK_2 = '/assets/book-2.png'
+const BOOK_3 = '/assets/book-3.png'
 
 interface BookProps {
   src: string
