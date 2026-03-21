@@ -30,7 +30,7 @@ const items = [
 
 export default function EducatorSection() {
   return (
-    <section className="bg-white py-12 md:py-20 px-4 md:px-20">
+    <section className="bg-white py-12 md:py-20 px-4 sm:px-6 md:px-8 lg:px-20">
       <div className="max-w-[1280px] mx-auto flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
         {/* Left: list */}
         <motion.div

@@ -36,7 +36,7 @@ function FeatureCard({ icon, title, description, items }: FeatureCardProps) {
   return (
     <motion.div
       variants={fadeInUp}
-      className="bg-[#f9fafb] rounded-[32px] p-8 md:p-10 flex gap-6"
+      className="bg-[#f9fafb] rounded-[32px] p-6 sm:p-8 md:p-10 flex flex-col sm:flex-row gap-5 sm:gap-6"
     >
       <div className="bg-white rounded-2xl shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] w-16 h-16 flex items-center justify-center shrink-0">
         <img src={icon} alt="" className="w-[22px] h-[22px]" />
@@ -104,7 +104,7 @@ interface StepProps {
 
 function Step({ number, title, description, active = false, onHover, onLeave }: StepProps) {
   return (
-    <motion.div variants={fadeInUp} className="flex flex-col items-center w-[176px] cursor-pointer" onMouseEnter={onHover} onMouseLeave={onLeave}>
+    <motion.div variants={fadeInUp} className="flex flex-col items-center w-full md:w-[176px] cursor-pointer" onMouseEnter={onHover} onMouseLeave={onLeave}>
       {/* Number circle */}
       <div
         className={`relative z-10 w-12 h-12 rounded-full flex items-center justify-center mb-6 transition-all duration-300 ${
@@ -173,7 +173,7 @@ export default function HowItWorksPage() {
     <>
       {/* ─── Section 1: Hero Header ─────────────────────────────────────── */}
       <section
-        className="min-h-[60vh] md:min-h-[70vh] flex items-center justify-center px-4 md:px-8 py-20"
+        className="min-h-[60vh] md:min-h-[70vh] flex items-center justify-center px-4 md:px-8 pt-28 md:pt-32 pb-20"
         style={{
           background: 'radial-gradient(ellipse 900px 800px at 70% 30%, rgba(233,30,99,0.08) 0%, rgba(233,30,99,0) 70%), linear-gradient(to bottom, #ffffff 0%, #fffdf9 100%)',
         }}
@@ -186,7 +186,7 @@ export default function HowItWorksPage() {
         >
           <motion.h1
             variants={fadeInUp}
-            className="font-junge font-semibold text-[40px] md:text-[72px] text-[#1a1a2e] text-center leading-[1] md:leading-[72px] md:whitespace-nowrap"
+            className="font-junge font-semibold text-[32px] sm:text-[40px] md:text-[72px] text-[#1a1a2e] text-center leading-[1.1] md:leading-[72px] md:whitespace-nowrap"
           >
             How MyHormonz{' '}
             <em className="font-medium italic text-[#e91e63]">Works</em>
@@ -479,7 +479,7 @@ export default function HowItWorksPage() {
               />
             </div>
             {/* Research Backed badge */}
-            <div className="absolute -bottom-4 -right-4 md:-right-6 bg-white border border-[#f3f4f6] rounded-2xl px-4 py-3 shadow-hero flex items-center gap-3">
+            <div className="absolute -bottom-4 right-0 sm:-right-4 md:-right-6 bg-white border border-[#f3f4f6] rounded-2xl px-4 py-3 shadow-hero flex items-center gap-3">
               <img src={ICON_RESEARCH} alt="" className="w-[22px] h-[21px]" />
               <span className="font-junge font-extrabold text-[18px] text-[#1a1a2e] whitespace-nowrap">
                 Research Backed

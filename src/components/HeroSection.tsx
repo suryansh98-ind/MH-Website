@@ -26,7 +26,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, x: -56 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.85, ease: EASE }}
-              className="relative rounded-3xl overflow-hidden shadow-hero w-full lg:w-[469px] aspect-[469/630]"
+              className="relative rounded-3xl overflow-hidden shadow-hero w-full max-w-[380px] md:max-w-[420px] lg:w-[469px] lg:max-w-none aspect-[469/630] mx-auto lg:mx-0"
             >
               <img
                 src={DR_NISHA}
@@ -57,7 +57,7 @@ export default function HeroSection() {
             {/* Heading */}
             <motion.h1
               variants={fadeInUp}
-              className="font-junge text-[36px] md:text-[61px] text-[#1f2937] leading-[1.2]"
+              className="font-junge text-[32px] sm:text-[36px] md:text-[48px] lg:text-[61px] text-[#1f2937] leading-[1.2]"
             >
               Meet{' '}
               <span className="text-primary italic">Nisha Woods</span>,

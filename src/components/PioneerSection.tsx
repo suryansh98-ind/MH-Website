@@ -14,7 +14,7 @@ export default function PioneerSection() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            className="flex flex-col gap-6 w-full md:w-[373px] flex-shrink-0"
+            className="flex flex-col gap-6 w-full md:w-[300px] lg:w-[373px] flex-shrink-0"
           >
             <motion.div variants={fadeInLeft} className="flex flex-col gap-0">
               <h2 className="font-junge text-[28px] md:text-[36px] text-[#1f2937] leading-[32px] md:leading-[40px]">

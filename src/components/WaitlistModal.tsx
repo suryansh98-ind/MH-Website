@@ -55,7 +55,7 @@ export default function WaitlistModal() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="waitlist-modal-title"
-            className="relative bg-white border border-[#f3f4f6] rounded-3xl p-8 w-[575px] max-w-full shadow-[0px_25px_50px_-12px_rgba(229,231,235,0.5)] z-10"
+            className="relative bg-white border border-[#f3f4f6] rounded-3xl p-5 sm:p-6 md:p-8 w-[575px] max-w-full shadow-[0px_25px_50px_-12px_rgba(229,231,235,0.5)] z-10"
           >
             {/* Close button */}
             <button

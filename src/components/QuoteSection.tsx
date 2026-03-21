@@ -31,7 +31,7 @@ export default function QuoteSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={VIEWPORT}
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-            className="font-junge text-[28px] md:text-[60px] text-primary text-center leading-[36px] md:leading-[64px] px-8 md:px-12"
+            className="font-junge text-[24px] sm:text-[28px] md:text-[42px] lg:text-[60px] text-primary text-center leading-[32px] sm:leading-[36px] md:leading-[48px] lg:leading-[64px] px-6 sm:px-8 md:px-12"
           >
             Balanced hormones don't just improve your lifestyle.
             They change your life

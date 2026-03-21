@@ -6,7 +6,7 @@ const ONEPEAK_LOGO = '/assets/onepeak-logo.png'
 export default function FounderSection() {
   return (
     <section className="bg-[#fffdf9] py-16">
-      <div className="max-w-[1280px] mx-auto px-8 flex flex-col items-center gap-9">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8 flex flex-col items-center gap-9">
         {/* Label */}
         <motion.p
           initial={{ opacity: 0, y: 12 }}

@@ -16,7 +16,7 @@ export default function BeyondClinicSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={VIEWPORT}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="bg-[#fafafa] rounded-2xl md:rounded-3xl p-6 md:p-16 flex flex-col md:flex-row gap-8 md:gap-12 items-center"
+          className="bg-[#fafafa] rounded-2xl md:rounded-3xl p-5 sm:p-8 md:p-12 lg:p-16 flex flex-col md:flex-row gap-8 md:gap-12 items-center"
         >
           {/* Image grid */}
           <motion.div
@@ -30,7 +30,7 @@ export default function BeyondClinicSection() {
               variants={fadeInLeft}
               whileHover={{ scale: 1.03 }}
               transition={{ duration: 0.35 }}
-              className="flex-1 h-36 md:h-48 rounded-2xl md:rounded-3xl overflow-hidden"
+              className="flex-1 h-40 sm:h-44 md:h-48 lg:h-56 rounded-2xl md:rounded-3xl overflow-hidden"
             >
               <img
                 src={YOGA_IMG}
@@ -47,7 +47,7 @@ export default function BeyondClinicSection() {
               <motion.div
                 whileHover={{ scale: 1.03 }}
                 transition={{ duration: 0.35 }}
-                className="h-36 md:h-48 rounded-2xl md:rounded-3xl overflow-hidden"
+                className="h-40 sm:h-44 md:h-48 lg:h-56 rounded-2xl md:rounded-3xl overflow-hidden"
               >
                 <img
                   src={HIKING_IMG}

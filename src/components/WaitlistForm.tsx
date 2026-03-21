@@ -187,7 +187,7 @@ export default function WaitlistForm({
           }}
           placeholder="Enter email address"
           disabled={status === 'submitting'}
-          className={`flex-1 rounded-full h-[54px] px-5 font-figtree text-[16px] outline-none transition-colors duration-200 ${
+          className={`w-full sm:flex-1 rounded-full h-[54px] px-5 font-figtree text-[16px] outline-none transition-colors duration-200 ${
             isDark
               ? 'bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:border-white/40'
               : 'bg-[#f9fafb] border border-[#e5e7eb] text-[#1a1a2e] placeholder:text-[#6b7280] focus:border-primary'

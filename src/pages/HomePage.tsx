@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, scaleIn, VIEWPORT, EASE } from '../lib/animations'
 import WaitlistForm from '../components/WaitlistForm'
@@ -111,6 +111,125 @@ function ProcessSteps() {
   )
 }
 
+// ── Phone Coverflow Carousel (mobile) ──────────────────────────────────────
+
+const phones = [
+  { src: '/assets/phone-track-mood.png', alt: 'Track Mood screen', label: 'Track Mood', accent: false },
+  { src: '/assets/phone-upload-lab.png', alt: 'Upload Lab Reports screen', label: 'Upload Lab Reports', accent: true },
+  { src: '/assets/phone-get-insights.png', alt: 'Get Insights screen', label: 'Get Insights', accent: false },
+]
+
+function PhoneCarousel() {
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const [scales, setScales] = useState([0.78, 1, 0.78]) // initial: center is active
+  const isMobile = useIsMobile()
+
+  const updateScales = useCallback(() => {
+    const el = scrollRef.current
+    if (!el) return
+
+    const containerCenter = el.scrollLeft + el.offsetWidth / 2
+    const newScales: number[] = []
+
+    for (let i = 0; i < el.children.length; i++) {
+      const child = el.children[i] as HTMLElement
+      const childCenter = child.offsetLeft + child.offsetWidth / 2
+      const distance = Math.abs(containerCenter - childCenter)
+      // Normalize: 0 at center, 1 when one full item width away
+      const ratio = Math.min(distance / child.offsetWidth, 1)
+      // Scale: 1.0 at center → 0.78 at edges (22% reduction)
+      const scale = 1 - ratio * 0.22
+      newScales.push(Math.round(scale * 1000) / 1000)
+    }
+    setScales(newScales)
+  }, [])
+
+  useEffect(() => {
+    const el = scrollRef.current
+    if (!el || !isMobile) return
+
+    // Scroll to center phone on mount
+    const centerChild = el.children[1] as HTMLElement
+    if (centerChild) {
+      const scrollTarget = centerChild.offsetLeft - (el.offsetWidth / 2) + (centerChild.offsetWidth / 2)
+      el.scrollLeft = scrollTarget
+    }
+
+    updateScales()
+    el.addEventListener('scroll', updateScales, { passive: true })
+    return () => el.removeEventListener('scroll', updateScales)
+  }, [isMobile, updateScales])
+
+  // Desktop: simple row layout (unchanged from original design)
+  if (!isMobile) {
+    return (
+      <div className="w-full flex items-end gap-12 justify-center">
+        <motion.div variants={fadeInLeft} whileHover={{ y: -8, transition: { duration: 0.3, ease: EASE } }} className="flex flex-col items-center gap-0 cursor-pointer">
+          <div className="w-[280px]">
+            <img src="/assets/phone-track-mood.png" alt="Track Mood screen" className="w-full h-auto" />
+          </div>
+          <p className="font-junge italic text-[16px] text-[#4b5563]">Track Mood</p>
+        </motion.div>
+        <motion.div variants={fadeInUp} whileHover={{ y: -8, transition: { duration: 0.3, ease: EASE } }} className="flex flex-col items-center gap-0 -mb-8 cursor-pointer">
+          <div className="w-[320px]">
+            <img src="/assets/phone-upload-lab.png" alt="Upload Lab Reports screen" className="w-full h-auto" />
+          </div>
+          <p className="font-junge italic text-[16px] text-[#e91e63] font-semibold">Upload Lab Reports</p>
+        </motion.div>
+        <motion.div variants={fadeInRight} whileHover={{ y: -8, transition: { duration: 0.3, ease: EASE } }} className="flex flex-col items-center gap-0 cursor-pointer">
+          <div className="w-[280px]">
+            <img src="/assets/phone-get-insights.png" alt="Get Insights screen" className="w-full h-auto" />
+          </div>
+          <p className="font-junge italic text-[16px] text-[#4b5563]">Get Insights</p>
+        </motion.div>
+      </div>
+    )
+  }
+
+  // Mobile: coverflow carousel
+  // Container uses real paddingInline so side phones physically peek from edges.
+  // Item width 200px → at scale 0.78 the visual width is ~156px, leaving ~45px visible on each side.
+  return (
+    <div
+      ref={scrollRef}
+      className="w-full flex items-end overflow-x-auto snap-x snap-mandatory no-scrollbar pb-2"
+      style={{ paddingInline: 'calc(50% - 100px)', gap: '0px' }}
+    >
+      {phones.map((phone, i) => (
+        <div
+          key={phone.label}
+          className="shrink-0 snap-center flex flex-col items-center"
+          style={{
+            width: '200px',
+            transform: `scale(${scales[i] ?? 0.78})`,
+            transition: 'transform 0.2s ease-out',
+            transformOrigin: 'bottom center',
+          }}
+        >
+          <img src={phone.src} alt={phone.alt} className="w-full h-auto" />
+          <p className={`font-junge italic text-[14px] mt-1 ${phone.accent ? 'text-[#e91e63] font-semibold' : 'text-[#4b5563]'}`}>
+            {phone.label}
+          </p>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function useIsMobile(breakpoint = 768) {
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== 'undefined' ? window.innerWidth < breakpoint : false
+  )
+  useEffect(() => {
+    const mql = window.matchMedia(`(max-width: ${breakpoint - 1}px)`)
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches)
+    setIsMobile(mql.matches)
+    mql.addEventListener('change', handler)
+    return () => mql.removeEventListener('change', handler)
+  }, [breakpoint])
+  return isMobile
+}
+
 // ── Main page component ────────────────────────────────────────────────────
 
 export default function HomePage() {
@@ -118,7 +237,7 @@ export default function HomePage() {
     <>
       {/* ─── Section 1: Hero ──────────────────────────────────────────── */}
       <section
-        className="min-h-[60vh] md:min-h-[70vh] flex items-center px-4 md:px-8 lg:px-20 py-16 md:py-24"
+        className="min-h-[60vh] md:min-h-[70vh] flex items-center px-4 md:px-8 lg:px-20 py-16 md:py-24 overflow-hidden"
         style={{
           background: 'radial-gradient(ellipse 900px 800px at 70% 30%, rgba(233,30,99,0.06) 0%, rgba(233,30,99,0) 70%), linear-gradient(to bottom, #ffffff 0%, #fffdf9 100%)',
         }}
@@ -144,7 +263,7 @@ export default function HomePage() {
             {/* Heading */}
             <motion.h1
               variants={fadeInUp}
-              className="font-junge font-semibold text-[48px] md:text-[72px] text-[#1a1a2e] leading-[1.1]"
+              className="font-junge font-semibold text-[36px] sm:text-[48px] md:text-[72px] text-[#1a1a2e] leading-[1.1]"
             >
               Hormonal{'\n'}Intelligence{' '}
               <em className="font-medium italic text-[#e91e63]">on your phone.</em>
@@ -161,7 +280,7 @@ export default function HomePage() {
             {/* Waitlist Card */}
             <motion.div
               variants={fadeInUp}
-              className="bg-white border border-[#f3f4f6] rounded-3xl p-8 w-[575px] max-w-full shadow-[0px_25px_50px_-12px_rgba(229,231,235,0.5)]"
+              className="bg-white border border-[#f3f4f6] rounded-3xl p-5 sm:p-6 md:p-8 w-full max-w-[575px] shadow-[0px_25px_50px_-12px_rgba(229,231,235,0.5)]"
             >
               <WaitlistForm variant="light" source="homepage-hero" />
             </motion.div>
@@ -174,13 +293,13 @@ export default function HomePage() {
             transition={{ duration: 0.8, ease: EASE, delay: 0.3 }}
             className="flex-1 flex justify-center lg:justify-end"
           >
-            <div className="relative w-[420px]">
+            <div className="relative w-[280px] sm:w-[340px] md:w-[380px] lg:w-[420px]">
               {/* Phone blur glow */}
               <div className="absolute -inset-16 bg-[rgba(233,30,99,0.06)] rounded-full blur-[50px]" />
               <img
                 src="/assets/phone-hero.png"
                 alt="Hormones app screen"
-                className="relative w-[420px] h-auto object-contain"
+                className="relative w-full h-auto object-contain"
               />
             </div>
           </motion.div>
@@ -201,7 +320,7 @@ export default function HomePage() {
             <div className="flex flex-col items-center gap-6 text-center">
               <motion.h2
                 variants={fadeInUp}
-                className="font-junge font-semibold text-[36px] md:text-[48px] text-[#1a1a2e] leading-[48px]"
+                className="font-junge font-semibold text-[36px] md:text-[48px] text-[#1a1a2e] leading-[1.15] md:leading-[48px]"
               >
                 Pocket-Sized Hormonal{'\n'}Intelligence
               </motion.h2>
@@ -249,35 +368,8 @@ export default function HomePage() {
               </motion.h2>
             </div>
 
-            {/* Phone mockups */}
-            <div className="flex flex-col md:flex-row items-end justify-center gap-8 md:gap-12">
-              {/* Phone 1 — Track Mood */}
-              <motion.div variants={fadeInLeft} whileHover={{ y: -8, transition: { duration: 0.3, ease: EASE } }} className="flex flex-col items-center gap-0 cursor-pointer">
-                <div className="relative w-[280px]">
-                  <span className="absolute -top-2 -right-2 bg-[#e91e63] text-white font-figtree font-semibold text-[10px] px-3 py-1 rounded-md z-10">Preview</span>
-                  <img src="/assets/phone-track-mood.png" alt="Track Mood screen" className="w-full h-auto" />
-                </div>
-                <p className="font-junge italic text-[16px] text-[#4b5563]">Track Mood</p>
-              </motion.div>
-
-              {/* Phone 2 — Upload Lab Reports (taller, center) */}
-              <motion.div variants={fadeInUp} whileHover={{ y: -8, transition: { duration: 0.3, ease: EASE } }} className="flex flex-col items-center gap-0 md:-mb-8 cursor-pointer">
-                <div className="relative w-[320px]">
-                  <span className="absolute -top-2 -right-2 bg-[#e91e63] text-white font-figtree font-semibold text-[10px] px-3 py-1 rounded-md z-10">Preview</span>
-                  <img src="/assets/phone-upload-lab.png" alt="Upload Lab Reports screen" className="w-full h-auto" />
-                </div>
-                <p className="font-junge italic text-[16px] text-[#e91e63] font-semibold">Upload Lab Reports</p>
-              </motion.div>
-
-              {/* Phone 3 — Get Insights */}
-              <motion.div variants={fadeInRight} whileHover={{ y: -8, transition: { duration: 0.3, ease: EASE } }} className="flex flex-col items-center gap-0 cursor-pointer">
-                <div className="relative w-[280px]">
-                  <span className="absolute -top-2 -right-2 bg-[#e91e63] text-white font-figtree font-semibold text-[10px] px-3 py-1 rounded-md z-10">Preview</span>
-                  <img src="/assets/phone-get-insights.png" alt="Get Insights screen" className="w-full h-auto" />
-                </div>
-                <p className="font-junge italic text-[16px] text-[#4b5563]">Get Insights</p>
-              </motion.div>
-            </div>
+            {/* Phone mockups — coverflow carousel on mobile, row on desktop */}
+            <PhoneCarousel />
           </motion.div>
         </div>
       </section>
@@ -305,7 +397,7 @@ export default function HomePage() {
                 </div>
               </div>
               {/* Research Backed badge */}
-              <div className="absolute bottom-14 right-[-12px] bg-white border border-[#f3f4f6] rounded-2xl px-4 py-3 flex items-center gap-3 shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)]">
+              <div className="absolute bottom-14 right-0 md:right-[-12px] bg-white border border-[#f3f4f6] rounded-2xl px-4 py-3 flex items-center gap-3 shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)]">
                 <img src={ICON_RESEARCH} alt="" className="w-[22px] h-[21px]" />
                 <span className="font-junge font-extrabold text-[18px] text-[#1a1a2e]">Research Backed</span>
               </div>
@@ -321,7 +413,7 @@ export default function HomePage() {
               </motion.div>
               <motion.h2
                 variants={fadeInUp}
-                className="font-junge font-semibold text-[36px] md:text-[48px] text-[#1a1a2e] leading-[60px]"
+                className="font-junge font-semibold text-[36px] md:text-[48px] text-[#1a1a2e] leading-[1.2] md:leading-[60px]"
               >
                 You&apos;re not alone with your <em className="font-medium italic text-[#e91e63]">labs.</em>
               </motion.h2>
@@ -351,7 +443,7 @@ export default function HomePage() {
             <div className="flex flex-col items-center gap-6 text-center">
               <motion.h2
                 variants={fadeInUp}
-                className="font-junge font-semibold text-[36px] md:text-[48px] text-white leading-[48px]"
+                className="font-junge font-semibold text-[36px] md:text-[48px] text-white leading-[1.15] md:leading-[48px]"
               >
                 Meet Your Hormone Strategist
               </motion.h2>
@@ -402,7 +494,7 @@ export default function HomePage() {
                 </motion.div>
                 <motion.h2
                   variants={fadeInUp}
-                  className="font-junge font-semibold text-[36px] md:text-[48px] text-[#1a1a2e] leading-[48px]"
+                  className="font-junge font-semibold text-[36px] md:text-[48px] text-[#1a1a2e] leading-[1.15] md:leading-[48px]"
                 >
                   Your Path to{'\n'}Hormonal Harmony
                 </motion.h2>
@@ -415,7 +507,7 @@ export default function HomePage() {
               variants={fadeInRight}
               className="flex-1 flex gap-4 justify-center"
             >
-              <div className="flex-1 max-w-[276px] pt-12">
+              <div className="flex-1 max-w-[276px] pt-6 md:pt-12">
                 <div className="aspect-[276/400] rounded-3xl shadow-hero overflow-hidden">
                   <img src={IMG_MINDFULNESS} alt="Mindfulness" className="w-full h-full object-cover" />
                 </div>
@@ -445,7 +537,7 @@ export default function HomePage() {
 
             {/* Left content */}
             <div className="flex-1 flex flex-col gap-8 relative z-10">
-              <h2 className="font-junge font-semibold text-[40px] md:text-[60px] text-white leading-[1.2]">
+              <h2 className="font-junge font-semibold text-[32px] sm:text-[40px] md:text-[60px] text-white leading-[1.2]">
                 Secure Your Early Access{' '}
                 <em className="font-medium italic text-[#e91e63]">Before We Launch.</em>
               </h2>

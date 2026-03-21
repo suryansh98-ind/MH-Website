@@ -76,11 +76,10 @@ export default function PublishedWorksSection() {
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-0"
-          style={{ columnGap: '72px' }}
+          className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-8 lg:gap-[72px]"
         >
           {/* Side books aligned to center vertically */}
-          <div className="flex items-center justify-center md:self-stretch w-[200px] md:w-auto">
+          <div className="flex items-center justify-center md:self-stretch w-[180px] sm:w-[200px] md:w-auto">
             <BookCard
               src={BOOK_1}
               title="The Hormone Survival Guide For Perimenopause"
@@ -91,7 +90,7 @@ export default function PublishedWorksSection() {
           </div>
 
           {/* Featured center book */}
-          <div className="flex justify-center w-[240px] md:w-auto">
+          <div className="flex justify-center w-[200px] sm:w-[240px] md:w-auto">
             <BookCard
               src={BOOK_2}
               title="Brilliant Burnout"
@@ -102,7 +101,7 @@ export default function PublishedWorksSection() {
             />
           </div>
 
-          <div className="flex items-center justify-center md:self-stretch w-[200px] md:w-auto">
+          <div className="flex items-center justify-center md:self-stretch w-[180px] sm:w-[200px] md:w-auto">
             <BookCard
               src={BOOK_3}
               title="Surviving The Teenage Hormone Takeover"

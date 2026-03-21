@@ -5,7 +5,7 @@ import { useWaitlist } from '../contexts/WaitlistContext'
 export default function MissionSection() {
   const { openWaitlist } = useWaitlist()
   return (
-    <section className="relative bg-primary overflow-hidden py-16 md:py-24 px-6 md:px-48">
+    <section className="relative bg-primary overflow-hidden py-16 md:py-24 px-4 sm:px-8 md:px-16 lg:px-48">
       {/* Decorative blobs */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-white blur-[32px]" />
