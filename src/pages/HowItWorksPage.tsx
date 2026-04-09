@@ -263,11 +263,11 @@ export default function HowItWorksPage() {
           <div className="w-full border-t border-b border-[rgba(233,30,99,0.1)] bg-[#fffdf9] py-4 overflow-hidden">
             <motion.div
               className="flex items-center gap-10 w-max"
-              animate={{ x: ['0%', '-50%'] }}
+              animate={{ x: ['0%', '-33.333%'] }}
               transition={{ x: { duration: 20, ease: 'linear', repeat: Infinity } }}
             >
-              {/* Duplicate the list for seamless loop */}
-              {[...CONCERNS, ...CONCERNS].map((c, i) => (
+              {/* Triplicate the list for seamless loop */}
+              {[...CONCERNS, ...CONCERNS, ...CONCERNS].map((c, i) => (
                 <span
                   key={`${c}-${i}`}
                   className="font-figtree font-medium text-[16px] md:text-[18px] text-[#e91e63] whitespace-nowrap"

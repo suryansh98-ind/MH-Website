@@ -89,22 +89,14 @@ export default function EducatorSection() {
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="relative rounded-[24px] md:rounded-[40px] overflow-hidden border-2 border-white shadow-hero aspect-[576/390]"
           >
-            <img
-              src={EDUCATOR_BG}
-              alt="Dr. Nisha Woods presenting"
-              className="w-full h-full object-cover"
+            <iframe
+              className="w-full h-full absolute inset-0"
+              src="https://www.youtube.com/embed/ag4fqJR9Xrc"
+              title="Dr. Nisha Woods presenting"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
             />
-            {/* Play overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className="absolute inset-0 m-auto w-14 h-14 md:w-16 md:h-16 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 flex items-center justify-center shadow-lg"
-            >
-              <svg width="18" height="18" viewBox="0 0 16 16" fill="none" className="ml-0.5">
-                <path d="M4 2L14 8L4 14V2Z" fill="#e91e83" />
-              </svg>
-            </motion.button>
           </motion.div>
 
           {/* Floating card */}

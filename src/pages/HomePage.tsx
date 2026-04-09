@@ -263,10 +263,10 @@ export default function HomePage() {
             {/* Heading */}
             <motion.h1
               variants={fadeInUp}
-              className="font-junge font-semibold text-[36px] sm:text-[48px] md:text-[72px] text-[#1a1a2e] leading-[1.1]"
+              className="font-junge font-semibold text-[32px] sm:text-[44px] md:text-[56px] lg:text-[64px] xl:text-[72px] text-[#1a1a2e] leading-[1.1] break-words"
             >
-              Hormonal{'\n'}Intelligence{' '}
-              <em className="font-medium italic text-[#e91e63]">on your phone.</em>
+              Hormonal Intelligence{' '}
+              <em className="font-medium italic text-[#e91e63]">on your phone for everyone.</em>
             </motion.h1>
 
             {/* Subtitle */}
@@ -454,23 +454,19 @@ export default function HomePage() {
                 Watch how this platform can educate you about hormones and personalizing your own path to optimal health.
               </motion.p>
             </div>
-            {/* Video thumbnail */}
+            {/* Embedded YouTube video */}
             <motion.div
               variants={scaleIn}
               className="relative w-full max-w-[831px] rounded-[40px] border-[3px] border-white overflow-hidden shadow-hero"
             >
-              <img src={IMG_VIDEO} alt="Dr. Nisha Woods video" className="w-full aspect-[831/563] object-cover" />
-              {/* Play button */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="absolute inset-0 m-auto w-14 h-14 md:w-16 md:h-16 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 flex items-center justify-center shadow-lg"
-              >
-                <svg width="18" height="18" viewBox="0 0 16 16" fill="none" className="ml-0.5">
-                  <path d="M4 2L14 8L4 14V2Z" fill="#e91e83" />
-                </svg>
-              </motion.button>
+              <iframe
+                className="w-full aspect-video"
+                src="https://www.youtube.com/embed/ag4fqJR9Xrc"
+                title="Dr. Nisha Woods video"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
             </motion.div>
           </motion.div>
         </div>
