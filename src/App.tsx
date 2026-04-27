@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import WaitlistModal from './components/WaitlistModal'
+import CookieConsent from './components/CookieConsent'
 import { WaitlistProvider } from './contexts/WaitlistContext'
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
@@ -31,6 +32,7 @@ export default function App() {
         </main>
         <Footer />
         <WaitlistModal />
+        <CookieConsent />
       </div>
     </WaitlistProvider>
   )

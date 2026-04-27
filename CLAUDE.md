@@ -31,33 +31,34 @@ npm run preview
 
 ```
 src/
-  main.tsx                    # Entry point — wraps App with BrowserRouter
+  main.tsx                    # Entry point — wraps App with BrowserRouter + WaitlistProvider
   App.tsx                     # Routes: /, /about, /how-it-works + ScrollToTop
   index.css                   # Tailwind directives + base styles
   lib/
     animations.ts             # Shared Framer Motion variants & constants
+    waitlist.ts               # Google Sheets waitlist submission helper
+  contexts/
+    WaitlistContext.tsx       # Global state for opening/closing WaitlistModal
   pages/
     HomePage.tsx              # Landing page — hero, features, sneak peek, CTA
     AboutPage.tsx             # About Nisha — wraps all About section components
     HowItWorksPage.tsx        # How it works — 7 sections explaining the app
   components/
     Navbar.tsx                # Sticky glassmorphism navbar, React Router Links
+    WaitlistForm.tsx          # Inline email form — posts to Google Sheets (light/dark variants)
+    WaitlistModal.tsx         # Popup waitlist dialog, opened via WaitlistContext
     HeroSection.tsx           # Dr. Nisha portrait + bio, hero CTAs (About page)
     PioneerSection.tsx        # 3-col layout — functional medicine story
     QuoteSection.tsx          # Large centred pink quote with decorative marks
     FounderSection.tsx        # OnePeak Medical pink-tinted band
-    EducatorSection.tsx       # Icon list + video card with floating caption
+    EducatorSection.tsx       # Icon list + embedded YouTube video card
     PublishedWorksSection.tsx  # Three books, centre one featured/larger (id="publications")
     BeyondClinicSection.tsx   # Image grid + lifestyle text in rounded card
     MissionSection.tsx        # Full-width pink CTA section
     Footer.tsx                # 4-column footer with social icons, React Router Links
 public/
-  assets/
-    phone-hero.png            # Hero section phone mockup
-    phone-track-mood.png      # Sneak peek Phone 1
-    phone-upload-lab.png      # Sneak peek Phone 2
-    phone-get-insights.png    # Sneak peek Phone 3
-    cta-illustration.png      # CTA section illustration
+  assets/                     # PNGs + SVGs (phone mockups, portraits, icons, book covers,
+                              # lifestyle photos, social icons, etc.) — see folder for full list
 ```
 
 ## Routing
@@ -72,6 +73,7 @@ public/
 - Navbar and Footer are shared across all routes
 - Internal links use React Router `<Link>` (not `<a href>`)
 - "View Publications" button on About page scrolls to `#publications` section
+- `WaitlistModal` is mounted once at the app root and opened globally via `useWaitlist()` from `WaitlistContext`
 
 ## Design Tokens
 
@@ -128,7 +130,13 @@ EASE           // [0.22, 1, 0.36, 1] — custom cubic-bezier
 - **Figma MCP assets**: Stored as `const` URL strings at the top of each component file. These expire after 7 days — re-fetch from Figma when needed.
   - File key: `XmwoM03rktuP9LrowfejYM`
   - Node ID: `4184:14901`
-- **Static assets** (phone mockups, illustrations): Stored in `public/assets/` as PNG files and referenced via `/assets/filename.png`.
+- **Static assets** (phone mockups, illustrations, icons, photos): Stored in `public/assets/` and referenced via `/assets/filename.png` (or `.svg`).
+- **Video embeds**: `EducatorSection` and the HomePage video block use a YouTube iframe (`https://www.youtube.com/embed/ag4fqJR9Xrc`) — no thumbnail/play-button overlay.
+
+## Waitlist
+- Form component: `WaitlistForm` accepts `variant="light" | "dark"` and a `source` string (e.g. `"homepage-hero"`) for attribution.
+- Submissions go to a Google Sheets Web App endpoint via `src/lib/waitlist.ts`.
+- Global popup: any component can call `useWaitlist().open()` to trigger `WaitlistModal`.
 
 ## Tailwind Config
 Custom extensions in `tailwind.config.js`:
@@ -147,3 +155,5 @@ Custom extensions in `tailwind.config.js`:
 - Do **not** use absolute positioning for layout — use flex/grid.
 - Internal navigation uses React Router `<Link>` — never `<a href>` for internal routes.
 - Smooth scroll to anchor IDs for in-page navigation (e.g., `scrollIntoView({ behavior: 'smooth' })`).
+- Horizontal marquees (e.g. `HowItWorksPage` concerns strip): triplicate the source list and animate `x: ['0%', '-33.333%']` for a seamless loop.
+- Responsive typography for large headings scales across breakpoints, e.g. hero H1 uses `text-[32px] sm:text-[44px] md:text-[56px] lg:text-[64px] xl:text-[72px]` to avoid overflow on small screens.
