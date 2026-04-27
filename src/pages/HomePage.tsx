@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, scaleIn, VIEWPORT, EASE } from '../lib/animations'
 import WaitlistForm from '../components/WaitlistForm'
+import YoutubeEmbed from '../components/YoutubeEmbed'
 
 // ── Asset URLs ──────────────────────────────────────────────────────────────
 const ICON_TRACK = '/assets/icon-track.svg'
@@ -459,13 +460,10 @@ export default function HomePage() {
               variants={scaleIn}
               className="relative w-full max-w-[831px] rounded-[40px] border-[3px] border-white overflow-hidden shadow-hero"
             >
-              <iframe
-                className="w-full aspect-video"
-                src="https://www.youtube.com/embed/ag4fqJR9Xrc"
+              <YoutubeEmbed
+                videoId="ag4fqJR9Xrc"
                 title="Dr. Nisha Woods video"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
+                className="aspect-video"
               />
             </motion.div>
           </motion.div>

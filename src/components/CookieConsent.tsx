@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { EASE } from '../lib/animations'
-
-const COOKIE_KEY = 'mh_cookie_consent'
+import { useCookieConsent } from '../contexts/CookieConsentContext'
 
 const slideUp = {
   hidden: { opacity: 0, y: 80 },
@@ -19,25 +18,26 @@ const slideUp = {
 }
 
 export default function CookieConsent() {
+  const { consent, accept, reject } = useCookieConsent()
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    // Show banner only if the user hasn't already responded
-    const stored = localStorage.getItem(COOKIE_KEY)
-    if (!stored) {
-      // Small delay so it doesn't compete with page load animations
+    // Show banner only if user hasn't responded yet
+    if (consent === null) {
       const timer = setTimeout(() => setVisible(true), 1500)
       return () => clearTimeout(timer)
+    } else {
+      setVisible(false)
     }
-  }, [])
+  }, [consent])
 
   const handleAccept = () => {
-    localStorage.setItem(COOKIE_KEY, 'accepted')
+    accept()
     setVisible(false)
   }
 
   const handleReject = () => {
-    localStorage.setItem(COOKIE_KEY, 'rejected')
+    reject()
     setVisible(false)
   }
 
@@ -68,7 +68,14 @@ export default function CookieConsent() {
             <div className="flex-1">
               <p className="font-figtree text-[15px] sm:text-[16px] text-[#1f2937] leading-[1.5]">
                 We use cookies to enhance your browsing experience and analyze site traffic.
-                By clicking "Accept", you consent to our use of cookies.
+                Rejecting will block third-party embeds (e.g. videos).{' '}
+                <a
+                  href="#"
+                  className="text-[#e91e63] underline underline-offset-2 hover:text-[#b01460] transition-colors"
+                  onClick={e => e.preventDefault()}
+                >
+                  Learn more
+                </a>
               </p>
             </div>
 

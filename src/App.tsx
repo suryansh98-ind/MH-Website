@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import WaitlistModal from './components/WaitlistModal'
 import CookieConsent from './components/CookieConsent'
 import { WaitlistProvider } from './contexts/WaitlistContext'
+import { CookieConsentProvider } from './contexts/CookieConsentContext'
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import HowItWorksPage from './pages/HowItWorksPage'
@@ -19,6 +20,7 @@ function ScrollToTop() {
 
 export default function App() {
   return (
+    <CookieConsentProvider>
     <WaitlistProvider>
       <div className="min-h-screen bg-white overflow-x-hidden">
         <ScrollToTop />
@@ -35,5 +37,6 @@ export default function App() {
         <CookieConsent />
       </div>
     </WaitlistProvider>
+    </CookieConsentProvider>
   )
 }
