@@ -1,0 +1,1 @@
+self.__REACT_LOADABLE_MANIFEST="{\"src/page-components/HomePage.tsx -> ../components/PhoneCarousel\":{\"id\":\"src/page-components/HomePage.tsx -> ../components/PhoneCarousel\",\"files\":[\"static/chunks/_app-pages-browser_src_components_PhoneCarousel_tsx.js\"]}}"
