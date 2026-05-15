@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, useRef, useEffect, type FormEvent } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { submitEmail, isValidEmail, type SubmitStatus } from '../lib/waitlist'

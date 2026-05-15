@@ -1,3 +1,5 @@
+'use client'
+
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
 
 export type ConsentStatus = 'accepted' | 'rejected' | null
@@ -14,12 +16,14 @@ interface CookieConsentContextType {
 const CookieConsentContext = createContext<CookieConsentContextType | null>(null)
 
 export function CookieConsentProvider({ children }: { children: ReactNode }) {
-  const [consent, setConsent] = useState<ConsentStatus>(() => {
-    const stored = localStorage.getItem(COOKIE_KEY)
-    if (stored === 'accepted') return 'accepted'
-    if (stored === 'rejected') return 'rejected'
-    return null
-  })
+  // Start with null on server; hydrate from localStorage on the client
+  const [consent, setConsent] = useState<ConsentStatus>(null)
+
+  useEffect(() => {
+    const stored = typeof window !== 'undefined' ? localStorage.getItem(COOKIE_KEY) : null
+    if (stored === 'accepted') setConsent('accepted')
+    else if (stored === 'rejected') setConsent('rejected')
+  }, [])
 
   const accept = () => {
     localStorage.setItem(COOKIE_KEY, 'accepted')

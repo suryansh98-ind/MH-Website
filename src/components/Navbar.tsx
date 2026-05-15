@@ -1,6 +1,9 @@
+'use client'
+
 import { useState } from 'react'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
-import { Link, useLocation } from 'react-router-dom'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useWaitlist } from '../contexts/WaitlistContext'
 
 const LOGO_ICON = '/assets/logo-icon.png'
@@ -11,8 +14,7 @@ export default function Navbar() {
   const { scrollY } = useScroll()
   const shadow = useTransform(scrollY, [0, 40], ['0 0 0 0 rgba(0,0,0,0)', '0 1px 24px 0 rgba(0,0,0,0.08)'])
   const bg = useTransform(scrollY, [0, 40], ['rgba(255,255,255,0.8)', 'rgba(255,255,255,0.96)'])
-  const location = useLocation()
-  const pathname = location.pathname
+  const pathname = usePathname()
 
   return (
     <motion.nav
@@ -26,7 +28,7 @@ export default function Navbar() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
-          <Link to="/" className="flex items-center gap-2 no-underline">
+          <Link href="/" className="flex items-center gap-2 no-underline">
             <img src={LOGO_ICON} alt="MyHormonz" className="h-8 md:h-10 w-auto" />
             <span className="font-junge text-[22px] md:text-[28px] text-[#1f2937] leading-none whitespace-nowrap">
               MyHormonz
@@ -42,7 +44,7 @@ export default function Navbar() {
           transition={{ duration: 0.5, delay: 0.15 }}
         >
           <Link
-            to="/how-it-works"
+            href="/how-it-works"
             className={`font-figtree text-[16px] transition-colors duration-200 no-underline ${
               pathname === '/how-it-works' ? 'text-primary font-medium' : 'text-[#1f2937] hover:text-primary'
             }`}
@@ -50,7 +52,7 @@ export default function Navbar() {
             How it works
           </Link>
           <Link
-            to="/about"
+            href="/about"
             className={`font-figtree text-[16px] transition-colors duration-200 no-underline ${
               pathname === '/about' ? 'text-primary font-medium' : 'text-[#1f2937] hover:text-primary'
             }`}
@@ -100,7 +102,7 @@ export default function Navbar() {
           >
             <div className="flex flex-col gap-4 px-4 py-6">
               <Link
-                to="/how-it-works"
+                href="/how-it-works"
                 onClick={() => setMenuOpen(false)}
                 className={`font-figtree text-[18px] transition-colors no-underline ${
                   pathname === '/how-it-works' ? 'text-primary font-medium' : 'text-[#1f2937] hover:text-primary'
@@ -109,7 +111,7 @@ export default function Navbar() {
                 How it works
               </Link>
               <Link
-                to="/about"
+                href="/about"
                 onClick={() => setMenuOpen(false)}
                 className={`font-figtree text-[18px] transition-colors no-underline ${
                   pathname === '/about' ? 'text-primary font-medium' : 'text-[#1f2937] hover:text-primary'

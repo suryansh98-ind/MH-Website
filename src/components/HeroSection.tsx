@@ -1,3 +1,5 @@
+'use client'
+
 import { motion } from 'framer-motion'
 import { EASE, staggerContainer, fadeInUp } from '../lib/animations'
 

@@ -1,11 +1,17 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+module.exports = {
+  content: [
+    './app/**/*.{js,ts,jsx,tsx}',
+    './src/components/**/*.{js,ts,jsx,tsx}',
+    './src/contexts/**/*.{js,ts,jsx,tsx}',
+    './src/lib/**/*.{js,ts,jsx,tsx}',
+    './src/page-components/**/*.{js,ts,jsx,tsx}',
+  ],
   theme: {
     extend: {
       fontFamily: {
-        junge: ['Playfair Display', 'serif'],
-        figtree: ['Figtree', 'sans-serif'],
+        junge: ['var(--font-playfair)', 'serif'],
+        figtree: ['var(--font-figtree)', 'sans-serif'],
       },
       colors: {
         primary: '#ca1670',

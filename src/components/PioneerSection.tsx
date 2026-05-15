@@ -1,3 +1,5 @@
+'use client'
+
 import { motion } from 'framer-motion'
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, VIEWPORT } from '../lib/animations'
 

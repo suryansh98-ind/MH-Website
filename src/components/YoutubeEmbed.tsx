@@ -1,3 +1,5 @@
+'use client'
+
 import { motion } from 'framer-motion'
 import { useCookieConsent } from '../contexts/CookieConsentContext'
 import { EASE } from '../lib/animations'

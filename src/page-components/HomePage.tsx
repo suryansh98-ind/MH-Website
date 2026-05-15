@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, scaleIn, VIEWPORT, EASE } from '../lib/animations'
