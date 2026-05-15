@@ -101,12 +101,11 @@ interface StepProps {
   description: string
   active?: boolean
   onHover: () => void
-  onLeave: () => void
 }
 
-function Step({ number, title, description, active = false, onHover, onLeave }: StepProps) {
+function Step({ number, title, description, active = false, onHover }: StepProps) {
   return (
-    <motion.div variants={fadeInUp} className="flex flex-col items-center w-full md:w-[176px] cursor-pointer" onMouseEnter={onHover} onMouseLeave={onLeave}>
+    <motion.div variants={fadeInUp} className="flex flex-col items-center w-full md:w-[176px] cursor-pointer" onMouseEnter={onHover}>
       {/* Number circle */}
       <div
         className={`relative z-10 w-12 h-12 rounded-full flex items-center justify-center mb-6 transition-all duration-300 ${
@@ -147,14 +146,16 @@ const journeyStepsData = [
 function JourneySteps() {
   const [hoveredStep, setHoveredStep] = useState<number | null>(null)
   return (
-    <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-10 md:gap-6">
+    <div
+      className="flex flex-col md:flex-row items-center md:items-start justify-between gap-10 md:gap-6"
+      onMouseLeave={() => setHoveredStep(null)}
+    >
       {journeyStepsData.map((step) => (
         <Step
           key={step.number}
           {...step}
           active={hoveredStep === null ? step.number === 1 : hoveredStep === step.number}
           onHover={() => setHoveredStep(step.number)}
-          onLeave={() => setHoveredStep(null)}
         />
       ))}
     </div>

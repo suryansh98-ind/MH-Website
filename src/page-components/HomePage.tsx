@@ -65,12 +65,11 @@ interface ProcessStepProps {
   description: string
   active?: boolean
   onHover: () => void
-  onLeave: () => void
 }
 
-function ProcessStep({ number, title, description, active = false, onHover, onLeave }: ProcessStepProps) {
+function ProcessStep({ number, title, description, active = false, onHover }: ProcessStepProps) {
   return (
-    <div className="flex gap-8 items-start cursor-pointer" onMouseEnter={onHover} onMouseLeave={onLeave}>
+    <div className="flex gap-8 items-start cursor-pointer" onMouseEnter={onHover}>
       <div
         className={`relative z-10 w-[37px] h-12 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
           active
@@ -100,7 +99,10 @@ const processStepsData = [
 function ProcessSteps() {
   const [hoveredStep, setHoveredStep] = useState<number | null>(null)
   return (
-    <div className="relative flex flex-col gap-10">
+    <div
+      className="relative flex flex-col gap-10"
+      onMouseLeave={() => setHoveredStep(null)}
+    >
       {/* Vertical line */}
       <div className="absolute left-[18px] top-2 bottom-2 w-[2px] bg-[#f3f4f6]" />
       {processStepsData.map((step) => (
@@ -109,7 +111,6 @@ function ProcessSteps() {
             {...step}
             active={hoveredStep === null ? step.number === 1 : hoveredStep === step.number}
             onHover={() => setHoveredStep(step.number)}
-            onLeave={() => setHoveredStep(null)}
           />
         </motion.div>
       ))}
