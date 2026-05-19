@@ -275,15 +275,15 @@ export default function PrivacyPolicyPage() {
             {/* Section 4 */}
             <SectionHeading number="4" title="How We Use Personal Data" />
             <BulletList items={[
-              <><strong>4.1 To enable and provide the Services</strong> — administer accounts, maintain functionality, and deliver educational insights.</>,
-              <><strong>4.2 Account administration</strong> — set up accounts, troubleshoot, send service-related notices, and provide in-app support.</>,
-              <><strong>4.3 Educational insights</strong> — display reference ranges and provide research-based context from inputs you provide. These outputs are for educational purposes only and are not medical advice.</>,
-              <><strong>4.4 Service quality and development</strong> — understand how users engage with the Services and improve features, using aggregation and de-identification where feasible.</>,
-              <><strong>4.5 Customer support</strong> — process Personal Data you provide in support communications.</>,
-              <><strong>4.6 Purchases and subscriptions</strong> — process subscriptions and purchases, including fraud prevention.</>,
-              <><strong>4.7 Marketing</strong> — if you opt in, send newsletters, product updates, promotions, and educational content. You can opt out at any time.</>,
-              <><strong>4.8 Targeted advertising</strong> — we do not use Consumer Health Data for targeted advertising.</>,
-              <><strong>4.9 Legal obligations</strong> — comply with applicable laws, respond to lawful requests, protect against fraud, and enforce our Terms.</>,
+              <><strong>To enable and provide the Services</strong> — administer accounts, maintain functionality, and deliver educational insights.</>,
+              <><strong>Account administration</strong> — set up accounts, troubleshoot, send service-related notices, and provide in-app support.</>,
+              <><strong>Educational insights</strong> — display reference ranges and provide research-based context from inputs you provide. These outputs are for educational purposes only and are not medical advice.</>,
+              <><strong>Service quality and development</strong> — understand how users engage with the Services and improve features, using aggregation and de-identification where feasible.</>,
+              <><strong>Customer support</strong> — process Personal Data you provide in support communications.</>,
+              <><strong>Purchases and subscriptions</strong> — process subscriptions and purchases, including fraud prevention.</>,
+              <><strong>Marketing</strong> — if you opt in, send newsletters, product updates, promotions, and educational content. You can opt out at any time.</>,
+              <><strong>Targeted advertising</strong> — we do not use Consumer Health Data for targeted advertising.</>,
+              <><strong>Legal obligations</strong> — comply with applicable laws, respond to lawful requests, protect against fraud, and enforce our Terms.</>,
             ]} />
 
             <Divider />
