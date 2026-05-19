@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { fadeInUp, staggerContainer, VIEWPORT } from '../lib/animations'
+import { fadeInUp, staggerContainer } from '../lib/animations'
 
 function SectionHeading({ number, title }: { number?: string; title: string }) {
   return (
@@ -92,13 +92,12 @@ export default function PrivacyPolicyPage() {
       {/* Content */}
       <section className="bg-[#fffdf9] py-8 md:py-12 px-4 md:px-8">
         <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={VIEWPORT}
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
           className="max-w-[800px] mx-auto"
         >
-          <motion.div variants={fadeInUp}>
+          <div>
             <P>
               This Privacy Policy explains how Restorative Balance Group, LLC d/b/a MyHormonz and its affiliates
               (collectively, "Company," "we," "us," "our") collect, use, disclose, and protect Personal Data in
@@ -486,7 +485,7 @@ export default function PrivacyPolicyPage() {
                 unsuccessful and you are a Washington resident, you may contact the Washington State Attorney General.
               </P>
             </div>
-          </motion.div>
+          </div>
         </motion.div>
       </section>
     </>
