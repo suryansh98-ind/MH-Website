@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { fadeInUp, staggerContainer, VIEWPORT } from '../lib/animations'
 
@@ -89,7 +90,15 @@ export default function Footer() {
               Legal
             </h5>
             <ul className="flex flex-col gap-2">
-              {['Privacy Policy', 'Terms of Service', 'Health Information Disclaimer'].map((item) => (
+              <li>
+                <Link
+                  href="/privacy-policy"
+                  className="font-figtree text-[14px] text-[#6b7280] hover:text-primary transition-colors duration-200 leading-[20px]"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              {['Terms of Service', 'Health Information Disclaimer'].map((item) => (
                 <li key={item}>
                   <a
                     href="#"
