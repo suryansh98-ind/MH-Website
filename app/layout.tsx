@@ -24,11 +24,11 @@ const playfairDisplay = Playfair_Display({
 export const metadata: Metadata = {
   title: 'MyHormonz — Hormonal Intelligence on Your Phone',
   description:
-    'Track and understand your hormones with AI-powered insights guided by Dr. Nisha Woods, PhD.',
+    'Track and understand your hormones with AI-powered insights guided by Dr. Nisha Jackson-Woods, Ph.D.',
   openGraph: {
     title: 'MyHormonz — Hormonal Intelligence on Your Phone',
     description:
-      'Track and understand your hormones with AI-powered insights guided by Dr. Nisha Woods, PhD.',
+      'Track and understand your hormones with AI-powered insights guided by Dr. Nisha Jackson-Woods, Ph.D.',
     type: 'website',
   },
 }

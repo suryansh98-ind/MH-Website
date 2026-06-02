@@ -17,7 +17,7 @@ export default function FounderSection() {
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="font-figtree font-semibold text-primary text-[16px] uppercase tracking-[1.4px] text-center"
         >
-          Founder &amp; Wellness Director Of
+          Founder &amp; Wellness Director of
         </motion.p>
 
         {/* Logo + clinic name */}

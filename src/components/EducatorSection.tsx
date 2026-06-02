@@ -15,13 +15,13 @@ const items = [
     icon: ICON_AUTHOR,
     iconSize: { width: 24, height: 12 },
     title: 'Author & Speaker',
-    body: 'Nisha has authored three books on hormone balance and is writing her fourth about sympathetic overdrive and chronic stress.',
+    body: 'Dr. Jackson-Woods has authored three books on hormone balance and is writing her fourth about sympathetic overdrive and chronic stress.',
   },
   {
     icon: ICON_TRAINING,
     iconSize: { width: 21, height: 17 },
     title: 'Wellness Professional Training',
-    body: 'Created the "Healthcare Provider Education Program" and certified hundreds of health professionals, raising hormone care standards.',
+    body: 'She created the "Healthcare Provider Education Program" and certified hundreds of health professionals, raising the standard of hormone care.',
   },
   {
     icon: ICON_RADIO,
@@ -94,7 +94,7 @@ export default function EducatorSection() {
           >
             <YoutubeEmbed
               videoId="ag4fqJR9Xrc"
-              title="Dr. Nisha Woods presenting"
+              title="Dr. Nisha Jackson-Woods presenting"
               className="absolute inset-0"
             />
           </motion.div>

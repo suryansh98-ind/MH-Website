@@ -35,8 +35,8 @@ export default function QuoteSection() {
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
             className="font-junge text-[24px] sm:text-[28px] md:text-[42px] lg:text-[60px] text-primary text-center leading-[32px] sm:leading-[36px] md:leading-[48px] lg:leading-[64px] px-6 sm:px-8 md:px-12"
           >
-            Balanced hormones don't just improve your lifestyle.
-            They change your life
+            Balanced hormones don't just improve how you feel.
+            They transform your life.
           </motion.h2>
 
           {/* Closing quote mark */}
@@ -65,7 +65,7 @@ export default function QuoteSection() {
         >
           <div className="h-px w-10 md:w-16 bg-[#d1d5db]" />
           <span className="font-junge text-[16px] md:text-[18px] text-[#1f2937] text-center whitespace-nowrap">
-            Dr. Nisha Woods, PhD
+            Dr. Nisha Jackson-Woods, Ph.D.
           </span>
           <div className="h-px w-10 md:w-16 bg-[#d1d5db]" />
         </motion.div>

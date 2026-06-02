@@ -98,8 +98,8 @@ export default function WaitlistForm({
                 isDark ? 'text-white/70' : 'text-[#6b7280]'
               }`}
             >
-              First 1000 people get{' '}
-              <span className="font-semibold text-[#e91e63]">1st month free!!</span>
+              Founding waitlist members get{' '}
+              <span className="font-semibold text-[#e91e63]">their first month free.</span>
             </p>
           </>
         )}
@@ -146,7 +146,7 @@ export default function WaitlistForm({
                 isDark ? 'text-white/70' : 'text-[#4b5563]'
               }`}
             >
-              Join 2,000+ others
+              Join 2,000+ already on the waitlist
             </span>
           </div>
         )}
@@ -172,8 +172,8 @@ export default function WaitlistForm({
               isDark ? 'text-white/70' : 'text-[#6b7280]'
             }`}
           >
-            First 1000 people get{' '}
-            <span className="font-semibold text-[#e91e63]">1st month free!!</span>
+            Founding waitlist members get{' '}
+            <span className="font-semibold text-[#e91e63]">their first month free.</span>
           </p>
         </>
       )}
@@ -249,7 +249,7 @@ export default function WaitlistForm({
               isDark ? 'text-white/70' : 'text-[#4b5563]'
             }`}
           >
-            Join 2,000+ others
+            Join 2,000+ already on the waitlist
           </span>
         </div>
       )}

@@ -86,18 +86,18 @@ export default function BeyondClinicSection() {
               variants={fadeInUp}
               className="font-figtree text-[15px] md:text-[16px] text-[#6b7280] leading-[24px] md:leading-[26px] pt-3 md:pt-4"
             >
-              When she's not researching or supporting individuals, Nisha is an avid
-              hiker in the Pacific Northwest. She believes that connection with
-              nature is a fundamental pillar of hormonal health.
+              When she's not researching or supporting individuals, Dr. Jackson-Woods
+              is an avid hiker in the Pacific Northwest. She believes that connection
+              with nature is a fundamental pillar of hormonal health.
             </motion.p>
 
             <motion.p
               variants={fadeInUp}
               className="font-figtree text-[15px] md:text-[16px] text-[#6b7280] leading-[24px] md:leading-[26px]"
             >
-              "I don't just recommend these practices, I live them. From cold
-              plunging in mountain lakes to prioritizing optimal sleep to knowing
-              when to rest your mind next to a mountain lake."
+              "I don't just recommend these practices — I live them. From cold
+              plunging in mountain lakes to prioritizing sleep to knowing when to
+              simply rest."
             </motion.p>
 
             {/* Badges */}

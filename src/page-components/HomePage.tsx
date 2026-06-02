@@ -94,6 +94,7 @@ const processStepsData = [
   { number: 2, title: 'Learn', description: 'Understand how your hormones influence your energy, mood, weight, and sleep.' },
   { number: 3, title: 'Adapt', description: 'Receive insights tailored to your unique hormonal profile to make informed changes.' },
   { number: 4, title: 'Act', description: 'Take informed steps backed by science to work directly with your own health care provider.' },
+  { number: 5, title: 'Optimize', description: 'Sustain energy, clarity, and well-being over the long term.' },
 ]
 
 function ProcessSteps() {
@@ -163,7 +164,7 @@ export default function HomePage() {
               variants={fadeInUp}
               className="font-figtree text-[18px] md:text-[20px] text-[#4b5563] leading-[1.5] tracking-[0.5px] max-w-[512px]"
             >
-              Track and highlight individual hormones, receive educational insights based on your inputs - guided by research, science, and functional trained AI.
+              Track and monitor individual hormones, and receive educational insights based on your inputs — guided by research, science, and functionally trained AI.
             </motion.p>
 
             {/* Waitlist Card */}
@@ -217,7 +218,7 @@ export default function HomePage() {
                 variants={fadeInUp}
                 className="font-figtree text-[18px] md:text-[20px] text-[#4b5563] leading-[28px] tracking-[0.5px] max-w-[672px]"
               >
-                A smarter, simpler way to understand your body—powered by research & science and intelligent technology.
+                A smarter, simpler way to understand your body — powered by research, science, and intelligent technology.
               </motion.p>
             </div>
 
@@ -282,7 +283,7 @@ export default function HomePage() {
               </div>
               <div className="flex-1">
                 <div className="aspect-square rounded-3xl shadow-book overflow-hidden">
-                  <img src={IMG_DR_NISHA} alt="Dr. Nisha Woods" className="w-full h-full object-cover" />
+                  <img src={IMG_DR_NISHA} alt="Dr. Nisha Jackson-Woods" className="w-full h-full object-cover" />
                 </div>
               </div>
               {/* Research Backed badge */}
@@ -311,7 +312,7 @@ export default function HomePage() {
                   Lab reports can feel confusing, overwhelming, or contradictory—especially when symptoms don&apos;t seem to match the numbers.
                 </p>
                 <p className="font-figtree text-[18px] text-[#4b5563] leading-[1.5] tracking-[0.5px]">
-                  &quot;MyHormonz&quot; helps you in what steps you can take to move towards optimal balance combining your hormones and lifestyle habits
+                  &quot;MyHormonz&quot; helps you understand what steps you can take to move towards optimal balance, combining your hormones and lifestyle habits.
                 </p>
               </motion.div>
             </motion.div>
@@ -350,7 +351,7 @@ export default function HomePage() {
             >
               <YoutubeEmbed
                 videoId="ag4fqJR9Xrc"
-                title="Dr. Nisha Woods video"
+                title="Dr. Nisha Jackson-Woods video"
                 className="aspect-video"
               />
             </motion.div>
@@ -424,7 +425,7 @@ export default function HomePage() {
                 <em className="font-medium italic text-[#e91e63]">Before We Launch.</em>
               </h2>
               <p className="font-figtree text-[18px] text-white/70 leading-[1.5] tracking-[0.5px] max-w-[512px]">
-                Join the MyHormonz waitlist now. First 1000 people get first month free!! access when we go live late 2026.
+                Join the MyHormonz waitlist now. Founding waitlist members get their first month free when we go live in late 2026.
               </p>
               <div className="max-w-[480px]">
                 <WaitlistForm variant="dark" compact source="homepage-cta" />
@@ -454,9 +455,9 @@ export default function HomePage() {
             className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12"
           >
             {[
-              { value: '2,000+', label: 'Waitlist Members' },
+              { value: '2,000+', label: 'Early Supporters' },
               { value: 'Late 2026', label: 'Target Launch' },
-              { value: '3 Months', label: 'Free for Founders' },
+              { value: '35+ Years', label: 'of Clinical Experience' },
             ].map((stat) => (
               <motion.div
                 key={stat.label}

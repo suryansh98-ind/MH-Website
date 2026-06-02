@@ -32,7 +32,7 @@ export default function HeroSection() {
             >
               <img
                 src={DR_NISHA}
-                alt="Dr. Nisha Woods, PhD"
+                alt="Dr. Nisha Jackson-Woods, Ph.D."
                 className="w-full h-full object-cover"
               />
             </motion.div>
@@ -62,9 +62,9 @@ export default function HeroSection() {
               className="font-junge text-[32px] sm:text-[36px] md:text-[48px] lg:text-[61px] text-[#1f2937] leading-[1.2]"
             >
               Meet{' '}
-              <span className="text-primary italic">Nisha Woods</span>,
+              <span className="text-primary italic">Dr. Nisha Jackson-Woods</span>,
               <br />
-              PhD.
+              Ph.D.
             </motion.h1>
 
             {/* Description */}
@@ -72,10 +72,9 @@ export default function HeroSection() {
               variants={fadeInUp}
               className="font-figtree text-[16px] md:text-[20px] text-[#6b7280] leading-[1.5] max-w-[560px]"
             >
-              Pioneer in functional medicine, hormone health educator,
-              and founder of OnePeak Medical. Dr. Nisha Woods is dedicated to
-              transforming healthcare by addressing underlying lifestyle factors,
-              not just the symptoms.
+              A pioneer in functional medicine, hormone health educator, and founder
+              of OnePeak Medical, Dr. Nisha Jackson-Woods is dedicated to transforming
+              healthcare by addressing underlying lifestyle factors, not just the symptoms.
             </motion.p>
 
             {/* CTAs */}

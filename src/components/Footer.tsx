@@ -6,11 +6,18 @@ import { fadeInUp, staggerContainer, VIEWPORT } from '../lib/animations'
 
 const LOGO_ICON = '/assets/logo-icon.png'
 const INSTAGRAM_ICON = '/assets/icon-instagram.svg'
-const LINKEDIN_ICON = '/assets/icon-linkedin.svg'
+const YOUTUBE_ICON = '/assets/icon-youtube.svg'
+
+const INSTAGRAM_URL = 'https://www.instagram.com/myhormonz/?utm_source=ig_web_button_share_sheet'
+const YOUTUBE_URL = 'https://www.youtube.com/@NishaJackson-mf5yu'
 
 function InstagramIcon() {
   return (
-    <motion.div
+    <motion.a
+      href={INSTAGRAM_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="MyHormonz on Instagram"
       whileHover={{ scale: 1.15, y: -2 }}
       className="relative w-8 h-8 rounded-lg overflow-hidden cursor-pointer"
       style={{
@@ -19,18 +26,22 @@ function InstagramIcon() {
       }}
     >
       <img src={INSTAGRAM_ICON} alt="Instagram" className="absolute inset-[18.75%] w-[62.5%] h-[62.5%]" />
-    </motion.div>
+    </motion.a>
   )
 }
 
-function LinkedInIcon() {
+function YoutubeIcon() {
   return (
-    <motion.div
+    <motion.a
+      href={YOUTUBE_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Dr. Nisha Jackson-Woods on YouTube"
       whileHover={{ scale: 1.15, y: -2 }}
-      className="relative w-8 h-8 rounded-full overflow-hidden cursor-pointer bg-[#1275b1] flex items-center justify-center"
+      className="relative w-8 h-8 rounded-lg overflow-hidden cursor-pointer bg-[#FF0000] flex items-center justify-center"
     >
-      <img src={LINKEDIN_ICON} alt="LinkedIn" className="w-[50%] h-[50%]" />
-    </motion.div>
+      <img src={YOUTUBE_ICON} alt="YouTube" className="w-[55%] h-[55%] ml-[2px]" />
+    </motion.a>
   )
 }
 
@@ -80,7 +91,7 @@ export default function Footer() {
             </h5>
             <div className="flex items-center gap-2">
               <InstagramIcon />
-              <LinkedInIcon />
+              <YoutubeIcon />
             </div>
           </motion.div>
 
@@ -98,16 +109,6 @@ export default function Footer() {
                   Privacy Policy
                 </Link>
               </li>
-              {['Terms of Service', 'Health Information Disclaimer'].map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
-                    className="font-figtree text-[14px] text-[#6b7280] hover:text-primary transition-colors duration-200 leading-[20px]"
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
             </ul>
           </motion.div>
         </motion.div>

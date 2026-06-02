@@ -223,7 +223,7 @@ export default function HowItWorksPage() {
               </motion.button>
             </div>
             <p className="font-figtree text-[12px] text-[#4b5563] italic tracking-[0.5px] text-center">
-              Disclaimer - Insights provided are educational and not medical advice.
+              Disclaimer: Insights provided are educational and not medical advice.
             </p>
           </motion.div>
         </motion.div>
@@ -314,7 +314,7 @@ export default function HowItWorksPage() {
             <FeatureCard
               icon={ICON_HORMONE}
               title="Hormone & Lab Intelligence"
-              description="Stop guessing what your numbers mean. We translate complex data into clear 'wellness insights."
+              description="Stop guessing what your numbers mean. We translate complex data into clear wellness insights."
               items={['Lab Result Insights', 'Holistic Hormonal Wellness']}
             />
             <FeatureCard
@@ -382,7 +382,7 @@ export default function HowItWorksPage() {
             variants={fadeInUp}
             className="font-junge font-bold text-[18px] md:text-[20px] text-[#e91e63] italic text-center leading-[28px]"
           >
-            This is your path to Live Personally Optimized.
+            This is your path to living personally optimized.
           </motion.p>
         </motion.div>
       </section>
@@ -404,7 +404,7 @@ export default function HowItWorksPage() {
               variants={fadeInUp}
               className="font-junge font-semibold text-[32px] md:text-[48px] text-[#1a1a2e] text-center leading-[1]"
             >
-              Your journey to Optimization
+              Your journey to optimization
             </motion.h2>
           </motion.div>
 
@@ -447,7 +447,7 @@ export default function HowItWorksPage() {
             <WhyCard
               icon={ICON_CLARITY}
               title="Clarity Over Complexity"
-              description="We distill confusing complex terminology into plain language so you understand exactly your wellness data."
+              description="We distill complex terminology into plain language so you can clearly understand your wellness data."
             />
             <WhyCard
               icon={ICON_BODY}
@@ -477,7 +477,7 @@ export default function HowItWorksPage() {
             <div className="aspect-square rounded-[32px] overflow-hidden shadow-hero">
               <img
                 src={DR_NISHA_HIW}
-                alt="Dr. Nisha Woods"
+                alt="Dr. Nisha Jackson-Woods"
                 className="w-full h-full object-cover object-top"
               />
             </div>
@@ -502,16 +502,16 @@ export default function HowItWorksPage() {
 
             <div className="flex flex-col gap-6">
               <p className="font-figtree text-[16px] md:text-[18px] text-[#4b5563] leading-[29px]">
-                Created by Dr. Nisha Jackson-Woods, Ph.D., NP, a nationally
+                Created by Dr. Nisha Jackson-Woods, Ph.D., a nationally
                 recognized hormone expert with over 35 years of clinical
                 experience, MyHormonz brings science-backed insights directly to
                 your phone.
               </p>
               <p className="font-figtree text-[16px] md:text-[18px] text-[#4b5563] leading-[29px]">
-                Our mission is to eliminate the guesswork about what hormones do in
-                the human body and how to work with your healthcare provider to get
-                the most optimal levels and balance with all your hormones, brain,
-                body and longevity.
+                Our mission is to eliminate the guesswork around what hormones do in
+                the human body. We help you work with your healthcare provider to
+                achieve optimal hormonal balance — supporting your brain, body, and
+                long-term vitality.
               </p>
             </div>
 

@@ -56,7 +56,7 @@ export default function PioneerSection() {
               className="flex flex-col gap-6 flex-1"
             >
               <motion.p variants={fadeInUp} className="font-figtree text-[15px] md:text-[16px] text-[#6b7280] leading-[24px] md:leading-[26px]">
-                Nisha Woods began her career frustrated by the limitations of
+                Dr. Jackson-Woods began her career frustrated by the limitations of
                 conventional healthcare approaches. She noticed that many individuals,
                 especially women, were being dismissed with "normal" lab results despite
                 suffering from debilitating fatigue, brain fog, and weight gain.
@@ -64,7 +64,7 @@ export default function PioneerSection() {
               <motion.p variants={fadeInUp} className="font-figtree text-[15px] md:text-[16px] text-[#6b7280] leading-[24px] md:leading-[26px]">
                 Driven to find answers, she pursued advanced degrees in
                 functional wellness and hormone health. Her research revealed a
-                critical gap in how hormonal health is traditionally evaluated
+                critical gap in how hormonal health is traditionally evaluated,
                 focusing on disease markers rather than optimization markers.
               </motion.p>
             </motion.div>
@@ -78,8 +78,8 @@ export default function PioneerSection() {
               className="flex flex-col gap-6 flex-1"
             >
               <motion.p variants={fadeInRight} className="font-figtree text-[15px] md:text-[16px] text-[#6b7280] leading-[24px] md:leading-[26px]">
-                Today, Dr. Woods is recognized globally for her personalized
-                approaches that combine cutting edge assessments with holistic
+                Today, Dr. Jackson-Woods is recognized globally for her personalized
+                approaches that combine cutting-edge assessments with holistic
                 lifestyle guidance. She doesn't just support individuals; she
                 empowers them to understand their own biology.
               </motion.p>
