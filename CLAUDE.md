@@ -1,7 +1,10 @@
 # MyHormonz Website — CLAUDE.md
 
 ## Project Overview
-Multi-page marketing website for **MyHormonz**, featuring Dr. Nisha Woods, PhD. Built from Figma designs with three routes: Home, About, and How It Works. Migrated from Vite + React Router to **Next.js 14 (App Router)** for improved SEO and static prerendering.
+Multi-page marketing website for **MyHormonz**, featuring **Dr. Nisha Jackson-Woods, Ph.D.** Built from Figma designs with four routes: Home, About, How It Works, and Privacy Policy. Migrated from Vite + React Router to **Next.js 14 (App Router)** for improved SEO and static prerendering. Live on Vercel from the `nextjs-migration` branch.
+
+## Name Convention
+**Sitewide standard:** "Dr. Nisha Jackson-Woods, Ph.D." for formal mentions, image alts, attributions, and metadata. Body text after the first mention may use "Dr. Jackson-Woods" or "she." Navbar uses "About Nisha" (casual first-name label is intentional).
 
 ## Tech Stack
 - **Next.js 14** (App Router) — SSG/SSR, file-based routing, per-page metadata
@@ -37,12 +40,15 @@ app/
     page.tsx                  # Route: /about — exports metadata, renders <AboutPageClient />
   how-it-works/
     page.tsx                  # Route: /how-it-works — exports metadata, renders <HowItWorksPageClient />
+  privacy-policy/
+    page.tsx                  # Route: /privacy-policy — exports metadata, renders <PrivacyPolicyPageClient />
 
 src/
   page-components/
     HomePage.tsx              # 'use client' — landing page (hero, features, sneak peek, CTA)
-    AboutPage.tsx             # 'use client' — about Dr. Nisha (bio, publications, mission)
+    AboutPage.tsx             # 'use client' — about Dr. Nisha Jackson-Woods (bio, publications, mission)
     HowItWorksPage.tsx        # 'use client' — 7 sections explaining the app
+    PrivacyPolicyPage.tsx     # 'use client' — full privacy policy + US Consumer Health Data Notice
   components/
     Navbar.tsx                # 'use client' — sticky glassmorphism navbar, next/link
     Footer.tsx                # 'use client' — 4-column footer, next/link
@@ -74,9 +80,10 @@ public/
 
 | Path | Page | Description |
 |------|------|-------------|
-| `/` | `HomePage` | Landing page with hero, features, sneak peek, CTA |
-| `/about` | `AboutPage` | About Dr. Nisha — bio, publications, mission |
+| `/` | `HomePage` | Landing page with hero, features, sneak peek, 5-step Process, CTA, stats |
+| `/about` | `AboutPage` | About Dr. Nisha Jackson-Woods — bio, publications, mission |
 | `/how-it-works` | `HowItWorksPage` | How the app works — 7 sections |
+| `/privacy-policy` | `PrivacyPolicyPage` | Full privacy policy + US Consumer Health Data Notice appendix |
 
 - `app/layout.tsx` renders Navbar, Footer, WaitlistModal, and CookieConsent on every page
 - Page files in `app/` are **server components** — they export `metadata` and render a `'use client'` page component
@@ -178,6 +185,22 @@ Both the **"The Process"** section (`HomePage` → `ProcessSteps`) and the **"Yo
 - Form component: `WaitlistForm` accepts `variant="light" | "dark"`, optional `compact` boolean, and a `source` string (e.g. `"homepage-hero"`) for attribution.
 - Submissions go to a Google Sheets Web App endpoint via `src/lib/waitlist.ts`.
 - Global popup: any component can call `useWaitlist().openWaitlist()` to trigger `WaitlistModal`.
+- Copy convention: pre-launch, never imply users/customers exist. Use **"Founding waitlist members get their first month free"** for the perk and **"Join 2,000+ already on the waitlist"** for social proof.
+
+## Process / Journey Steps
+The 5-step user journey is consistent between the homepage **"The Process"** section and the how-it-works **"Your journey to optimization"** section:
+1. **Notice** — track symptoms and gather lab data
+2. **Learn** — understand hormone influence
+3. **Adapt** — receive tailored insights
+4. **Act** — take informed steps with a provider
+5. **Optimize** — sustain energy, clarity, and well-being
+
+Keep these in sync if either set changes.
+
+## Footer
+- **Legal:** only "Privacy Policy" (links to `/privacy-policy`). Terms of Service and Health Information Disclaimer have been removed until written.
+- **Social icons:** Instagram and YouTube only. Both are clickable `<motion.a>` elements with `target="_blank"` and `rel="noopener noreferrer"`. URLs live as module-level constants at the top of `Footer.tsx` (`INSTAGRAM_URL`, `YOUTUBE_URL`).
+- YouTube icon is a simple white play triangle (`/assets/icon-youtube.svg`) on a red rounded-square background.
 
 ## Tailwind Config (`tailwind.config.js`)
 - Content paths include `./app/**/*.{js,ts,jsx,tsx}` and `./src/page-components/**/*.{js,ts,jsx,tsx}`
