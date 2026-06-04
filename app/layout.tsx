@@ -22,18 +22,18 @@ const playfairDisplay = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'MyHormonz — Hormonal Intelligence on Your Phone',
+  title: 'MyHormonz — Hormonal Intelligence on Your Phone for Everyone',
   description:
-    'Track and understand your hormones with AI-powered insights guided by Dr. Nisha Jackson-Woods, Ph.D.',
+    'Track and understand your hormones with AI-powered insights guided by Dr. Nisha Jackson-Woods, Ph.D. — backed by 35+ years of clinical research.',
   openGraph: {
-    title: 'MyHormonz — Hormonal Intelligence on Your Phone',
+    title: 'MyHormonz — Hormonal Intelligence on Your Phone for Everyone',
     description:
-      'Track and understand your hormones with AI-powered insights guided by Dr. Nisha Jackson-Woods, Ph.D.',
+      'Track and understand your hormones with AI-powered insights guided by Dr. Nisha Jackson-Woods, Ph.D. — backed by 35+ years of clinical research.',
     type: 'website',
     siteName: 'MyHormonz',
     images: [
       {
-        url: '/og-image.png',
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'MyHormonz — Hormonal Intelligence on your phone for everyone',
@@ -42,10 +42,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'MyHormonz — Hormonal Intelligence on Your Phone',
+    title: 'MyHormonz — Hormonal Intelligence on Your Phone for Everyone',
     description:
-      'Track and understand your hormones with AI-powered insights guided by Dr. Nisha Jackson-Woods, Ph.D.',
-    images: ['/og-image.png'],
+      'Track and understand your hormones with AI-powered insights guided by Dr. Nisha Jackson-Woods, Ph.D. — backed by 35+ years of clinical research.',
+    images: ['/og-image.jpg'],
   },
 }
 
