@@ -2,12 +2,14 @@
 
 import { motion } from 'framer-motion'
 import { EASE, staggerContainer, fadeInUp } from '../lib/animations'
+import { useWaitlist } from '../contexts/WaitlistContext'
 
 const DR_NISHA = '/assets/dr-nisha-hero.png'
 const ICON_BADGE = '/assets/icon-badge.svg'
 const ICON_ARROW = '/assets/icon-arrow.svg'
 
 export default function HeroSection() {
+  const { openWaitlist } = useWaitlist()
   return (
     <section className="relative min-h-0 lg:min-h-[888px] bg-white overflow-hidden flex items-center pt-16 md:pt-20">
       {/* Subtle gradient overlay */}
@@ -80,6 +82,7 @@ export default function HeroSection() {
             {/* CTAs */}
             <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 md:gap-4 pt-2">
               <motion.button
+                onClick={openWaitlist}
                 whileHover={{ scale: 1.04, boxShadow: '0 16px 32px -8px rgba(202,22,112,0.45)' }}
                 whileTap={{ scale: 0.97 }}
                 className="flex items-center justify-center gap-2 bg-primary text-white font-figtree font-semibold text-[14px] md:text-[16px] px-6 md:px-8 py-3 md:py-[15px] rounded-full shadow-card transition-all duration-200"

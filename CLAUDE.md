@@ -180,6 +180,10 @@ Both the **"The Process"** section (`HomePage` → `ProcessSteps`) and the **"Yo
 - **Static assets** (phone mockups, illustrations, icons, photos): Stored in `public/assets/` and referenced via `/assets/filename.png` (or `.svg`).
 - **Figma MCP assets** (if re-fetching): File key `XmwoM03rktuP9LrowfejYM`, Node ID `4184:14901`. URLs expire after 7 days.
 - **Video embeds**: `EducatorSection` and the HomePage video block use `<YoutubeEmbed videoId="ag4fqJR9Xrc" />` — gated by cookie consent.
+- **Favicon / app icons**: Next.js auto-detects icon files placed directly in `app/`:
+  - `app/icon.png` (512×512) — browser tab favicon
+  - `app/apple-icon.png` (180×180) — iOS home-screen icon
+  Do **not** add manual `<link rel="icon">` tags in `layout.tsx` — Next.js generates them automatically. To replace, drop new files at these exact paths and rebuild.
 
 ## Waitlist
 - Form component: `WaitlistForm` accepts `variant="light" | "dark"`, optional `compact` boolean, and a `source` string (e.g. `"homepage-hero"`) for attribution.

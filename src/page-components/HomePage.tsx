@@ -287,9 +287,9 @@ export default function HomePage() {
                 </div>
               </div>
               {/* Research Backed badge */}
-              <div className="absolute bottom-14 right-0 md:right-[-12px] bg-white border border-[#f3f4f6] rounded-2xl px-4 py-3 flex items-center gap-3 shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)]">
-                <img src={ICON_RESEARCH} alt="" className="w-[22px] h-[21px]" />
-                <span className="font-junge font-extrabold text-[18px] text-[#1a1a2e]">Research Backed</span>
+              <div className="absolute bottom-14 right-0 md:right-[-12px] bg-white border border-[#f3f4f6] rounded-xl md:rounded-2xl px-2.5 py-1.5 sm:px-3 sm:py-2 md:px-4 md:py-3 flex items-center gap-1.5 sm:gap-2 md:gap-3 shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)]">
+                <img src={ICON_RESEARCH} alt="" className="w-[14px] h-[13px] sm:w-[18px] sm:h-[17px] md:w-[22px] md:h-[21px]" />
+                <span className="font-junge font-extrabold text-[12px] sm:text-[14px] md:text-[18px] text-[#1a1a2e] whitespace-nowrap">Research Backed</span>
               </div>
             </motion.div>
 
