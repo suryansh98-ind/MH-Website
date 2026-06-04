@@ -30,6 +30,22 @@ export const metadata: Metadata = {
     description:
       'Track and understand your hormones with AI-powered insights guided by Dr. Nisha Jackson-Woods, Ph.D.',
     type: 'website',
+    siteName: 'MyHormonz',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'MyHormonz — Hormonal Intelligence on your phone for everyone',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'MyHormonz — Hormonal Intelligence on Your Phone',
+    description:
+      'Track and understand your hormones with AI-powered insights guided by Dr. Nisha Jackson-Woods, Ph.D.',
+    images: ['/og-image.png'],
   },
 }
 
