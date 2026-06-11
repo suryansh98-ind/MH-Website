@@ -314,7 +314,7 @@ export default function HowItWorksPage() {
             <FeatureCard
               icon={ICON_HORMONE}
               title="Hormone & Lab Intelligence"
-              description="Stop guessing what your numbers mean. We translate complex data into clear wellness insights."
+              description="Get optimized by understanding how hormones work together — it's not just a lab number, it's the balance of the hormones that brings you into optimal wellness. Learn the insights into this."
               items={['Lab Result Insights', 'Holistic Hormonal Wellness']}
             />
             <FeatureCard
@@ -326,6 +326,8 @@ export default function HowItWorksPage() {
                 'Macro Tracking Guidance',
                 'Cycle-Synced Performance',
                 'Selfie-Based Body Fat Estimates',
+                'Hydration Tracking',
+                'Step Tracking',
               ]}
             />
             <FeatureCard

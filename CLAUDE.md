@@ -1,7 +1,7 @@
 # MyHormonz Website — CLAUDE.md
 
 ## Project Overview
-Multi-page marketing website for **MyHormonz**, featuring **Dr. Nisha Jackson-Woods, Ph.D.** Built from Figma designs with four routes: Home, About, How It Works, and Privacy Policy. Migrated from Vite + React Router to **Next.js 14 (App Router)** for improved SEO and static prerendering. Live on Vercel from the `nextjs-migration` branch.
+Multi-page marketing website for **MyHormonz**, featuring **Dr. Nisha Jackson-Woods, Ph.D.** Built from Figma designs with four routes: Home, About, How It Works, and Privacy Policy. Migrated from Vite + React Router to **Next.js 14 (App Router)** for improved SEO and static prerendering. Live on Vercel from the `main` branch (push to `main` = auto-deploy to production).
 
 ## Name Convention
 **Sitewide standard:** "Dr. Nisha Jackson-Woods, Ph.D." for formal mentions, image alts, attributions, and metadata. Body text after the first mention may use "Dr. Jackson-Woods" or "she." Navbar uses "About Nisha" (casual first-name label is intentional).
@@ -54,7 +54,7 @@ src/
     Footer.tsx                # 'use client' — 4-column footer, next/link
     WaitlistForm.tsx          # 'use client' — inline email form (light/dark variants)
     WaitlistModal.tsx         # 'use client' — popup dialog via WaitlistContext
-    PhoneCarousel.tsx         # 'use client' — coverflow on mobile, 3-col on desktop
+    PhoneCarousel.tsx         # 'use client' — horizontal carousel (8 phones), shared mobile/desktop
     CookieConsent.tsx         # 'use client' — slide-up banner (Accept/Reject)
     YoutubeEmbed.tsx          # 'use client' — iframe gated by cookie consent
     HeroSection.tsx           # About page: Dr. Nisha portrait + bio
@@ -178,12 +178,33 @@ Both the **"The Process"** section (`HomePage` → `ProcessSteps`) and the **"Yo
 
 ## Image Assets
 - **Static assets** (phone mockups, illustrations, icons, photos): Stored in `public/assets/` and referenced via `/assets/filename.png` (or `.svg`).
+- **Phone mockups**: All must use **iPhone 15/16 aspect ratio (~0.508, ~946×1864 source)**. Use `sips -Z <max-dim>` (not `sips -z H W`) to preserve aspect when resizing — forcing different dimensions distorts the screen.
 - **Figma MCP assets** (if re-fetching): File key `XmwoM03rktuP9LrowfejYM`, Node ID `4184:14901`. URLs expire after 7 days.
 - **Video embeds**: `EducatorSection` and the HomePage video block use `<YoutubeEmbed videoId="ag4fqJR9Xrc" />` — gated by cookie consent.
 - **Favicon / app icons**: Next.js auto-detects icon files placed directly in `app/`:
   - `app/icon.png` (512×512) — browser tab favicon
   - `app/apple-icon.png` (180×180) — iOS home-screen icon
   Do **not** add manual `<link rel="icon">` tags in `layout.tsx` — Next.js generates them automatically. To replace, drop new files at these exact paths and rebuild.
+
+## SEO / Social
+- **OG image**: `public/og-image.jpg` (1200×630, JPEG ≤ 600 KB so WhatsApp accepts it). Referenced from `openGraph.images` and `twitter.images` in `app/layout.tsx`.
+- **Title length target**: 50–60 chars. **Description length target**: 110–160 chars. Below those, opengraph.xyz flags as suboptimal.
+- **Sitemap**: `app/sitemap.ts` — Next.js generates `/sitemap.xml` from this. Add new routes here.
+- **Robots**: `app/robots.ts` — generates `/robots.txt`. Allows all, points to sitemap, disallows `/api/` and `/_next/`.
+- **Base URL** (used in `sitemap.ts` and `robots.ts`): `https://myhormonz.com`. Update if the domain changes.
+- **Vercel config**: `vercel.json` sets `framework: "nextjs"` so Vercel always uses the Next.js preset (avoids the old Vite leftover settings interfering).
+
+## PhoneCarousel (`src/components/PhoneCarousel.tsx`)
+Used on the homepage sneak peek section to showcase **8 app screens** in a horizontal scrolling carousel.
+
+- **Layout**: shared between mobile and desktop — both use `overflow-x-auto snap-x snap-mandatory` so users can swipe/scroll. Desktop gets prev/next arrow buttons (◀ / ▶); mobile gets touch swipe only.
+- **Active state**: the phone closest to viewport center is the "active" one. Active phone scales up (1.1× desktop / 1.15× mobile) with a 0.45s cubic-bezier transition. All others stay at scale 1.0. The active phone's label also flips to pink + semibold (`text-[#e91e63] font-semibold`) with a 0.3s color transition.
+- **Centered binary scaling**: scaling is binary, not a gradient — only ONE phone (closest to center) scales up at a time. Implemented via `closestIndex` in `updateScales`.
+- **Fade mask edges**: `mask-image: linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%)` on the scroll container fades phones into the background at the left/right edges instead of hard-clipping. Both `maskImage` and `WebkitMaskImage` are required.
+- **Top padding** (`pt-16`) on the scroll container reserves room for the scaled-up phone to grow upward without being clipped.
+- **Arrow scroll step**: one phone per click — `el.scrollBy({ left: phoneWidth + gap })`. Don't multiply.
+- **No hover effect**: phone wrappers are plain `<div>` (not `<motion.div>` with `whileHover`) — hover lift conflicts with the "centered = active" mental model.
+- **Phones array**: in render order, with file paths and labels. The middle/featured phone is not hard-coded; whichever is centered gets the active style.
 
 ## Waitlist
 - Form component: `WaitlistForm` accepts `variant="light" | "dark"`, optional `compact` boolean, and a `source` string (e.g. `"homepage-hero"`) for attribution.
@@ -224,3 +245,31 @@ Keep these in sync if either set changes.
 - Smooth scroll to anchor IDs for in-page navigation: `element.scrollIntoView({ behavior: 'smooth' })`.
 - Horizontal marquees (e.g. `HowItWorksPage` concerns strip): triplicate the source list and animate `x: ['0%', '-33.333%']` for a seamless loop.
 - Responsive typography for large headings: `text-[32px] sm:text-[44px] md:text-[56px] lg:text-[64px] xl:text-[72px]`.
+
+## Layout alignment convention
+
+To keep navbar and section content on the same vertical guide at every viewport width, use this nesting pattern (padding on outer wrapper, max-width on inner div):
+
+```tsx
+// ✅ Correct — navbar / section both use this shape
+<nav className="px-4 md:px-8 lg:px-20">
+  <div className="max-w-[1280px] mx-auto ...">{children}</div>
+</nav>
+
+// ❌ Wrong — padding inside the max-w container offsets content from sections
+<nav>
+  <div className="max-w-[1280px] mx-auto px-4 md:px-8 lg:px-20">...</div>
+</nav>
+```
+
+When viewport > 1280 + 160 px, the second form pushes content further right than the first because `max-w` + `mx-auto` centers the box, then padding eats into that centered box. Always put padding on the outer element (the full-bleed wrapper).
+
+## Hero spacing (HomePage)
+
+The hero section uses **asymmetric padding** so the LAUNCHING badge has breathing room from the fixed navbar:
+
+```tsx
+className="... pt-28 md:pt-36 pb-16 md:pb-24 ..."
+```
+
+The inner stagger container uses `gap-6` (not `gap-8`) so the LAUNCHING badge sits visually close to the heading. Keep these together — increasing the gap loosens the vertical rhythm.

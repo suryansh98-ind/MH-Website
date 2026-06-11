@@ -127,7 +127,7 @@ export default function HomePage() {
     <>
       {/* ─── Section 1: Hero ──────────────────────────────────────────── */}
       <section
-        className="min-h-[60vh] md:min-h-[70vh] flex items-center px-4 md:px-8 lg:px-20 py-16 md:py-24 overflow-hidden"
+        className="min-h-[60vh] md:min-h-[70vh] flex items-center px-4 md:px-8 lg:px-20 pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden"
         style={{
           background: 'radial-gradient(ellipse 900px 800px at 70% 30%, rgba(233,30,99,0.06) 0%, rgba(233,30,99,0) 70%), linear-gradient(to bottom, #ffffff 0%, #fffdf9 100%)',
         }}
@@ -138,7 +138,7 @@ export default function HomePage() {
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
-            className="flex flex-col gap-8 flex-1"
+            className="flex flex-col gap-6 flex-1"
           >
             {/* Badge */}
             <motion.div variants={fadeInUp}>
@@ -183,7 +183,7 @@ export default function HomePage() {
             transition={{ duration: 0.8, ease: EASE, delay: 0.3 }}
             className="flex-1 flex justify-center lg:justify-end"
           >
-            <div className="relative w-[280px] sm:w-[340px] md:w-[380px] lg:w-[420px]">
+            <div className="relative w-[220px] sm:w-[260px] md:w-[280px] lg:w-[300px] xl:w-[320px] lg:mr-12 xl:mr-20">
               {/* Phone blur glow */}
               <div className="absolute -inset-16 bg-[rgba(233,30,99,0.06)] rounded-full blur-[50px]" />
               <img

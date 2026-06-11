@@ -19,9 +19,9 @@ export default function Navbar() {
   return (
     <motion.nav
       style={{ boxShadow: shadow, backgroundColor: bg }}
-      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b border-[#f3f4f6]"
+      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b border-[#f3f4f6] px-4 md:px-8 lg:px-20"
     >
-      <div className="max-w-[1280px] mx-auto px-4 md:px-8 h-16 md:h-20 flex items-center justify-between">
+      <div className="max-w-[1280px] mx-auto h-16 md:h-20 flex items-center justify-between">
         {/* Logo */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
