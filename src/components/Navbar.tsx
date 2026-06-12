@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -29,7 +30,7 @@ export default function Navbar() {
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
           <Link href="/" className="flex items-center gap-2 no-underline">
-            <img src={LOGO_ICON} alt="MyHormonz" className="h-8 md:h-10 w-auto" />
+            <Image src={LOGO_ICON} alt="MyHormonz" width={1050} height={1040} priority sizes="40px" className="h-8 md:h-10 w-auto" />
             <span className="font-junge text-[22px] md:text-[28px] text-[#1f2937] leading-none whitespace-nowrap">
               MyHormonz
             </span>

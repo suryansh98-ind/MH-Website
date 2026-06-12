@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, scaleIn, VIEWPORT, EASE } from '../lib/animations'
 import WaitlistForm from '../components/WaitlistForm'
@@ -186,9 +187,13 @@ export default function HomePage() {
             <div className="relative w-[220px] sm:w-[260px] md:w-[280px] lg:w-[300px] xl:w-[320px] lg:mr-12 xl:mr-20">
               {/* Phone blur glow */}
               <div className="absolute -inset-16 bg-[rgba(233,30,99,0.06)] rounded-full blur-[50px]" />
-              <img
+              <Image
                 src="/assets/phone-hero.png"
                 alt="Hormones app screen"
+                width={944}
+                height={1860}
+                priority
+                sizes="(max-width: 640px) 220px, (max-width: 768px) 260px, (max-width: 1024px) 280px, (max-width: 1280px) 300px, 320px"
                 className="relative w-full h-auto object-contain"
               />
             </div>
@@ -278,12 +283,12 @@ export default function HomePage() {
             <motion.div variants={fadeInLeft} className="flex-1 flex gap-4 relative">
               <div className="flex-1 pt-20">
                 <div className="aspect-square rounded-3xl shadow-book overflow-hidden">
-                  <img src={IMG_LAB_EQUIP} alt="Lab equipment" className="w-full h-full object-cover" />
+                  <Image src={IMG_LAB_EQUIP} alt="Lab equipment" width={512} height={512} sizes="(max-width: 1024px) 100vw, 500px" className="w-full h-full object-cover" />
                 </div>
               </div>
               <div className="flex-1">
                 <div className="aspect-square rounded-3xl shadow-book overflow-hidden">
-                  <img src={IMG_DR_NISHA} alt="Dr. Nisha Jackson-Woods" className="w-full h-full object-cover" />
+                  <Image src={IMG_DR_NISHA} alt="Dr. Nisha Jackson-Woods" width={368} height={552} sizes="(max-width: 1024px) 100vw, 500px" className="w-full h-full object-cover" />
                 </div>
               </div>
               {/* Research Backed badge */}
@@ -392,12 +397,12 @@ export default function HomePage() {
             >
               <div className="flex-1 max-w-[276px] pt-6 md:pt-12">
                 <div className="aspect-[276/400] rounded-3xl shadow-hero overflow-hidden">
-                  <img src={IMG_MINDFULNESS} alt="Mindfulness" className="w-full h-full object-cover" />
+                  <Image src={IMG_MINDFULNESS} alt="Mindfulness" width={541} height={812} sizes="(max-width: 1024px) 50vw, 276px" className="w-full h-full object-cover" />
                 </div>
               </div>
               <div className="flex-1 max-w-[276px]">
                 <div className="aspect-[276/400] rounded-3xl shadow-hero overflow-hidden">
-                  <img src={IMG_WELLNESS} alt="Wellness" className="w-full h-full object-cover" />
+                  <Image src={IMG_WELLNESS} alt="Wellness" width={521} height={811} sizes="(max-width: 1024px) 50vw, 276px" className="w-full h-full object-cover" />
                 </div>
               </div>
             </motion.div>
@@ -434,9 +439,12 @@ export default function HomePage() {
 
             {/* Right — Illustration */}
             <div className="flex-1 relative z-10 hidden lg:flex items-center justify-center">
-              <img
+              <Image
                 src="/assets/cta-illustration.png"
                 alt="Woman interacting with phone app"
+                width={976}
+                height={764}
+                sizes="488px"
                 className="w-full max-w-[488px] h-auto object-contain"
               />
             </div>

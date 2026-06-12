@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { fadeInLeft, fadeInRight, staggerContainer, fadeInUp, VIEWPORT } from '../lib/animations'
 
@@ -34,9 +35,12 @@ export default function BeyondClinicSection() {
               transition={{ duration: 0.35 }}
               className="flex-1 h-40 sm:h-44 md:h-48 lg:h-56 rounded-2xl md:rounded-3xl overflow-hidden"
             >
-              <img
+              <Image
                 src={YOGA_IMG}
                 alt="Yoga and mindfulness"
+                width={504}
+                height={504}
+                sizes="(max-width: 768px) 50vw, 300px"
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
               />
             </motion.div>
@@ -51,9 +55,12 @@ export default function BeyondClinicSection() {
                 transition={{ duration: 0.35 }}
                 className="h-40 sm:h-44 md:h-48 lg:h-56 rounded-2xl md:rounded-3xl overflow-hidden"
               >
-                <img
+                <Image
                   src={HIKING_IMG}
                   alt="Hiking in nature"
+                  width={504}
+                  height={504}
+                  sizes="(max-width: 768px) 50vw, 300px"
                   className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                 />
               </motion.div>

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { fadeInUp, staggerContainer, scaleIn, VIEWPORT, EASE } from '../lib/animations'
 import { useWaitlist } from '../contexts/WaitlistContext'
@@ -477,9 +478,12 @@ export default function HowItWorksPage() {
           {/* Photo */}
           <motion.div variants={scaleIn} className="relative flex-1 w-full max-w-[568px]">
             <div className="aspect-square rounded-[32px] overflow-hidden shadow-hero">
-              <img
+              <Image
                 src={DR_NISHA_HIW}
                 alt="Dr. Nisha Jackson-Woods"
+                width={720}
+                height={1080}
+                sizes="(max-width: 1024px) 100vw, 568px"
                 className="w-full h-full object-cover object-top"
               />
             </div>

@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { fadeInUp, VIEWPORT } from '../lib/animations'
 
@@ -28,7 +29,7 @@ export default function FounderSection() {
           viewport={VIEWPORT}
           className="flex flex-col items-center gap-3 opacity-70"
         >
-          <img src={ONEPEAK_LOGO} alt="OnePeak Medical" className="h-14 w-auto" />
+          <Image src={ONEPEAK_LOGO} alt="OnePeak Medical" width={2542} height={898} sizes="160px" className="h-14 w-auto" />
           <div className="flex flex-col items-center gap-0.5">
             <span className="font-figtree text-[18px] text-[#1f2937]">OnePeak Medical</span>
             <span className="font-figtree text-[12px] text-[#6b7280]">Founder</span>

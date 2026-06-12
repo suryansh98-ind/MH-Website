@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { EASE, staggerContainer, fadeInUp } from '../lib/animations'
 import { useWaitlist } from '../contexts/WaitlistContext'
@@ -32,9 +33,13 @@ export default function HeroSection() {
               transition={{ duration: 0.85, ease: EASE }}
               className="relative rounded-3xl overflow-hidden shadow-hero w-full max-w-[380px] md:max-w-[420px] lg:w-[469px] lg:max-w-none aspect-[469/630] mx-auto lg:mx-0"
             >
-              <img
+              <Image
                 src={DR_NISHA}
                 alt="Dr. Nisha Jackson-Woods, Ph.D."
+                width={339}
+                height={460}
+                priority
+                sizes="(max-width: 768px) 380px, (max-width: 1024px) 420px, 469px"
                 className="w-full h-full object-cover"
               />
             </motion.div>

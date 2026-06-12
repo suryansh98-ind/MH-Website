@@ -1,15 +1,14 @@
 'use client'
 
 import { useState, useRef, useEffect, useCallback } from 'react'
-import { motion } from 'framer-motion'
-import { EASE } from '../lib/animations'
+import Image from 'next/image'
 
 const phones = [
-  { src: '/assets/phone-track-mood.png', alt: 'Track Mood screen', label: 'Track Mood' },
   { src: '/assets/phone-upload-lab.png', alt: 'Upload Lab Reports screen', label: 'Upload Lab Reports' },
   { src: '/assets/phone-get-insights.png', alt: 'Get Insights screen', label: 'Get Insights' },
   { src: '/assets/phone-health.png', alt: 'Video Resources screen', label: 'Video Resources' },
   { src: '/assets/phone-sleep-article.png', alt: 'Health Blogs screen', label: 'Health Blogs' },
+  { src: '/assets/phone-track-mood.png', alt: 'Track Mood screen', label: 'Track Mood' },
   { src: '/assets/phone-wellbeing-checkin.png', alt: 'Wellbeing Checkin screen', label: 'Wellbeing Checkin' },
   { src: '/assets/phone-ai-coach.png', alt: 'Ask Nisha Chatbot screen', label: 'Ask Nisha Chatbot' },
   { src: '/assets/phone-nutrition.png', alt: 'Log Your Food screen', label: 'Log Your Food' },
@@ -39,14 +38,16 @@ export default function PhoneCarousel() {
   const updateScales = useCallback(() => {
     const el = scrollRef.current
     if (!el) return
-    const containerCenter = el.scrollLeft + el.offsetWidth / 2
+    const containerRect = el.getBoundingClientRect()
+    const viewportCenter = containerRect.left + containerRect.width / 2
     // Find the single phone closest to viewport center; only that one scales up.
     let closestIndex = 0
     let closestDistance = Infinity
     for (let i = 0; i < el.children.length; i++) {
       const child = el.children[i] as HTMLElement
-      const childCenter = child.offsetLeft + child.offsetWidth / 2
-      const distance = Math.abs(containerCenter - childCenter)
+      const childRect = child.getBoundingClientRect()
+      const childCenter = childRect.left + childRect.width / 2
+      const distance = Math.abs(viewportCenter - childCenter)
       if (distance < closestDistance) {
         closestDistance = distance
         closestIndex = i
@@ -63,17 +64,31 @@ export default function PhoneCarousel() {
   useEffect(() => {
     const el = scrollRef.current
     if (!el) return
-    if (isMobile) {
-      const centerChild = el.children[1] as HTMLElement
-      if (centerChild) {
-        el.scrollLeft = centerChild.offsetLeft - el.offsetWidth / 2 + centerChild.offsetWidth / 2
-      }
-    } else {
-      el.scrollLeft = 0
+    const startIndex = isMobile ? 1 : Math.floor(phones.length / 2)
+
+    const centerOnIndex = () => {
+      const centerChild = el.children[startIndex] as HTMLElement
+      if (!centerChild) return
+      // Measure positions in viewport coords; account for current scrollLeft via +=.
+      // Robust against the 100vw + negative-margin layout where `paddingInline: 50%`
+      // resolves against the parent's width, not the element's rendered width.
+      const containerRect = el.getBoundingClientRect()
+      const childRect = centerChild.getBoundingClientRect()
+      const childCenter = childRect.left + childRect.width / 2
+      const viewportCenter = containerRect.left + containerRect.width / 2
+      el.scrollLeft += childCenter - viewportCenter
+      updateScales()
     }
-    updateScales()
+
+    centerOnIndex()
+    // Re-run after layout settles (handles late image loads / font swap)
+    const timer = setTimeout(centerOnIndex, 150)
+
     el.addEventListener('scroll', updateScales, { passive: true })
-    return () => el.removeEventListener('scroll', updateScales)
+    return () => {
+      clearTimeout(timer)
+      el.removeEventListener('scroll', updateScales)
+    }
   }, [isMobile, updateScales])
 
   const scrollBy = (dir: 1 | -1) => {
@@ -87,36 +102,42 @@ export default function PhoneCarousel() {
 
   return (
     <div className="relative w-full">
-      {/* Desktop scroll buttons */}
+      {/* Desktop scroll buttons — stay within parent's constrained width so they remain reachable */}
       {!isMobile && (
         <>
-          <motion.button
-            aria-label="Scroll left"
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.94 }}
-            onClick={() => scrollBy(-1)}
-            disabled={!canScrollLeft}
-            className={`hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-white border border-[#f3f4f6] shadow-card items-center justify-center transition-opacity ${canScrollLeft ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-          >
-            <span className="font-figtree text-[20px] text-[#1a1a2e] leading-none -mt-0.5">&#8249;</span>
-          </motion.button>
-          <motion.button
-            aria-label="Scroll right"
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.94 }}
-            onClick={() => scrollBy(1)}
-            disabled={!canScrollRight}
-            className={`hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-white border border-[#f3f4f6] shadow-card items-center justify-center transition-opacity ${canScrollRight ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-          >
-            <span className="font-figtree text-[20px] text-[#1a1a2e] leading-none -mt-0.5">&#8250;</span>
-          </motion.button>
+          <div className={`hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 z-10 transition-opacity duration-200 ${canScrollLeft ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+            <button
+              aria-label="Scroll left"
+              onClick={() => scrollBy(-1)}
+              disabled={!canScrollLeft}
+              className="flex w-12 h-12 rounded-full bg-[#1a1a2e] hover:bg-[#e91e63] hover:scale-110 active:scale-95 text-white border border-black/10 shadow-[0_8px_24px_-6px_rgba(0,0,0,0.25)] items-center justify-center transition-[transform,background-color] duration-200 ease-out"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+          </div>
+          <div className={`hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 z-10 transition-opacity duration-200 ${canScrollRight ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+            <button
+              aria-label="Scroll right"
+              onClick={() => scrollBy(1)}
+              disabled={!canScrollRight}
+              className="flex w-12 h-12 rounded-full bg-[#1a1a2e] hover:bg-[#e91e63] hover:scale-110 active:scale-95 text-white border border-black/10 shadow-[0_8px_24px_-6px_rgba(0,0,0,0.25)] items-center justify-center transition-[transform,background-color] duration-200 ease-out"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+          </div>
         </>
       )}
 
       <div
         ref={scrollRef}
-        className="w-full flex items-end overflow-x-auto snap-x snap-mandatory no-scrollbar pt-16 pb-2 scroll-smooth"
+        className="flex items-end overflow-x-auto snap-x snap-mandatory no-scrollbar pt-16 pb-2 scroll-smooth"
         style={{
+          width: '100vw',
+          marginInline: 'calc(50% - 50vw)',
           paddingInline: padding,
           gap: isMobile ? '0px' : '32px',
           maskImage: 'linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%)',
@@ -136,7 +157,14 @@ export default function PhoneCarousel() {
                 transformOrigin: 'bottom center',
               }}
             >
-              <img src={phone.src} alt={phone.alt} className="w-full h-auto" />
+              <Image
+                src={phone.src}
+                alt={phone.alt}
+                width={665}
+                height={1310}
+                sizes={isMobile ? '200px' : '260px'}
+                className="w-full h-auto"
+              />
               <p
                 className={`font-junge italic mt-3 text-center transition-colors duration-300 ${
                   isMobile ? 'text-[14px]' : 'text-[16px]'

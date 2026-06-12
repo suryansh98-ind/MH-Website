@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, VIEWPORT } from '../lib/animations'
 
@@ -37,9 +38,12 @@ export default function PioneerSection() {
               whileHover={{ scale: 1.02 }}
               className="rounded-2xl overflow-hidden shadow-card h-48 md:h-64 relative"
             >
-              <img
+              <Image
                 src={LAB_RESEARCH}
                 alt="Lab research"
+                width={1500}
+                height={1000}
+                sizes="(max-width: 768px) 100vw, 373px"
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               />
             </motion.div>

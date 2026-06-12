@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { fadeInUp, staggerContainer, VIEWPORT } from '../lib/animations'
 
@@ -59,7 +60,7 @@ export default function Footer() {
           {/* Brand */}
           <motion.div variants={fadeInUp} className="col-span-2 md:col-span-1 flex flex-col gap-4">
             <div className="flex items-center gap-1.5">
-              <img src={LOGO_ICON} alt="MyHormonz" className="h-[30px] w-auto" />
+              <Image src={LOGO_ICON} alt="MyHormonz" width={1050} height={1040} sizes="30px" className="h-[30px] w-auto" />
               <span className="font-junge text-[21px] text-[#1f2937]">MyHormonz</span>
             </div>
             <p className="font-figtree text-[14px] text-[#6b7280] leading-[20px]">

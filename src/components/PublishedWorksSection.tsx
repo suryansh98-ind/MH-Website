@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { staggerContainer, fadeInUp, VIEWPORT } from '../lib/animations'
 
@@ -37,7 +38,14 @@ function BookCard({ src, title, badge, href, featured = false, delay = 0 }: Book
         whileHover={{ boxShadow: '0 32px 60px -12px rgba(0,0,0,0.2)' }}
         transition={{ duration: 0.35 }}
       >
-        <img src={src} alt={title} className="w-full h-full object-cover" />
+        <Image
+          src={src}
+          alt={title}
+          width={featured ? 907 : 348}
+          height={featured ? 1360 : 522}
+          sizes={featured ? '(max-width: 768px) 240px, 322px' : '(max-width: 768px) 200px, 256px'}
+          className="w-full h-full object-cover"
+        />
       </motion.div>
 
       <div className="flex flex-col items-center gap-1 w-full">

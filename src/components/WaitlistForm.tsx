@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect, type FormEvent } from 'react'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { submitEmail, isValidEmail, type SubmitStatus } from '../lib/waitlist'
 import { EASE } from '../lib/animations'
@@ -137,9 +138,9 @@ export default function WaitlistForm({
         {!compact && (
           <div className="flex items-center gap-4 pt-2">
             <div className="flex -space-x-2">
-              <img src={USER_1} alt="" className="w-8 h-8 rounded-full border-2 border-white" />
-              <img src={USER_2} alt="" className="w-8 h-8 rounded-full border-2 border-white" />
-              <img src={USER_3} alt="" className="w-8 h-8 rounded-full border-2 border-white" />
+              <Image src={USER_1} alt="" width={32} height={32} className="w-8 h-8 rounded-full border-2 border-white" />
+              <Image src={USER_2} alt="" width={32} height={32} className="w-8 h-8 rounded-full border-2 border-white" />
+              <Image src={USER_3} alt="" width={32} height={32} className="w-8 h-8 rounded-full border-2 border-white" />
             </div>
             <span
               className={`font-figtree font-medium text-[14px] ${
@@ -240,9 +241,9 @@ export default function WaitlistForm({
       {!compact && (
         <div className="flex items-center gap-4 pt-4">
           <div className="flex -space-x-2">
-            <img src={USER_1} alt="" className="w-8 h-8 rounded-full border-2 border-white" />
-            <img src={USER_2} alt="" className="w-8 h-8 rounded-full border-2 border-white" />
-            <img src={USER_3} alt="" className="w-8 h-8 rounded-full border-2 border-white" />
+            <Image src={USER_1} alt="" width={32} height={32} className="w-8 h-8 rounded-full border-2 border-white" />
+            <Image src={USER_2} alt="" width={32} height={32} className="w-8 h-8 rounded-full border-2 border-white" />
+            <Image src={USER_3} alt="" width={32} height={32} className="w-8 h-8 rounded-full border-2 border-white" />
           </div>
           <span
             className={`font-figtree font-medium text-[14px] ${
