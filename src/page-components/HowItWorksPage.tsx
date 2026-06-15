@@ -55,8 +55,8 @@ function FeatureCard({ icon, title, description, items }: FeatureCardProps) {
         </div>
         <ul className="flex flex-col gap-4">
           {items.map((item) => (
-            <li key={item} className="flex items-start gap-3">
-              <img src={ICON_CHECK} alt="" className="w-3 h-4 mt-0.5 shrink-0" />
+            <li key={item} className="flex items-center gap-3">
+              <img src={ICON_CHECK} alt="" className="w-3.5 h-3.5 shrink-0" />
               <span className="font-figtree font-medium text-[14px] text-[#1a1a2e] tracking-[0.5px] leading-[1.2]">
                 {item}
               </span>
@@ -70,11 +70,12 @@ function FeatureCard({ icon, title, description, items }: FeatureCardProps) {
 
 interface WhyCardProps {
   icon: string
+  iconClassName?: string
   title: string
   description: string
 }
 
-function WhyCard({ icon, title, description }: WhyCardProps) {
+function WhyCard({ icon, iconClassName = 'w-6 h-5', title, description }: WhyCardProps) {
   return (
     <motion.div
       variants={fadeInUp}
@@ -82,7 +83,7 @@ function WhyCard({ icon, title, description }: WhyCardProps) {
       className="bg-white border border-[#f3f4f6] rounded-3xl shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] p-8 flex flex-col items-center gap-6 flex-1"
     >
       <div className="bg-[rgba(233,30,99,0.1)] rounded-full w-16 h-16 flex items-center justify-center">
-        <img src={icon} alt="" className="w-6 h-5" />
+        <img src={icon} alt="" className={iconClassName} />
       </div>
       <div className="flex flex-col items-center gap-4">
         <h3 className="font-junge font-semibold text-[20px] text-[#1a1a2e] text-center leading-[28px]">
@@ -316,7 +317,13 @@ export default function HowItWorksPage() {
               icon={ICON_HORMONE}
               title="Hormone & Lab Intelligence"
               description="Get optimized by understanding how hormones work together — it's not just a lab number, it's the balance of the hormones that brings you into optimal wellness. Learn the insights into this."
-              items={['Lab Result Insights', 'Holistic Hormonal Wellness']}
+              items={[
+                'Lab Result Insights',
+                'Holistic Hormonal Wellness',
+                'Personalized Reference Ranges',
+                'Multi-Hormone Pattern Analysis',
+                'Plain-Language Explanations',
+              ]}
             />
             <FeatureCard
               icon={ICON_METAB}
@@ -454,6 +461,7 @@ export default function HowItWorksPage() {
             />
             <WhyCard
               icon={ICON_BODY}
+              iconClassName="w-7 h-7"
               title="Whole Body Perspective"
               description="We look at the interconnected web of your hormones, not just isolated numbers, for true holistic wellness."
             />
