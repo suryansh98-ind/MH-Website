@@ -11,6 +11,7 @@ import YoutubeEmbed from '../components/YoutubeEmbed'
 const PhoneCarousel = dynamic(() => import('../components/PhoneCarousel'), { ssr: false })
 
 // ── Asset URLs ──────────────────────────────────────────────────────────────
+const ICON_HORMONE = '/assets/icon-hormone.svg'
 const ICON_TRACK = '/assets/icon-track.svg'
 const ICON_LAB = '/assets/icon-lab.svg'
 const ICON_AI = '/assets/icon-ai.svg'
@@ -182,18 +183,18 @@ export default function HomePage() {
             initial={{ opacity: 0, x: 48 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: EASE, delay: 0.3 }}
-            className="flex-1 flex justify-center lg:justify-end"
+            className="flex-1 flex justify-center lg:justify-end lg:-mt-12 xl:-mt-16"
           >
-            <div className="relative w-[220px] sm:w-[260px] md:w-[280px] lg:w-[300px] xl:w-[320px] lg:mr-12 xl:mr-20">
+            <div className="relative w-[300px] sm:w-[360px] md:w-[400px] lg:w-[440px] xl:w-[480px] lg:mr-8 xl:mr-12">
               {/* Phone blur glow */}
               <div className="absolute -inset-16 bg-[rgba(233,30,99,0.06)] rounded-full blur-[50px]" />
               <Image
                 src="/assets/phone-hero.png"
                 alt="Hormones app screen"
-                width={944}
-                height={1860}
+                width={1219}
+                height={1500}
                 priority
-                sizes="(max-width: 640px) 220px, (max-width: 768px) 260px, (max-width: 1024px) 280px, (max-width: 1280px) 300px, 320px"
+                sizes="(max-width: 640px) 300px, (max-width: 768px) 360px, (max-width: 1024px) 400px, (max-width: 1280px) 440px, 480px"
                 className="relative w-full h-auto object-contain"
               />
             </div>
@@ -232,9 +233,9 @@ export default function HomePage() {
               variants={staggerContainer}
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full"
             >
+              <FeatureCard icon={ICON_HORMONE} title="Hormone Lab Insights" description="Upload your hormone labs and get each value explained in plain language." />
               <FeatureCard icon={ICON_TRACK} title="Track On The Go" description="Log how you feel and mood changes anywhere. Visualize trends." />
-              <FeatureCard icon={ICON_LAB} title="Lab Report Insights" description="Upload lab results for clear, friendly explanations." />
-              <FeatureCard icon={ICON_AI} title="AI Coach" description="Your AI assistant identifies patterns to support learning and maintaining levels." />
+              <FeatureCard icon={ICON_AI} title="Nisha's AI Wellness Coach" description="Your AI assistant identifies patterns to support learning and maintaining levels." />
               <FeatureCard icon={ICON_LONGEVITY} title="Longevity Guidance" description="Daily tips on Weight, Mood, Sleep, Diet, Stress, and Wellness." />
             </motion.div>
           </motion.div>
@@ -310,7 +311,7 @@ export default function HomePage() {
                 variants={fadeInUp}
                 className="font-junge font-semibold text-[36px] md:text-[48px] text-[#1a1a2e] leading-[1.2] md:leading-[60px]"
               >
-                You&apos;re not alone with your <em className="font-medium italic text-[#e91e63]">labs.</em>
+                You&apos;re not alone with your <em className="font-medium italic text-[#e91e63]">hormone labs.</em>
               </motion.h2>
               <motion.div variants={fadeInUp} className="flex flex-col gap-6">
                 <p className="font-figtree text-[18px] text-[#4b5563] leading-[1.5] tracking-[0.5px]">
@@ -418,13 +419,24 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={VIEWPORT}
             transition={{ duration: 0.6, ease: EASE }}
-            className="bg-[#1a1a2e] rounded-[48px] p-8 md:p-12 flex flex-col lg:flex-row items-center gap-12 overflow-hidden relative"
+            className="bg-[#1a1a2e] rounded-[48px] p-8 md:p-12 flex flex-col lg:flex-row items-stretch gap-12 overflow-hidden relative min-h-[460px]"
           >
-            {/* Pink blur overlay */}
-            <div className="absolute top-0 right-0 bottom-0 w-1/3 bg-[rgba(233,30,99,0.1)] blur-[50px]" />
+            {/* Right — couple photo (transparent PNG sits crisply on the navy bg) */}
+            <div className="hidden lg:block absolute top-0 right-0 bottom-0 w-[50%]">
+              <Image
+                src="/assets/cta-illustration.png"
+                alt="Couple smiling and playing music together"
+                fill
+                sizes="(max-width: 1280px) 50vw, 600px"
+                className="object-contain object-bottom"
+              />
+            </div>
+
+            {/* Pink blur overlay — sits over the image area */}
+            <div className="absolute top-0 right-0 bottom-0 w-1/3 bg-[rgba(233,30,99,0.1)] blur-[50px] pointer-events-none" />
 
             {/* Left content */}
-            <div className="flex-1 flex flex-col gap-8 relative z-10">
+            <div className="flex-1 flex flex-col gap-8 relative z-10 lg:max-w-[55%]">
               <h2 className="font-junge font-semibold text-[32px] sm:text-[40px] md:text-[60px] text-white leading-[1.2]">
                 Secure Your Early Access{' '}
                 <em className="font-medium italic text-[#e91e63]">Before We Launch.</em>
@@ -435,18 +447,6 @@ export default function HomePage() {
               <div className="max-w-[480px]">
                 <WaitlistForm variant="dark" compact source="homepage-cta" />
               </div>
-            </div>
-
-            {/* Right — Illustration */}
-            <div className="flex-1 relative z-10 hidden lg:flex items-center justify-center">
-              <Image
-                src="/assets/cta-illustration.png"
-                alt="Woman interacting with phone app"
-                width={976}
-                height={764}
-                sizes="488px"
-                className="w-full max-w-[488px] h-auto object-contain"
-              />
             </div>
           </motion.div>
         </div>

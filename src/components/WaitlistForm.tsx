@@ -205,7 +205,7 @@ export default function WaitlistForm({
           whileTap={status !== 'submitting' ? { scale: 0.97 } : {}}
           className={`font-figtree font-semibold text-[16px] h-[54px] px-6 rounded-full whitespace-nowrap flex items-center justify-center gap-2 ${
             isDark
-              ? 'bg-[#e91e63] text-white shadow-[0px_20px_25px_-5px_rgba(233,30,99,0.4),0px_8px_10px_-6px_rgba(233,30,99,0.4)]'
+              ? 'bg-[#e91e63] text-white'
               : 'bg-[#ca1670] text-white shadow-[0px_10px_15px_-3px_rgba(233,30,99,0.3),0px_4px_6px_-4px_rgba(233,30,99,0.3)]'
           } ${status === 'submitting' ? 'opacity-80 cursor-not-allowed' : ''}`}
         >

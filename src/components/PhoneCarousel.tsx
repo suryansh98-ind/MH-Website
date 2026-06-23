@@ -4,12 +4,12 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 
 const phones = [
-  { src: '/assets/phone-upload-lab.png', alt: 'Upload Lab Reports screen', label: 'Upload Lab Reports' },
-  { src: '/assets/phone-get-insights.png', alt: 'Get Insights screen', label: 'Get Insights' },
-  { src: '/assets/phone-health.png', alt: 'Video Resources screen', label: 'Video Resources' },
   { src: '/assets/phone-sleep-article.png', alt: 'Health Blogs screen', label: 'Health Blogs' },
-  { src: '/assets/phone-track-mood.png', alt: 'Track Mood screen', label: 'Track Mood' },
   { src: '/assets/phone-wellbeing-checkin.png', alt: 'Wellbeing Checkin screen', label: 'Wellbeing Checkin' },
+  { src: '/assets/phone-get-insights.png', alt: 'Get Insights screen', label: 'Get Insights' },
+  { src: '/assets/phone-upload-lab.png', alt: 'Upload Lab Reports screen', label: 'Upload Lab Reports' },
+  { src: '/assets/phone-track-mood.png', alt: 'Track Mood screen', label: 'Track Mood' },
+  { src: '/assets/phone-hormone-details.png', alt: 'Hormone Details screen', label: 'Hormone Details' },
   { src: '/assets/phone-ai-coach.png', alt: 'Ask Nisha Chatbot screen', label: 'Ask Nisha Chatbot' },
   { src: '/assets/phone-nutrition.png', alt: 'Log Your Food screen', label: 'Log Your Food' },
 ]
@@ -98,7 +98,10 @@ export default function PhoneCarousel() {
     el.scrollBy({ left: dir * step, behavior: 'smooth' })
   }
 
-  const padding = isMobile ? 'calc(50% - 100px)' : 'calc(50% - 130px)'
+  // Use 50vw so the padding scales with viewport (the scroller is 100vw wide
+   // via the negative-margin trick, but `50%` would resolve against the parent
+   // and be too small — preventing the first/last item from snapping to center).
+  const padding = isMobile ? 'calc(50vw - 100px)' : 'calc(50vw - 130px)'
 
   return (
     <div className="relative w-full">
