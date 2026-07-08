@@ -113,10 +113,10 @@ export default function PhoneCarousel() {
               aria-label="Scroll left"
               onClick={() => scrollBy(-1)}
               disabled={!canScrollLeft}
-              className="flex w-12 h-12 rounded-full bg-[#1a1a2e] hover:bg-[#e91e63] hover:scale-110 active:scale-95 text-white border border-black/10 shadow-[0_8px_24px_-6px_rgba(0,0,0,0.25)] items-center justify-center transition-[transform,background-color] duration-200 ease-out"
+              className="flex w-12 h-12 rounded-full bg-[#60346b] hover:bg-[#774184] hover:scale-110 active:scale-95 text-white border border-black/10 shadow-[0_8px_12px_rgba(0,0,0,0.25)] items-center justify-center transition-[transform,background-color] duration-200 ease-out"
             >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="15 18 9 12 15 6" />
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M8.75 10.5L5.25 7L8.75 3.5" stroke="white" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
           </div>
@@ -125,10 +125,10 @@ export default function PhoneCarousel() {
               aria-label="Scroll right"
               onClick={() => scrollBy(1)}
               disabled={!canScrollRight}
-              className="flex w-12 h-12 rounded-full bg-[#1a1a2e] hover:bg-[#e91e63] hover:scale-110 active:scale-95 text-white border border-black/10 shadow-[0_8px_24px_-6px_rgba(0,0,0,0.25)] items-center justify-center transition-[transform,background-color] duration-200 ease-out"
+              className="flex w-12 h-12 rounded-full bg-[#60346b] hover:bg-[#774184] hover:scale-110 active:scale-95 text-white border border-black/10 shadow-[0_8px_12px_rgba(0,0,0,0.25)] items-center justify-center transition-[transform,background-color] duration-200 ease-out"
             >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="9 18 15 12 9 6" />
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M5.25 10.5L8.75 7L5.25 3.5" stroke="white" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
           </div>

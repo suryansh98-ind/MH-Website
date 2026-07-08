@@ -125,6 +125,11 @@ public/
 | Warm background | `#fffdf9` |
 | Card background | `#f9fafb` |
 | Border | `#e5e7eb` |
+| Purple gradient dark stop | `#60346b` |
+| Purple gradient mid stop | `#774184` |
+| Purple gradient light stop | `#8e4d9e` |
+| Purple heading (Pantone 600) | `#30083a` |
+| Purple icon bg (Pantone 50) | `#ece7ed` |
 
 ## Typography
 - **Playfair Display** (serif, via `next/font/google`) — used as the `junge` font family alias for headings, quotes, logo
@@ -205,6 +210,20 @@ Used on the homepage sneak peek section to showcase **8 app screens** in a horiz
 - **Arrow scroll step**: one phone per click — `el.scrollBy({ left: phoneWidth + gap })`. Don't multiply.
 - **No hover effect**: phone wrappers are plain `<div>` (not `<motion.div>` with `whileHover`) — hover lift conflicts with the "centered = active" mental model.
 - **Phones array**: in render order, with file paths and labels. The middle/featured phone is not hard-coded; whichever is centered gets the active style.
+- **Arrow buttons**: purple circular buttons (`bg-[#60346b]`, `hover:bg-[#774184]`) with a thin 14×14 white chevron (`strokeWidth 1.75`, viewBox `0 0 14 14`) — matches the Figma "Button - Scroll left/right" component. Not the old navy/pink treatment.
+
+## Purple Gradient Sections & Ornaments
+Several full-bleed banners (`HomePage` "Meet Your Hormone Strategist" section, `MissionSection` on the About page) use a shared visual pattern from Figma:
+
+- **Background**: `bg-gradient-to-t from-[#60346b] via-[#774184] to-[#8e4d9e]` (dark purple at the bottom fading to a lighter purple at the top).
+- **Decorative ornaments**: dashed-circle PNGs (`public/assets/ornament-5.png`, `ornament-6.png`, `ornament-7.png` — large/medium/small rings respectively) scattered as absolutely positioned `<img>` tags at varying rotation/opacity, `hidden lg:block` (desktop only). These were exported from Figma's dev-mode asset server and are reused across sections — don't regenerate per-section, just reposition.
+- Section content sits in a `relative` wrapper so it stacks above the ornaments (which are direct children of the `relative overflow-hidden` section, not the content wrapper).
+
+## CTA Banner (HomePage Section 7)
+The "Secure Your Early Access" banner uses a fixed-height card matching Figma's exact pixel spec rather than content-driven height, to guarantee the background photo crops consistently:
+- Card: `min-h-[460px] lg:h-[511px]` (fixed height at desktop — do not switch back to a pure `min-h` once `lg:h` is set, or the image crop math below breaks).
+- Photo (`/assets/cta-meditation.png`): absolutely positioned box `w-[57.03%]` flush right (= 730/1280 from the Figma frame), `object-cover object-bottom`, and `unoptimized` on the `next/image` — the source is only 1024×576, so Next's automatic upscaling for retina `sizes` produces a soft/blurry result; `unoptimized` serves the raw file and lets the browser do a single clean scale instead.
+- Gradient overlay: `linear-gradient(90deg, #1a1a2e 45.8%, rgba(26,26,46,0.75) 52.3%, rgba(26,26,46,0.5) 57.05%, rgba(26,26,46,0.25) 63.24%, rgba(26,26,46,0) 69.5%)` — stops are pre-computed as a percentage of the full 1280px card width (Figma's gradient was defined relative to a narrower 1173px panel, not the full card).
 
 ## Waitlist
 - Form component: `WaitlistForm` accepts `variant="light" | "dark"`, optional `compact` boolean, and a `source` string (e.g. `"homepage-hero"`) for attribution.
@@ -221,6 +240,8 @@ The 5-step user journey is consistent between the homepage **"The Process"** sec
 5. **Optimize** — sustain energy, clarity, and well-being
 
 Keep these in sync if either set changes.
+
+**Styling note:** the homepage `ProcessStep` numbered markers use the purple palette (active: `bg-[#60346b]`; inactive: `border-[#ece7ed]` + `text-[#60346b]`) per a Figma update. `HowItWorksPage`'s `JourneyStep` markers still use the older pink treatment (`#e91e83`) — these were intentionally left unsynced pending an explicit request to update that page too.
 
 ## Footer
 - **Legal:** only "Privacy Policy" (links to `/privacy-policy`). Terms of Service and Health Information Disclaimer have been removed until written.

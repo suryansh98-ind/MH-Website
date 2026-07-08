@@ -11,11 +11,11 @@ import YoutubeEmbed from '../components/YoutubeEmbed'
 const PhoneCarousel = dynamic(() => import('../components/PhoneCarousel'), { ssr: false })
 
 // ── Asset URLs ──────────────────────────────────────────────────────────────
-const ICON_HORMONE = '/assets/icon-hormone.svg'
-const ICON_TRACK = '/assets/icon-track.svg'
+const ICON_HORMONE = '/assets/icon-hormone-purple.svg'
+const ICON_TRACK = '/assets/icon-track-purple.svg'
 const ICON_LAB = '/assets/icon-lab.svg'
-const ICON_AI = '/assets/icon-ai.svg'
-const ICON_LONGEVITY = '/assets/icon-longevity.svg'
+const ICON_AI = '/assets/icon-ai-purple.svg'
+const ICON_LONGEVITY = '/assets/icon-longevity-purple.svg'
 const IMG_LAB_EQUIP = '/assets/lab-equipment.png'
 const IMG_DR_NISHA = '/assets/dr-nisha-home.png'
 const ICON_RESEARCH = '/assets/icon-research.svg'
@@ -46,7 +46,7 @@ function FeatureCard({ icon, title, description }: FeatureCardProps) {
       whileHover={{ y: -4, transition: { duration: 0.3, ease: EASE } }}
       className="bg-[#f9fafb] rounded-[32px] p-8 flex flex-col gap-6 flex-1 min-w-[220px]"
     >
-      <div className="bg-[rgba(233,30,99,0.05)] rounded-2xl w-14 h-14 flex items-center justify-center">
+      <div className="bg-[#ece7ed] rounded-2xl w-14 h-14 flex items-center justify-center">
         <img src={icon} alt="" className="w-[25px] h-[25px]" />
       </div>
       <div className="flex flex-col gap-2.5">
@@ -75,11 +75,11 @@ function ProcessStep({ number, title, description, active = false, onHover }: Pr
       <div
         className={`relative z-10 w-[37px] h-12 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
           active
-            ? 'bg-[#e91e83] shadow-[0px_10px_15px_-3px_rgba(233,30,99,0.2),0px_4px_6px_-4px_rgba(233,30,99,0.2)]'
-            : 'bg-white border-2 border-[rgba(233,30,99,0.2)]'
+            ? 'bg-[#60346b] shadow-[0px_10px_7.5px_rgba(96,52,107,0.25),0px_4px_3px_rgba(96,52,107,0.25)]'
+            : 'bg-white border-2 border-[#ece7ed]'
         }`}
       >
-        <span className={`font-figtree font-bold text-[16px] transition-colors duration-300 ${active ? 'text-white' : 'text-[#e91e83]'}`}>
+        <span className={`font-figtree font-bold text-[16px] transition-colors duration-300 ${active ? 'text-white' : 'text-[#60346b]'}`}>
           {number}
         </span>
       </div>
@@ -216,7 +216,7 @@ export default function HomePage() {
             <div className="flex flex-col items-center gap-6 text-center">
               <motion.h2
                 variants={fadeInUp}
-                className="font-junge font-semibold text-[36px] md:text-[48px] text-[#1a1a2e] leading-[1.15] md:leading-[48px]"
+                className="font-junge font-semibold text-[36px] md:text-[48px] text-[#30083a] leading-[1.15] md:leading-[48px]"
               >
                 Pocket-Sized Hormonal{'\n'}Intelligence
               </motion.h2>
@@ -327,8 +327,25 @@ export default function HomePage() {
       </section>
 
       {/* ─── Section 5: Hormone Strategist ────────────────────────────── */}
-      <section className="bg-[#ca1670] py-16 md:py-24">
-        <div className="max-w-[1024px] mx-auto px-4 md:px-8">
+      <section className="relative bg-gradient-to-t from-[#60346b] via-[#774184] to-[#8e4d9e] py-16 md:py-24 overflow-hidden">
+        {/* Decorative ornaments */}
+        <img src="/assets/ornament-5.png" alt="" aria-hidden className="hidden lg:block absolute -left-16 -top-10 w-36 h-36 rotate-[32deg] opacity-80 pointer-events-none select-none" />
+        <img src="/assets/ornament-6.png" alt="" aria-hidden className="hidden lg:block absolute left-32 -top-8 w-11 h-11 rotate-[32deg] opacity-80 pointer-events-none select-none" />
+        <img src="/assets/ornament-7.png" alt="" aria-hidden className="hidden lg:block absolute left-28 top-24 w-8 h-8 -rotate-[13deg] opacity-80 pointer-events-none select-none" />
+
+        <img src="/assets/ornament-5.png" alt="" aria-hidden className="hidden lg:block absolute right-8 top-4 w-44 h-44 rotate-[17deg] opacity-40 pointer-events-none select-none" />
+        <img src="/assets/ornament-6.png" alt="" aria-hidden className="hidden lg:block absolute right-0 top-16 w-12 h-12 rotate-[17deg] opacity-40 pointer-events-none select-none" />
+        <img src="/assets/ornament-7.png" alt="" aria-hidden className="hidden lg:block absolute right-2 top-56 w-10 h-10 -rotate-[28deg] opacity-40 pointer-events-none select-none" />
+
+        <img src="/assets/ornament-5.png" alt="" aria-hidden className="hidden lg:block absolute left-4 bottom-8 w-44 h-44 rotate-[32deg] opacity-20 pointer-events-none select-none" />
+        <img src="/assets/ornament-6.png" alt="" aria-hidden className="hidden lg:block absolute left-56 bottom-16 w-12 h-12 rotate-[32deg] opacity-20 pointer-events-none select-none" />
+        <img src="/assets/ornament-7.png" alt="" aria-hidden className="hidden lg:block absolute left-52 bottom-0 w-9 h-9 -rotate-[13deg] opacity-20 pointer-events-none select-none" />
+
+        <img src="/assets/ornament-5.png" alt="" aria-hidden className="hidden lg:block absolute -right-10 bottom-0 w-64 h-64 rotate-[178deg] opacity-30 pointer-events-none select-none" />
+        <img src="/assets/ornament-6.png" alt="" aria-hidden className="hidden lg:block absolute right-16 bottom-4 w-20 h-20 rotate-[178deg] opacity-30 pointer-events-none select-none" />
+        <img src="/assets/ornament-7.png" alt="" aria-hidden className="hidden lg:block absolute right-24 -bottom-6 w-16 h-16 rotate-[133deg] opacity-30 pointer-events-none select-none" />
+
+        <div className="relative max-w-[1024px] mx-auto px-4 md:px-8">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -419,21 +436,27 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={VIEWPORT}
             transition={{ duration: 0.6, ease: EASE }}
-            className="bg-[#1a1a2e] rounded-[48px] p-8 md:p-12 flex flex-col lg:flex-row items-stretch gap-12 overflow-hidden relative min-h-[460px]"
+            className="bg-[#1a1a2e] rounded-[48px] p-8 md:p-12 flex flex-col lg:flex-row items-stretch gap-12 overflow-hidden relative min-h-[460px] lg:h-[511px]"
           >
-            {/* Right — couple photo (transparent PNG sits crisply on the navy bg) */}
-            <div className="hidden lg:block absolute top-0 right-0 bottom-0 w-[50%]">
-              <Image
-                src="/assets/cta-illustration.png"
-                alt="Couple smiling and playing music together"
-                fill
-                sizes="(max-width: 1280px) 50vw, 600px"
-                className="object-contain object-bottom"
+            {/* Background — right-side photo (flush right, 730/1280 = 57.03% width) with left-to-right fade into the navy panel */}
+            <div className="hidden lg:block absolute inset-0">
+              <div className="absolute top-0 right-0 bottom-0 w-[57.03%]">
+                <Image
+                  src="/assets/cta-meditation.png"
+                  alt="Couple meditating together outdoors in nature"
+                  fill
+                  unoptimized
+                  className="object-cover object-bottom"
+                />
+              </div>
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    'linear-gradient(90deg, #1a1a2e 45.8%, rgba(26,26,46,0.75) 52.3%, rgba(26,26,46,0.5) 57.05%, rgba(26,26,46,0.25) 63.24%, rgba(26,26,46,0) 69.5%)',
+                }}
               />
             </div>
-
-            {/* Pink blur overlay — sits over the image area */}
-            <div className="absolute top-0 right-0 bottom-0 w-1/3 bg-[rgba(233,30,99,0.1)] blur-[50px] pointer-events-none" />
 
             {/* Left content */}
             <div className="flex-1 flex flex-col gap-8 relative z-10 lg:max-w-[55%]">
