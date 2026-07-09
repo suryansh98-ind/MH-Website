@@ -5,9 +5,9 @@ import { fadeInLeft, fadeInRight, staggerContainer, fadeInUp, VIEWPORT } from '.
 import YoutubeEmbed from './YoutubeEmbed'
 
 const EDUCATOR_BG = '/assets/video-bg.png'
-const ICON_RADIO = '/assets/icon-radio.svg'
-const ICON_TRAINING = '/assets/icon-training.svg'
-const ICON_AUTHOR = '/assets/icon-author.svg'
+const ICON_RADIO = '/assets/icon-radio-purple.svg'
+const ICON_TRAINING = '/assets/icon-training-purple.svg'
+const ICON_AUTHOR = '/assets/icon-author-purple.svg'
 const ICON_PLAY = '/assets/icon-play.svg'
 
 const items = [
@@ -54,7 +54,7 @@ export default function EducatorSection() {
             {items.map((item, i) => (
               <motion.div key={i} variants={fadeInUp}>
                 <div className="flex gap-4 items-start">
-                  <div className="flex-shrink-0 w-10 md:w-12 h-10 md:h-12 rounded-full bg-primary-muted flex items-center justify-center">
+                  <div className="flex-shrink-0 w-10 md:w-12 h-10 md:h-12 rounded-full bg-[#ece7ed] flex items-center justify-center">
                     <img
                       src={item.icon}
                       alt=""

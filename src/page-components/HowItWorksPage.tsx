@@ -7,14 +7,14 @@ import { fadeInUp, staggerContainer, scaleIn, VIEWPORT, EASE } from '../lib/anim
 import { useWaitlist } from '../contexts/WaitlistContext'
 
 // ── Asset URLs ──────────────────────────────────────────────────────────────
-const ICON_HORMONE = '/assets/icon-hormone.svg'
-const ICON_CHECK   = '/assets/icon-check.svg'
-const ICON_METAB   = '/assets/icon-metabolism.svg'
-const ICON_SLEEP   = '/assets/icon-sleep.svg'
-const ICON_BRAIN   = '/assets/icon-ai.svg'
-const ICON_CLARITY = '/assets/icon-clarity.svg'
-const ICON_BODY    = '/assets/icon-body.svg'
-const ICON_ACTION  = '/assets/icon-action.svg'
+const ICON_HORMONE = '/assets/icon-hormone-purple.svg'
+const ICON_CHECK   = '/assets/icon-check-purple.svg'
+const ICON_METAB   = '/assets/icon-metabolism-purple.svg'
+const ICON_SLEEP   = '/assets/icon-sleep-purple.svg'
+const ICON_BRAIN   = '/assets/icon-ai-purple.svg'
+const ICON_CLARITY = '/assets/icon-clarity-purple.svg'
+const ICON_BODY    = '/assets/icon-body-purple.svg'
+const ICON_ACTION  = '/assets/icon-action-purple.svg'
 const DR_NISHA_HIW = '/assets/dr-nisha-hiw.png'
 const ICON_RESEARCH = '/assets/icon-research.svg'
 
@@ -41,7 +41,7 @@ function FeatureCard({ icon, title, description, items }: FeatureCardProps) {
       variants={fadeInUp}
       className="bg-[#f9fafb] rounded-[32px] p-6 sm:p-8 md:p-10 flex flex-col sm:flex-row gap-5 sm:gap-6"
     >
-      <div className="bg-white rounded-2xl shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] w-16 h-16 flex items-center justify-center shrink-0">
+      <div className="bg-[#ece7ed] rounded-2xl w-16 h-16 flex items-center justify-center shrink-0">
         <img src={icon} alt="" className="w-[22px] h-[22px]" />
       </div>
       <div className="flex flex-col gap-6">
@@ -82,7 +82,7 @@ function WhyCard({ icon, iconClassName = 'w-6 h-5', title, description }: WhyCar
       whileHover={{ y: -4, transition: { duration: 0.3, ease: EASE } }}
       className="bg-white border border-[#f3f4f6] rounded-3xl shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] p-8 flex flex-col items-center gap-6 flex-1"
     >
-      <div className="bg-[rgba(233,30,99,0.1)] rounded-full w-16 h-16 flex items-center justify-center">
+      <div className="bg-[#ece7ed] rounded-full w-16 h-16 flex items-center justify-center">
         <img src={icon} alt="" className={iconClassName} />
       </div>
       <div className="flex flex-col items-center gap-4">
@@ -112,13 +112,13 @@ function Step({ number, title, description, active = false, onHover }: StepProps
       <div
         className={`relative z-10 w-12 h-12 rounded-full flex items-center justify-center mb-6 transition-all duration-300 ${
           active
-            ? 'bg-[#e91e83] shadow-[0px_10px_15px_-3px_rgba(233,30,99,0.2),0px_4px_6px_-4px_rgba(233,30,99,0.2)]'
-            : 'bg-white border-2 border-[rgba(233,30,99,0.2)]'
+            ? 'bg-[#60346b] shadow-[0px_10px_7.5px_rgba(96,52,107,0.25),0px_4px_3px_rgba(96,52,107,0.25)]'
+            : 'bg-white border-2 border-[#ece7ed]'
         }`}
       >
         <span
           className={`font-figtree font-bold text-[16px] transition-colors duration-300 ${
-            active ? 'text-white' : 'text-[#e91e83]'
+            active ? 'text-white' : 'text-[#60346b]'
           }`}
         >
           {number}
@@ -126,7 +126,7 @@ function Step({ number, title, description, active = false, onHover }: StepProps
       </div>
       {/* Title & description */}
       <h3 className={`font-junge font-bold text-[18px] text-center leading-[28px] mb-3 transition-colors duration-300 ${
-        active ? 'text-[#e91e83]' : 'text-[#1a1a2e]'
+        active ? 'text-[#60346b]' : 'text-[#1a1a2e]'
       }`}>
         {title}
       </h3>
