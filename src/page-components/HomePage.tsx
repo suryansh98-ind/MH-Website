@@ -442,11 +442,11 @@ export default function HomePage() {
             <div className="hidden lg:block absolute inset-0">
               <div className="absolute top-0 right-0 bottom-0 w-[57.03%]">
                 <Image
-                  src="/assets/cta-meditation.png"
-                  alt="Couple meditating together outdoors in nature"
+                  src="/assets/cta-treadmill.png"
+                  alt="Two people running on treadmills in a gym"
                   fill
                   unoptimized
-                  className="object-cover object-bottom"
+                  className="object-cover"
                 />
               </div>
               <div
